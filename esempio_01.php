@@ -1,8 +1,7 @@
-<?php
-/*
+<!--
 	# 
 	# MODULE DESCRIPTION:
-	# phpinfo.php
+	# esempio_01.php
 	# 
 	# 
 	# AUTHORS:
@@ -15,15 +14,22 @@
 	# 16-09-2016    Ficcadenti Raffaele         phpinfo()
 	# --
 	#
-*/
-?>
+-->
 
 <hmtl>
 <head>
 	<title>sorgente: esempio_01.php</title>
+	<!-- Sezione per i CSS -->
+	<style>
+		b {
+		    font-style: italic;
+		    font-size: 30px;
+		}
+	</style>
 </head>
 <body>
 	<b>
+	<!-- Codice PHP -->
 	<?php
 		print("Ciao mondo web!!!");
 	?>
