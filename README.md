@@ -12,5 +12,7 @@
 	<br>
 	<li><b>esempio_03.php</b>: Elementi fondamentali, le variabili assegnazione per riferimento.</li>
 	<br>
-	<li><b>esempio_04.php</b>: Elementi fondamentali, tipi di dato.</li>
+	<li><b>esempio_04.php</b>: Elementi fondamentali, tipi di dato e casting.</li>
+	<br>
+	<li><b>esempio_05.php</b>: Elementi fondamentali, operatori.</li>
 </ul>
