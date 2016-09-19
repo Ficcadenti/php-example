@@ -8,5 +8,9 @@
 	<br>
 	<li><b>esempio_01.php</b>: Un semplice script introduttivo.</li>
 	<br>
-	<li><b>esempio_02.php</b>: Elementi fondamentali, le variabili.</li>
+	<li><b>esempio_02.php</b>: Elementi fondamentali, le variabili assegnazione per valore.</li>
+	<br>
+	<li><b>esempio_03.php</b>: Elementi fondamentali, le variabili assegnazione per riferimento.</li>
+	<br>
+	<li><b>esempio_04.php</b>: Elementi fondamentali, tipi di dato.</li>
 </ul>

@@ -34,13 +34,17 @@
 	<?php
 		$varA = 10;
 		$varB = "B";
-		$holder = "user";
+		$holder = "user"; 
 		$$holder = "Raffaele";
+		${"passwd"} = "123456";
 
-		print($varA."<br>");
-		print($varB."<br>");
-		print('$holder=$user<br>');
-		print("$holder=$user<br>");
+		print($varA."<br>"); // stampa 10
+		print($varB."<br>"); // stampa B
+		print('$holder=$user<br>'); // stampa $holder=$user
+		print("$holder=$user<br>"); // stampa $holder=Raffaele
+		print("-> $$holder <br>"); // stampa $user
+		print("-> ${$holder} <br>"); //stampa Raffaele
+		print($passwd."<br>"); // stampa 1234
 	?>
 	</b>
 </body>
