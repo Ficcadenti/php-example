@@ -11,9 +11,9 @@
 	# 
 	# 
 	# HISTORY:
-	# -[Date]---    -[Who]-------------         -[What]---------------------------------------
-	# 19-09-2016    Ficcadenti Raffaele         phpinfo()
-	# --
+	# -[Date]-      -[Who]-               -[What]-
+	# 19-09-2016    Ficcadenti Raffaele         
+	# -
 	#
 -->
 <hmtl>

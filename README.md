@@ -17,4 +17,6 @@
 	<li><b>esempio_05.php</b>: Elementi fondamentali, operatori.</li>
 	<br>
 	<li><b>esempio_06.php</b>: Elementi fondamentali, costanti.</li>
+	<br>
+	<li><b>esempio_07.php</b>: Elementi fondamentali, controllo del flusso di elaborazione.</li>
 </ul>

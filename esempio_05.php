@@ -11,9 +11,9 @@
 	# 
 	# 
 	# HISTORY:
-	# -[Date]---    -[Who]-------------         -[What]---------------------------------------
-	# 19-09-2016    Ficcadenti Raffaele         phpinfo()
-	# --
+	# -[Date]-      -[Who]-               -[What]-
+	# 19-09-2016    Ficcadenti Raffaele         
+	# -
 	#
 -->
 <hmtl>
@@ -50,12 +50,12 @@
 
 		$var3=10;
 		$var4=$var3%4;
-		print("var4=$var4<br>"); 	
+		print("1) var4=$var4<br>"); 	
 
 		
 		$var5=16;
 		print("<br>");
-		print("<b1>$var5>4 and $var5<10 ?</b1><br>"); 
+		print("<b1>2) $var5>4 and $var5<10 ?</b1><br>"); 
 		if(($var5>4)and($var5<10))
 		{
 			print("true<br>");
@@ -65,7 +65,7 @@
 			print("false<br>");
 		}
 
-		print("<b1>$var5>4 or $var5<10 ?</b1><br>"); 
+		print("<b1>3) $var5>4 or $var5<10 ?</b1><br>"); 
 		if(($var5>4)or($var5<10))
 		{
 			print("true<br>");
@@ -75,7 +75,7 @@
 			print("false<br>");
 		}
 
-		print("<b1>$var5>4 xor $var5<10 ?</b1><br>"); 
+		print("<b1>4) $var5>4 xor $var5<10 ?</b1><br>"); 
 		if(($var5>4)xor($var5<10))
 		{
 			print("true<br>");
@@ -86,7 +86,7 @@
 		}
 
 		$var6=10;
-		print("<b1>$var6<11 ?</b1><br>"); 
+		print("<b1>5) $var6<11 ?</b1><br>"); 
 		if($var6++<11)
 		{
 			print("true<br>");
@@ -97,7 +97,7 @@
 		}
 
 		$var7=10;
-		print("<b1>$var7<11 ?</b1><br>"); 
+		print("<b1>6) $var7<11 ?</b1><br>"); 
 		if(++$var7<11)
 		{
 			print("true<br>");
@@ -109,7 +109,7 @@
 
 		$var8=10;
 		$var9="10";
-		print("<b1>$var8==$var9 ?</b1><br>"); 
+		print("<b1>7) $var8==$var9 ?</b1><br>"); 
 		print("$var8 is ".gettype($var8)."<br>");
 		print("$var9 is ".gettype($var9)."<br>");
 		if($var8==$var9)
@@ -121,7 +121,7 @@
 			print("false<br>");
 		}
 
-		print("<b1>$var8===$var9 ?</b1><br>"); 
+		print("<b1>8)$var8===$var9 ?</b1><br>"); 
 		print("$var8 is ".gettype($var8)."<br>");
 		print("$var9 is ".gettype($var9)."<br>");
 		if($var8===$var9)
@@ -135,7 +135,7 @@
 
 		$var8=10;
 		$var9=10;
-		print("<b1>$var8===$var9 ?</b1><br>"); 
+		print("<b1>9) $var8===$var9 ?</b1><br>"); 
 		print("$var8 is ".gettype($var8)."<br>");
 		print("$var9 is ".gettype($var9)."<br>");
 		if($var8===$var9)
