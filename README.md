@@ -15,4 +15,6 @@
 	<li><b>esempio_04.php</b>: Elementi fondamentali, tipi di dato e casting.</li>
 	<br>
 	<li><b>esempio_05.php</b>: Elementi fondamentali, operatori.</li>
+	<br>
+	<li><b>esempio_06.php</b>: Elementi fondamentali, costanti.</li>
 </ul>
