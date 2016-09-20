@@ -29,7 +29,7 @@
 		    font-size: 30px;
 		    color: #0000FF;
 		}
-		
+
 		h2 {
 			margin-left: 30px;
 		}
@@ -100,15 +100,15 @@
 			printH("h2","$cap.$num_paragrafo. $str");
 		}
 
-		function elencoPuntato($elenco)
+		function elencoPuntato($elenco,$stile)
 		{
-			println("<ul  id=\"menu\">");
+			println("<ul  id=\"$stile\">");
 			foreach ($elenco as $value) 
 			{
 				print("<li><a>$value</a></li>");
 			}
 			println("</ul>");
-		}
+		}		
 	?>
 	<?php
 		
@@ -122,6 +122,8 @@
 		$functionHolder("Famiglia",$num_capitolo);
 		$functionHolder("Componenti",$num_capitolo);
 
-		elencoPuntato($famiglia);
+		mySort_dec($famiglia);
+		elencoPuntato($famiglia,"menu");
+
 	?>
 </body>
