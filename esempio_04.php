@@ -35,10 +35,25 @@
 	<b>
 	<!-- Codice PHP -->
 	<?php
+
+		
+		
+
 		$var1=5;
 		$var2=5.34;
 		$var3="Ciao";
 		$var4=true;
+		$array = array('a', 'b', 'c');
+		/* herdoc string */
+		$stringa = <<<HDOC
+			Il mio nome è "Raffale"
+HDOC;
+
+
+		echo "<b1>Stringa heredoc:</b1> ",$stringa,"<br>";
+		print("$array[0]<br>");
+		print("$array[1]<br>");
+		print("$array[2]<br><br>");
 
 		print("<b1>Tipi di variabile:</b1><br>"); 
 		print("var1=$var1 is ".gettype($var1)."<br>"); 

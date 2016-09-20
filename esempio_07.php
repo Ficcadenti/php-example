@@ -102,8 +102,56 @@
 		/* for */
 		for ($counter = 10; $counter <= 20; $counter++) 
 		{
-    		print("$counter<br>");
+			print("$counter<br>");
 		} 
+
+		print("<br>");
+		$counter=-5;
+		/* for break */
+		for (; $counter <= 5; $counter++) 
+		{
+			if($counter==0)
+			{
+				break;
+			}
+			$result=10/$counter;
+			print("10/$counter=".$result."<br>");
+		} 
+
+
+		print("<br>");
+		$counter=-4;
+		/* for break */
+		for (; $counter <= 4; $counter++) 
+		{
+			if($counter==0)
+			{
+				continue;
+			}
+			$result=10/$counter;
+			print("10/$counter=".$result."<br>");
+		} 
+
+		print("<br>");
+		/* for annidati */
+		for ($x = 1; $x <= 10; $x++) 
+		{
+			for ($y = 1; $y <= 10; $y++) 
+			{
+				$result=$x*$y;
+				printf("%02d ",$result);
+			}
+			print("<br>");
+		} 
+
+		$array = array('a', 'b', 'c', 'd', 'e');
+		$contatore = 0;
+		print("<br>");
+		/* foreach  */
+		foreach ($array as $value) {
+			printf("arrai[$contatore]=%s<br>",$value);
+			$contatore++;
+		}
 	?>
 	</b>
 </body>

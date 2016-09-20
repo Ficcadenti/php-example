@@ -19,4 +19,7 @@
 	<li><b>esempio_06.php</b>: Elementi fondamentali, costanti.</li>
 	<br>
 	<li><b>esempio_07.php</b>: Elementi fondamentali, controllo del flusso di elaborazione.</li>
+	<br>
+	<li><b>esempio_08.php</b>: Funzioni.</li>
+
 </ul>
