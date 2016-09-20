@@ -23,5 +23,6 @@
 	<li><b>esempio_08.php</b>: Funzioni.</li>
 	<br>
 	<li><b>esempio_09.php</b>: Array.</li>
-
+	<br>
+	<li><b>esempio_10.php</b>: Oggetti.</li>
 </ul>

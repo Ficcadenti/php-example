@@ -108,7 +108,7 @@
 			printH("h2","$cap.$num_paragrafo. $str");
 		}
 
-		function elencoPuntato($elenco,$stile)
+		function elencoPuntato($elenco,$stile="test")
 		{
 			println("<ul  id=\"$stile\">");
 			foreach ($elenco as $value) 
@@ -134,5 +134,42 @@
 		print("<div id=\"m70\">");
 		elencoPuntato($famiglia,"menu");
 		print ("</div>");
+
+		$contatti=array(
+			array(
+				"nome"=>"Raffaele",
+				"cognome"=>"Ficcadenti",
+				"email"=>"raffaele.ficcadenti@gmail.com",
+				"telefono"=>"3404020010",
+				"www"=>"http://www.raffaeleficcadenti.it"),
+			array(
+				"nome"=>"Valeria",
+				"cognome"=>"Greco",
+				"email"=>"valeria5.greco@gmail.com",
+				"telefono"=>"3408676455",
+				"www"=>""
+			),
+			10
+			);
+
+		var_dump($contatti);
+
+		foreach ($contatti as $value) 
+		{
+			if( is_array($value) )
+			{
+				foreach ($value as $key => $val) 
+				{
+					//var_dump($val);
+					println("$key : $val");
+				}
+			}
+			else
+			{
+				println("$value");
+			}
+			println();
+
+		}
 	?>
 </body>
