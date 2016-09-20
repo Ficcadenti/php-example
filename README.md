@@ -21,5 +21,7 @@
 	<li><b>esempio_07.php</b>: Elementi fondamentali, controllo del flusso di elaborazione.</li>
 	<br>
 	<li><b>esempio_08.php</b>: Funzioni.</li>
+	<br>
+	<li><b>esempio_09.php</b>: Array.</li>
 
 </ul>

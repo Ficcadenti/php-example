@@ -44,7 +44,7 @@
 		$var3="Ciao";
 		$var4=true;
 		$array = array('a', 'b', 'c');
-		/* herdoc string */
+		/* heredoc string */
 		$stringa = <<<HDOC
 			Il mio nome è "Raffale"
 HDOC;

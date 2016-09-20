@@ -17,9 +17,8 @@
 	#
 -->
 <?php
-		function println($str) /* stampa riga incluso CR-LF*/
+		function println($str="") /* stampa riga incluso CR-LF*/
 		{
-			print($str);
-			print("<br>");
+			print("$str<br>");
 		}
 ?> 

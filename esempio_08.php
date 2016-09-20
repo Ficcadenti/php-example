@@ -40,7 +40,7 @@
 	<?php
 		$test="Gabriele";
 
-		function somma($a,$b)
+		function somma($a,$b) // passaggio parametri per valore
 		{
 			return $a+$b;
 		}
@@ -65,7 +65,7 @@
 			println("<$h>$str</$h>"); // funzione definita dall'utente
 		}
 
-		function inc(&$num)
+		function inc(&$num) // passaggio parametro per riferimento
 		{
 			$num++;
 			return true;
@@ -83,6 +83,15 @@
 			static $num_capitolo = 0;
 			$num_capitolo++;
 			printH("h1","$num_capitolo. $str");
+		}
+
+		function fontWrap($str, $size=3)
+		{
+			/* heredoc string */
+			$temp=<<<HDOC
+			<font size="$size" face="Arial, Helvetica, sans-serif">$str</font> 
+HDOC;
+			println($temp);
 		}
 
 		$num1=-2;
@@ -115,13 +124,16 @@
 		println("num3=$num3");
 		testGlobal();
 		println($test);
-		println("");
-		
+		println();
+
 		capitolo("Introduzione");
 		capitolo("Scopo");
 		capitolo("Funzioni");
 		capitolo("Ringraziamenti");
 
+		fontWrap("Titolo 1",5);
+		fontWrap("Titolo 2",15);
+		fontWrap("Titolo 3");
 		println("FINE");
 	?> 
 	</b>
