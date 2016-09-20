@@ -144,7 +144,10 @@
 			print("<br>");
 		} 
 
+		print("<br>");
 		$array = array('a', 'b', 'c', 'd', 'e');
+		var_dump($array);print("<br>");
+
 		$contatore = 0;
 		print("<br>");
 		/* foreach  */

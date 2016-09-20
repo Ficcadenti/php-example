@@ -38,6 +38,8 @@
 		include("my_lib.php");
 	?>
 	<?php
+		$test="Gabriele";
+
 		function somma($a,$b)
 		{
 			return $a+$b;
@@ -63,6 +65,26 @@
 			println("<$h>$str</$h>"); // funzione definita dall'utente
 		}
 
+		function inc(&$num)
+		{
+			$num++;
+			return true;
+		}
+
+		function testGlobal() /* utilizzo di variabili globali*/
+		{
+			global $test;
+			println("stampa variabile globale $test e la modifica !!!!!");
+			$test="Valeria";
+		}
+
+		function capitolo($str) /* utilizzo di variabili statiche */
+		{
+			static $num_capitolo = 0;
+			$num_capitolo++;
+			printH("h1","$num_capitolo. $str");
+		}
+
 		$num1=-2;
 		$num2=-4;
 		$abs_num1=abs($num1); // funzione abs() di PHP
@@ -85,6 +107,20 @@
 		$functioHolder("h4","Ciao mondo php !!!!");
 		$functioHolder="printH";
 		$functioHolder("h5","Ciao mondo php !!!!");
+
+		$num3=10;
+		println("num3=$num3");
+		inc($num3);
+		println("inc($num3)");
+		println("num3=$num3");
+		testGlobal();
+		println($test);
+		println("");
+		
+		capitolo("Introduzione");
+		capitolo("Scopo");
+		capitolo("Funzioni");
+		capitolo("Ringraziamenti");
 
 		println("FINE");
 	?> 
