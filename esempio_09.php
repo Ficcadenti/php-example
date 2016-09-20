@@ -33,6 +33,14 @@
 		h2 {
 			margin-left: 30px;
 		}
+
+		#m30 {
+			margin-left: 30px;
+		}
+		#m70 {
+			margin-left: 70px;
+		}
+
 		ul#test {
 			 list-style: none;
 			 margin-left: 0;
@@ -123,7 +131,8 @@
 		$functionHolder("Componenti",$num_capitolo);
 
 		mySort_dec($famiglia);
+		print("<div id=\"m70\">");
 		elencoPuntato($famiglia,"menu");
-
+		print ("</div>");
 	?>
 </body>
