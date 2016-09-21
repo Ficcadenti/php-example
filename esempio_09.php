@@ -135,6 +135,7 @@
 		elencoPuntato($famiglia,"menu");
 		print ("</div>");
 
+		$functionHolder("Array associativi",$num_capitolo);
 		$contatti=array(
 			array(
 				"nome"=>"Raffaele",
@@ -171,5 +172,101 @@
 			println();
 
 		}
+
+		$functionHolder("Merge",$num_capitolo);
+		$array1=array("a","b","c");
+		$array2=array(5,2,3,1,7);
+
+		$array3=array_merge($array1,$array2); /* unisce due array, non modifica i parametri */
+		$numero_elementi=count($array3);
+		println("L'\$array3 contiene $numero_elementi elementi. !!!!!");
+		foreach ($array3 as $key => $value) 
+		{
+			println("array3[$key]=$value");
+		}
+		println();
+
+		$functionHolder("Push",$num_capitolo);
+		$numero_elementi=array_push($array3, "raffo","vale"); /* aggiunge elementi nell'array passato come parametro, restutuisce il numero di elementi nel array modificato */
+		println("il nuovo \$array3 contiene $numero_elementi elementi. !!!!!");
+		foreach ($array3 as $key => $value) 
+		{
+			println("array3[$key]=$value");
+		}
+		println();
+
+		$functionHolder("Shift",$num_capitolo);
+		while(count($array3)) /* array_shift */
+		{
+			$val=array_shift($array3);
+			println("$val");
+			println("ci sono ".count($array3)." elementi nell \$array3.");
+		}
+		println();
+
+		$functionHolder("Slice",$num_capitolo);
+		$array3=array_slice($array2, 2,1); /* array_slice */
+		foreach ($array3 as $key => $value) 
+		{
+			println("array3[$key]=$value");
+		}
+		println();
+
+		$functionHolder("Sort",$num_capitolo);
+		sort($array2); /* array_sort */
+		foreach ($array2 as $key => $value) 
+		{
+			println("array2[$key]=$value");
+		}
+		println();
+
+		$functionHolder("RSort",$num_capitolo);
+		sort($array2); /* array_rsort */
+		foreach ($array2 as $key => $value) 
+		{
+			println("array2[$key]=$value");
+		}
+		println();
+
+		
+		$array4=array(
+				"Raffaele"=>8,
+				"Valeria"=>7,
+				"Sofia"=>5,
+				"Maria"=>5,
+				"Gabriele"=>8
+			);
+
+		$functionHolder("ASort",$num_capitolo);
+		asort($array4); /* array_asort */
+		foreach ($array4 as $key => $value) 
+		{
+			println("array4[$key]=$value");
+		}
+		println();
+
+		$functionHolder("ASort",$num_capitolo);
+		arsort($array4); /* array_arsort */
+		foreach ($array4 as $key => $value) 
+		{
+			println("array4[$key]=$value");
+		}
+		println();
+
+		$functionHolder("KSort",$num_capitolo);
+		ksort($array4); /* array_ksort */
+		foreach ($array4 as $key => $value) 
+		{
+			println("array4[$key]=$value");
+		}
+		println();
+		$functionHolder("KRSort",$num_capitolo);
+		krsort($array4); /* array_ksort */
+		foreach ($array4 as $key => $value) 
+		{
+			println("array4[$key]=$value");
+		}
+		println();
+
 	?>
 </body>
