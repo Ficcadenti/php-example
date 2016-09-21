@@ -35,7 +35,15 @@
 	<b>
 	<!-- Codice PHP -->
 	<?php
-		include("my_lib.php");
+		if( (include("my_lib.php")) == 'success' ) 
+		{
+			println("Include \"my_lib.php\" ok. !!!!");
+			println();
+		}
+		else
+		{
+			include("my_lib_test.php");
+		}
 	?>
 	<?php
 		$test="Gabriele";

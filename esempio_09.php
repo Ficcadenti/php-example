@@ -245,7 +245,7 @@
 		}
 		println();
 
-		$functionHolder("ASort",$num_capitolo);
+		$functionHolder("ARSort",$num_capitolo);
 		arsort($array4); /* array_arsort */
 		foreach ($array4 as $key => $value) 
 		{
@@ -261,7 +261,7 @@
 		}
 		println();
 		$functionHolder("KRSort",$num_capitolo);
-		krsort($array4); /* array_ksort */
+		krsort($array4); /* array_krsort */
 		foreach ($array4 as $key => $value) 
 		{
 			println("array4[$key]=$value");
