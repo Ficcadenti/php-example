@@ -50,7 +50,7 @@
 		    border-bottom: 1px solid #ddd;
 		}
 
-		tr:hover{background-color:#f5f5f5}
+		tr#riga:hover{background-color:#f5f5f5}
 	</style>
 </head>
 <body>
@@ -89,17 +89,21 @@
 	<?php
 		class Tabella
 		{
-			var $righe=array();
-			var $headers=array();
-			var $colonne;
+			protected $righe=array();
+			protected $headers=array();
+			protected $colonne;
 
 			function Tabella($headers=array())
 			{
 				$this->headers=$headers;
 				$this->colonne=count($headers);
 			}
+			public function getRows()
+			{
+				return $this->righe;
+			}
 
-			function addRow($row)
+			public function addRow($row)
 			{
 				if(count($row)!=$this->colonne)
 				{
@@ -112,7 +116,7 @@
 				}
 			}
 
-			function addRowAssocArray($row_assoc)
+			public function addRowAssocArray($row_assoc)
 			{
 				$row=array();
 
@@ -130,7 +134,7 @@
 				return true;
 			}
 
-			function ordina($colonna)
+			public function ordina($colonna)
 			{
 				if( !($indice=array_search($colonna, $this->headers)) )
 				{
@@ -153,7 +157,7 @@
 				}
 			}
 
-			function stampa()
+			public function stampa()
 			{
 				printH("h1","HEADERS (".count($this->headers).")");
 				foreach ($this->headers as $value) 
@@ -172,9 +176,21 @@
 				}
 			}
 
+		}
 
-			function stampaTabella()
+		class Tabella_HTML extends Tabella
+		{
+			private $nome_tabella;
+
+			function Tabella_HTML($str,$headers=array())
 			{
+				$this->nome_tabella=$str;
+				Tabella::Tabella($headers);
+			}
+
+			public function stampa()
+			{
+				printH("h1",$this->nome_tabella);
 				print("<table>");
 					print("<tr>");
 					foreach ($this->headers as $value) 
@@ -185,7 +201,7 @@
 
 					foreach ($this->righe as $riga) 
 					{
-						print("<tr>");
+						print("<tr id=\"riga\">");
 						foreach ($riga as $value) 
 						{
 							print("<td>$value</td>");
@@ -199,13 +215,11 @@
 
 		$tab1=new Tabella(array("Nome","Cognome","e-Mail"));
 
-		
 		$tab1->addRow(array("Raffaele","Ficcadenti","raffaele.ficcadenti@gmail.com"));
 		$tab1->addRow(array("Valeria","Greco","valeria5.greco@gmail.com"));
 		$tab1->addRow(array("Sofia","Ficcadenti","sofia.ficcadenti@gmail.com"));
 		$tab1->addRow(array("Maria","Ficcadenti","maria.ficcadenti@gmail.com"));
 		$tab1->addRow(array("Gabriele","Ficcadenti","gabriele.ficcadenti@gmail.com"));
-
 		$tab1->addRowAssocArray(array(
 				"Cognome"=>"Greco",
 				"e-Mail"=>"francesco.greco@gmail.com",
@@ -225,10 +239,27 @@
 			)
 		);
 
-		$tab1->ordina("Cognome");
+		$tab1->ordina("Nome");
 		$tab1->stampa();
+
 		println();
-		$tab1->stampaTabella();
+		$tab2=new Tabella_HTML("Tabella HTML",array("Nome","Cognome","e-Mail"));
+		foreach ($tab1->getRows() as $righa) {
+			$tab2->addRow($righa);
+		}
+		$tab2->addRowAssocArray(array(
+				"e-Mail"=>"enrica.greco@gmail.com",
+				"Cognome"=>"Greco",
+				"Nome"=>"Enrica"
+			)
+		);
+
+
+		$tab2->ordina("Cognome");
+		$tab2->stampa();
+
+		
+
 		
 	?>
 </body>

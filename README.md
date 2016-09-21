@@ -24,11 +24,11 @@
 	<br>
 	<li><b>esempio_09.php</b>: Array.</li>
 	<br>
-	<li><b>esempio_10.php</b>: Oggetti.</li>
+	<li><b>esempio_10.php</b>: Oggetti e classi.</li>
 	<br>
 	<li><b>esempio_10a.php</b>: Classi, un sempio.</li>
 	<br>
-	<li><b>esempio_10a.php</b>: Classi ed ereditarietà, un sempio.</li>
+	<li><b>esempio_10b.php</b>: Classi ed ereditarietà, un sempio.</li>
 	<br>
 	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
 	<br>
