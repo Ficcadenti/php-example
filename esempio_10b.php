@@ -180,7 +180,7 @@
 
 		class Tabella_HTML extends Tabella
 		{
-			private $nome_tabella;
+			private $nome_tabella="";
 			private $bgcolor="#FFFFFF";
 
 			function Tabella_HTML($headers=array(),$str="")
@@ -286,8 +286,7 @@
 		println();
 		println();
 
-		
-
-		
+		$tab6=cast("Tabella_HTML",$tab1);
+		$tab6->stampa();
 	?>
 </body>
