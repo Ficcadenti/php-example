@@ -34,7 +34,8 @@
 			margin-left: 30px;
 		}
 
-		#m30 {
+		#m30 
+		{
 			margin-left: 30px;
 		}
 		#m70 {

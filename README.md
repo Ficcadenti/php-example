@@ -26,5 +26,9 @@
 	<br>
 	<li><b>esempio_10.php</b>: Oggetti.</li>
 	<br>
+	<li><b>esempio_10a.php</b>: Oggetti, un sempio.</li>
+	<br>
 	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
+	<br>
+	<li><b>esempio_12.php</b>: Moduli HTML.</li>
 </ul>
