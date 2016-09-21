@@ -181,11 +181,17 @@
 		class Tabella_HTML extends Tabella
 		{
 			private $nome_tabella;
+			private $bgcolor="#FFFFFF";
 
-			function Tabella_HTML($str,$headers=array())
+			function Tabella_HTML($headers=array(),$str="")
 			{
-				$this->nome_tabella=$str;
 				Tabella::Tabella($headers);
+				$this->nome_tabella=$str;
+			}
+
+			public function setBgColor($bgcolor)
+			{	
+				$this->bgcolor=$bgcolor;
 			}
 
 			public function stampa()
@@ -201,7 +207,7 @@
 
 					foreach ($this->righe as $riga) 
 					{
-						print("<tr id=\"riga\">");
+						print("<tr id=\"riga\" bgcolor=\"$this->bgcolor\" >");
 						foreach ($riga as $value) 
 						{
 							print("<td>$value</td>");
@@ -241,9 +247,10 @@
 
 		$tab1->ordina("Nome");
 		$tab1->stampa();
-
 		println();
-		$tab2=new Tabella_HTML("Tabella HTML",array("Nome","Cognome","e-Mail"));
+		println();
+
+		$tab2=new Tabella_HTML(array("Nome","Cognome","e-Mail"),"Tabella HTML - Ordinata per Nome");
 		foreach ($tab1->getRows() as $righa) {
 			$tab2->addRow($righa);
 		}
@@ -253,10 +260,31 @@
 				"Nome"=>"Enrica"
 			)
 		);
-
-
-		$tab2->ordina("Cognome");
+		$tab2->setBgColor("#e6ffe6");
+		$tab2->ordina("Nome");
 		$tab2->stampa();
+		println();
+		println();
+
+		$tab5=new Tabella_HTML(array("Nome","Cognome","e-Mail"),"Tabella HTML - Ordinata per Cognome");
+		foreach ($tab2->getRows() as $righa) {
+			$tab5->addRow($righa);
+		}
+		$tab5->setBgColor("#ffffe6");
+		$tab5->ordina("Cognome");
+		$tab5->stampa();
+		println();
+		println();
+
+		$tab3=new Tabella_HTML(array("Nome","Cognome","e-Mail"),"Tabella HTML - Ordinata per e-Mail");
+		foreach ($tab2->getRows() as $righa) {
+			$tab3->addRow($righa);
+		}
+		$tab3->setBgColor("#ffcccc");
+		$tab3->ordina("e-Mail");
+		$tab3->stampa();
+		println();
+		println();
 
 		
 
