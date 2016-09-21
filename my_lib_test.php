@@ -19,7 +19,7 @@
 <?php
 		function println($str="") /* stampa riga incluso CR-LF*/
 		{
-			print("println() da definire. <br>");
+			print("<h1>($str)</h1><br>");
 		}
 
 		function swap(&$a,&$b) /* swap di 2 variabili */

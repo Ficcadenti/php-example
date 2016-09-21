@@ -25,4 +25,6 @@
 	<li><b>esempio_09.php</b>: Array.</li>
 	<br>
 	<li><b>esempio_10.php</b>: Oggetti.</li>
+	<br>
+	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
 </ul>
