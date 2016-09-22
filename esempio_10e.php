@@ -2,7 +2,7 @@
 /*
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_10c.php
+	# esempio_10e.php
 	# 
 	# 
 	# AUTHORS:
@@ -18,7 +18,7 @@
 -->
 <hmtl>
 <head>
-	<title>sorgente: esempio_10c.php</title>
+	<title>sorgente: esempio_10e.php</title>
 	<!-- Sezione per i CSS -->
 	<style>
 		b {

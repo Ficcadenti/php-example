@@ -34,6 +34,8 @@
 	<br>
 	<li><b>esempio_10d.php</b>: Classi, polimorfismo.</li>
 	<br>
+	<li><b>esempio_10e.php</b>: Classi, oggetti clonati.</li>
+	<br>
 	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
 	<br>
 	<li><b>esempio_12.php</b>: Moduli HTML.</li>
