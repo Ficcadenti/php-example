@@ -51,3 +51,4 @@
 	</b>
 	<a href="http://php.net/manual/it/reserved.constants.php">Costanti Predefinite PHP</a> 
 </body>
+</hmtl>

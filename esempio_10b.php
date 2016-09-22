@@ -185,7 +185,7 @@
 
 			function Tabella_HTML($headers=array(),$str="")
 			{
-				Tabella::Tabella($headers);
+				parent::Tabella($headers);
 				$this->nome_tabella=$str;
 			}
 
@@ -290,3 +290,4 @@
 		$tab6->stampa();
 	?>
 </body>
+</hmtl>

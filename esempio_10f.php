@@ -87,5 +87,74 @@
 		}
 	?>
 	<?php
+		abstract class Animale
+		{
+			protected $zampe;
+			
+			protected function Animale($z)
+			{
+				$this->zampe = $z;
+			}
+		
+			public function numeroZampe()
+			{
+				echo println($this->zampe);
+			}
+
+			abstract protected function suono();
+		}
+
+		class Cane extends Animale
+		{
+			public function Cane($zampe)
+			{
+				Animale::Animale($zampe);
+			}
+
+			public function suono()
+			{ 
+				println("bau!"); 
+			}
+		}
+
+		class Gatto extends Animale
+		{
+			public function Gatto($zampe)
+			{
+				Animale::Animale($zampe);
+			}
+
+			public function suono()
+			{ 
+				println("Miao!"); 
+			}
+		}
+
+		class Ragno extends Animale
+		{
+			public function Ragno($zampe)
+			{
+				Animale::Animale($zampe);
+			}
+
+			public function suono()
+			{ 
+				println("Booooo!"); 
+			}
+		}
+
+		$rex = new Cane(4);
+		$rex->numeroZampe();
+		$rex->suono(); 
+
+		$gatto = new Gatto(4);
+		$gatto->numeroZampe();
+		$gatto->suono(); 
+
+		$ragno = new Ragno(8);
+		$ragno->numeroZampe();
+		$ragno->suono(); 
+
 	?>
 </body>
+</hmtl>

@@ -156,6 +156,11 @@
 					}
 				}
 			}
+			protected function stampa()
+			{
+				echo "Errore : la funzione va obbligatoriamente ridefinita da una sottoclasse!";
+			}
+
 		}
 
 		class Tabella_HTML extends Tabella
@@ -285,3 +290,4 @@
 
 	?>
 </body>
+</hmtl>

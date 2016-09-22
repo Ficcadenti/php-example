@@ -42,5 +42,7 @@
 	<br>
 	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
 	<br>
-	<li><b>esempio_12.php</b>: Moduli HTML.</li>
+	<li><b>esempio_12.php</b>: Moduli HTML, variabili globali e ambientali.</li>
+	<br>
+	<li><b>esempio_13.php</b>: Moduli HTML, input utente.</li>
 </ul>
