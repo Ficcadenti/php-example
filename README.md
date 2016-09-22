@@ -30,6 +30,10 @@
 	<br>
 	<li><b>esempio_10b.php</b>: Classi ed ereditarietà, un sempio.</li>
 	<br>
+	<li><b>esempio_10c.php</b>: Classi, attributi e membri statici, costanti, funzioni variabili.</li>
+	<br>
+	<li><b>esempio_10d.php</b>: Classi, polimorfismo.</li>
+	<br>
 	<li><b>esempio_11.php</b>: File esterni, include & require.</li>
 	<br>
 	<li><b>esempio_12.php</b>: Moduli HTML.</li>
