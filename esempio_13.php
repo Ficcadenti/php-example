@@ -1,8 +1,7 @@
 <!--
-/*
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_13.html
+	# esempio_13.php
 	# 
 	# 
 	# AUTHORS:
@@ -16,64 +15,112 @@
 	# -
 	#
 -->
-<hmtl>
-	<head>
-		<title>sorgente: esempio_13.html</title>
-		<!-- Sezione per i CSS -->
-		<style>
-			b {
-			    font-size: 15px;
-			    color: #000000;
-			}
-			b1 {
-			    font-size: 30px;
-			    color: #0000FF;
-			}
-			h2 {
-				margin-left: 30px;
-			}
-			#m30 
+<!-- Codice PHP -->
+<?php
+	if( (include("my_lib.php")) == 'success' ) 
+	{
+		println("Include \"my_lib.php\" ok. !!!!");
+		println();
+	}
+	else
+	{
+		include("my_lib_test.php");
+	}
+
+	function printH($h,$str)
+	{
+		print("<$h>$str</$h>"); // funzione definita dall'utente
+	}
+
+	function capitolo($str) /* utilizzo di variabili statiche */
+	{
+		static $num_capitolo = 0;
+		$num_capitolo++;
+		printH("h1","$num_capitolo. $str");
+		return $num_capitolo;
+	}
+
+	function paragrafo($str,$cap) /* utilizzo di variabili statiche */
+	{
+		static $num_paragrafo = 0;
+		$num_paragrafo++;
+		printH("h2","$cap.$num_paragrafo. $str");
+	}
+?>
+<?php
+	$PARAMS=array();
+	println($_SERVER["PHP_SELF"]);
+	println("Chiamnata da un ".$_SERVER["REQUEST_METHOD"]."");
+
+	if($_SERVER["REQUEST_METHOD"]=="GET")
+	{
+		$PARAMS=$_GET;
+	}
+	else if($_SERVER["REQUEST_METHOD"]=="POST")
+	{
+		$PARAMS=$_POST;
+	}
+
+	printH("h1","\$_GET");
+	foreach ($PARAMS as $key => $value) 
+	{
+		if(gettype($value)=="array")
+		{
+			foreach ($value as $key1 => $value1) 
 			{
-				margin-left: 30px;
+				println("\$PARAMS[$key($key1)](".gettype($value1).") = $value1");
 			}
-			#m70 {
-				margin-left: 70px;
-			}
-			table {
-			    border-collapse: collapse;
-			    width: 100%;
-			}
+		}
+		else
+		{
+			println("\$PARAMS[$key](".gettype($value).") = $value");
+		}
+	}
+	println();
 
-			th, td {
-			    padding: 8px;
-			    text-align: left;
-			    border-bottom: 1px solid #ddd;
-			}
+	if (isset($PARAMS["utente"])) 
+	{
+		$utente=$PARAMS["utente"];
+	}
+	else
+	{
+		$utente="";
+	}
 
-			tr#riga:hover{background-color:#f5f5f5}
-		</style>
-	</head>
-	<body>
-		<?php 
-			print($_SERVER["PHP_SELF"]);
-		?>
-		<form action="" method="POST">
-			<input type="text" name="utente">
-			<br>
-			<textarea name="indirizzo" rows="5" cols="40"></textarea>
-			<br>
-			<select name="prodotti[]" multiple>
-				<option>HD 3GB</option>
-				<option>microSD 128GB</option>
-				<option>Libro PHP</option>
-			</select>
-			<br>
-			<input type="checkbox" name="quantita[]" value="1">1<br>
-			<input type="checkbox" name="quantita[]" value="2">2<br>
-			<input type="checkbox" name="quantita[]" value="3">3<br>
-			<br>
-			<input type="submit" value="premi qui!">
-		</form>
-	</body>
+	if (isset($PARAMS["indirizzo"])) 
+	{
+		$indirizzo=$PARAMS["indirizzo"];
+	}
+	else
+	{
+		$indirizzo="";
+	}
 
-</hmtl>
+	if (isset($PARAMS["prodotti"])) 
+	{
+		$prodotti=$PARAMS["prodotti"];
+	}
+	else
+	{
+		$prodotti=array();
+	}
+
+	if (isset($PARAMS["quantita"])) 
+	{
+		$quantita=$PARAMS["quantita"];
+	}
+	else
+	{
+		$quantita=array();
+	}
+
+	println("Benvenuto $utente di $indirizzo. !!!!");
+	foreach ($prodotti as $key => $value) 
+	{
+		println("\$prodotti[$key] ->  $value");
+	}
+	foreach ($quantita as $key => $value) 
+	{
+		println("\$quantita[$key] ->  $value");
+	}
+?>
