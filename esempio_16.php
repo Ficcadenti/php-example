@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_14.html
+	# esempio_16.html
 	# 
 	# 
 	# AUTHORS:
@@ -51,61 +51,21 @@
 
 	$PARAMS=array();
 	
-	if(($_SERVER["REQUEST_METHOD"]=="GET")&&(isset($_GET["guess"]))) 
+	if($_SERVER["REQUEST_METHOD"]=="GET")
 	{
 		$PARAMS=$_GET;
 		println("Chiamnata da un ".$_SERVER["REQUEST_METHOD"]."");
 	}
-	else if(($_SERVER["REQUEST_METHOD"]=="POST")&&(isset($_POST["guess"]))) 
+	else if($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		$PARAMS=$_POST;
 		println("Chiamnata da un ".$_SERVER["REQUEST_METHOD"]."");
 	}
-
-	$numero_to_guess=10;
-
-	/*if(isset($PARAMS["num_tries"]))
-	{
-		$num_tries=$PARAMS["num_tries"]+1;
-	}
-	else
-	{
-		$$num_tries=0;
-	}*/
-	$num_tries=isset($PARAMS["num_tries"])?$PARAMS["num_tries"]+1:0;
-	$numero_to_guess=10;
-
-	$message = "";
-	
-	if (!isset($PARAMS["guess"])) 
-	{
-		println("Benvenuto su quest'esempio !!!!");
-		println();
-	}
-	else
-	{
-		$numero=$PARAMS["guess"];
-
-		if($numero>$numero_to_guess)
-		{
-			$message="Il numero $numero è troppo grande!!!! Riprova.";
-		}
-		else if($numero<$numero_to_guess)
-		{
-			$message="Il numero $numero è troppo piccolo!!!! Riprova.";
-		}
-		else
-		{
-			$message="Il numero $numero è esatto";
-			header("Location: esempio_14_ok.html");
-		}
-	}
-
 ?>
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_14.html</title>
+		<title>sorgente: esempio_16.html</title>
 		<!-- Sezione per i CSS -->
 		<style>
 			b {
@@ -141,13 +101,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>
-			<?php println($message)?>
-		</h1>
-		Numero di tentativi: <?php println($num_tries)?>
-		<form action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
-			Digita la tua ipotesi qui (compresa tra 0 e 100): <input type="text" name="guess">
-			<input type="hidden" name="num_tries" value="<?php print($num_tries) ?>">
-		</form>
+		<?php
+		?>
 	</body>
 </hmtl>

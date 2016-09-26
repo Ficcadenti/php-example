@@ -173,7 +173,10 @@
 			<input type="file" name="namefile"><br>
 			<input type="submit" name="upload"><br>
 		</form>
-		<a href="http://php.net/manual/it/features.file-upload.post-method.php" target="_blank">Metodo POST per caricamento di file.</a> 
+		<a href="http://php.net/manual/it/features.file-upload.post-method.php" target="_blank">Metodo POST per caricamento di file.</a>
+		<br>
+		<a href="http://php.net/manual/en/function.move-uploaded-file.php" target="_blank">Metodo move_uploaded_file().</a>
+
 
 	</body>
 </hmtl>

@@ -49,4 +49,6 @@
 	<li><b>esempio_14.php</b>: Moduli HTML, unione di codice HTML e PHP in una sola pagina.</li>
 	<br>
 	<li><b>esempio_15.php</b>: Moduli HTML, upload di file sul server.</li>
+	<br>
+	<li><b>esempio_16.php</b>: File.</li>
 </ul>
