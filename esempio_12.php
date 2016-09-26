@@ -133,7 +133,7 @@
 		}
 
 		printH("h1","\$_POST");
-		foreach ($_REQUEST as $key => $value) 
+		foreach ($_POST as $key => $value) 
 		{
 			if(gettype($value)=="array")
 			{
@@ -146,7 +146,7 @@
 		}
 
 		printH("h1","\$_GET");
-		foreach ($_REQUEST as $key => $value) 
+		foreach ($_GET as $key => $value) 
 		{
 			if(gettype($value)=="array")
 			{

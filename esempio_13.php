@@ -55,13 +55,15 @@
 	if($_SERVER["REQUEST_METHOD"]=="GET")
 	{
 		$PARAMS=$_GET;
+		printH("h1","\$_GET");
 	}
 	else if($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		$PARAMS=$_POST;
+		printH("h1","\$_POST");
 	}
 
-	printH("h1","\$_GET");
+	
 	foreach ($PARAMS as $key => $value) 
 	{
 		if(gettype($value)=="array")
