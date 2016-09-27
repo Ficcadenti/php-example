@@ -17,7 +17,6 @@
 -->
 <?php
 	date_default_timezone_set('UTC');
-	include("test_include.html");
 	print("<br>");
 
 	if( (include("my_lib.php")) == 'success' ) 
@@ -67,73 +66,37 @@
 	</head>
 	<body>
 		<?php
-
-			$nome_file="phpinfo.php";
-			$num_capitolo=capitolo("File");
+			$nome_file="php-example.sql";
 			$time_file=array(
 				"atime"=>array("Ultimo accesso","0"),
 				"mtime"=>array("Modificato","0"),
 				"ctime"=>array("Creato","0"),
 				);
 
-			print("<div id=\"m30\">");
-			if( file_exists($nome_file) )
-			{
-				println("Il file '$nome_file' esiste");
-				if(is_file($nome_file))
-				{
-					println("ed è un file");
-				}
-				else if(is_dir($nome_file))
-				{
-					println("ed è una directory");
-				}
+			$time_file["atime"][1]=fileatime($nome_file);
+			$time_file["mtime"][1]=filemtime($nome_file);
+			$time_file["ctime"][1]=filectime($nome_file);
 
-				if(is_readable($nome_file))
-				{
-					println("$nome_file è leggibile.");
-				}
-				else
-				{
-					println("$nome_file non è leggibile.");
-				}
-
-
-				if(is_writable($nome_file))
-				{
-					println("$nome_file è scrivibile.");
-				}
-				else
-				{
-					println("$nome_file non è scrivibile.");
-				}
-
-
-				if(is_executable($nome_file))
-				{
-					println("$nome_file è eseguibile.");
-				}
-				else
-				{
-					println("$nome_file non è eseguibile.");
-				}
-
-				$file_size=FileSizeConvert(filesize($nome_file));
-				println("La dimensione di $nome_file è $file_size");
-
-				$time_file["atime"][1]=fileatime($nome_file);
-				$time_file["mtime"][1]=filemtime($nome_file);
-				$time_file["ctime"][1]=filectime($nome_file);
-
+		
+			$num_capitolo=capitolo("File: $nome_file");
+			paragrafo("Info",$num_capitolo);
+			print("<div id=\"m70\">");
 				foreach ($time_file as $key => $value)
 				{
 					println("$value[0][$nome_file] = ".date("D, d M Y H:i:s",$value[1]) );
 				}
-			}
-			else
-			{
-				println("Il file '$nome_file' NON esiste");	
-			}
+			print("</div>");
+
+
+			paragrafo("Contenuto",$num_capitolo);
+			print("<div id=\"m70\">");
+				$fp=fopen($nome_file,"r") or die ("non posso aprire $nome_file");
+				while (!feof($fp))
+				{
+					$line=fgets($fp,1024);
+					println($line);
+				}
+				fclose($fp);
 			print("</div>");
 		?>
 	</body>

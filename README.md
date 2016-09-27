@@ -50,5 +50,7 @@
 	<br>
 	<li><b>esempio_15.php</b>: Moduli HTML, upload di file sul server.</li>
 	<br>
-	<li><b>esempio_16.php</b>: File.</li>
+	<li><b>esempio_16.php</b>: File, informazioni.</li>
+	<br>
+	<li><b>esempio_17.php</b>: File, creazione ed eliminazione.</li>
 </ul>
