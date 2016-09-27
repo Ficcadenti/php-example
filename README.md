@@ -55,4 +55,6 @@
 	<li><b>esempio_17.php</b>: File, creazione,eliminazione,lettura e scrittura.</li>
 	<br>
 	<li><b>esempio_18.php</b>: Directory, gestione.</li>
+	<br>
+	<li><b>esempio_19.php</b>: Database, DBM.</li>
 </ul>

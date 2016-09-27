@@ -93,37 +93,6 @@
 	</head>
 	<body>
 		<?php
-			$num_capitolo=capitolo("Directory");
-			
-			paragrafo("Creazione, eliminazione",$num_capitolo);
-			print("<div id=\"m70\">");
-				$nome_dir="testdir";
-				if(mkdir($nome_dir,0777))
-				{
-					println("La directory $nome_dir è stata creata.");
-				}
-				else
-				{
-					println("La directory $nome_dir non è stata creata.");
-				}
-
-				if(rmdir($nome_dir))
-				{
-					println("La directory $nome_dir è stata rimossa.");
-				}
-				else
-				{
-					println("La directory $nome_dir non è stata rimossa.");
-				}
-			print("</div>");
-
-			
-			paragrafo("Lettura",$num_capitolo);
-			$nome_dir="temp";
-			$dh=opendir($nome_dir);
-			print("<div id=\"m70\">");
-				leggiDirTree($nome_dir);
-			print("</div>");
 		?>
 	</body>
 </hmtl>
