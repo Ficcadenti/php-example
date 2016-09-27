@@ -88,6 +88,10 @@
 				{
 					println("ed è una directory");
 				}
+				else if(is_link($nome_file))
+				{
+					println("ed è link");
+				}
 
 				if(is_readable($nome_file))
 				{
@@ -136,5 +140,11 @@
 			}
 			print("</div>");
 		?>
+		<br>
+		<a href="http://php.net/manual/en/function.date.php" target="_blank">PHP date()</a><br>
+		<a href="http://php.net/manual/en/function.date-default-timezone-set.php" target="_blank">PHP date_default_timezone_set()</a><br>
+		<a href="http://php.net/manual/en/ref.filesystem.php" target="_blank">PHP Filesystem Functions</a><br>
+
+		
 	</body>
 </hmtl>

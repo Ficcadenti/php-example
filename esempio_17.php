@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_16.html
+	# esempio_17.html
 	# 
 	# 
 	# AUTHORS:
@@ -55,11 +55,10 @@
 
 <hmtl>
 	<head>
-	<title>sorgente: esempio_16.html</title>
+	<title>sorgente: esempio_17.html</title>
 	<!-- Sezione per i CSS -->
-	<!-- load stylesheet -->
+	<!-- load default.css -->
 	<?php
-		/*echo file_get_contents("components/stylesheet.html");*/
 		include ("css/default.css");
 	?>
 
@@ -91,13 +90,46 @@
 			paragrafo("Contenuto",$num_capitolo);
 			print("<div id=\"m70\">");
 				$fp=fopen($nome_file,"r") or die ("non posso aprire $nome_file");
+				//$size=filesize($nome_file);
+				//fseek($fp,$size/2); /*leggo da metà file*/
 				while (!feof($fp))
 				{
 					$line=fgets($fp,1024);
-					println($line);
+					println("$line");
 				}
 				fclose($fp);
 			print("</div>");
+
+			paragrafo("Scrittura",$num_capitolo);
+			$nome_file="test_scrittura.txt";
+			print("<div id=\"m70\">");
+				$fp=fopen($nome_file,"w") or die ("non posso aprire $nome_file");
+				if (flock($fp,LOCK_EX))
+				{
+					fputs($fp,"APRO IL FILE IN SCRITTURA!!!\N");
+					// release lock
+					flock($fp,LOCK_UN);
+				}
+				else
+				{
+					echo "Error locking file!";
+				}
+				fclose($fp);
+				$fp=fopen($nome_file,"a") or die ("non posso aprire $nome_file");
+				// exclusive lock
+				if (flock($fp,LOCK_EX))
+				{
+					fputs($fp,"Ciao ragazzi!!!!");
+					// release lock
+					flock($fp,LOCK_UN);
+				}
+				else
+				{
+					echo "Error locking file!";
+				}
+				fclose($fp);
+			print("</div>");			
 		?>
+		<a href="http://php.net/manual/en/function.flock.php" target="_blank">PHP flock()</a><br>
 	</body>
 </hmtl>

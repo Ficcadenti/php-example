@@ -52,5 +52,7 @@
 	<br>
 	<li><b>esempio_16.php</b>: File, informazioni.</li>
 	<br>
-	<li><b>esempio_17.php</b>: File, creazione ed eliminazione.</li>
+	<li><b>esempio_17.php</b>: File, creazione,eliminazione,lettura e scrittura.</li>
+	<br>
+	<li><b>esempio_18.php</b>: Directory, gestione.</li>
 </ul>
