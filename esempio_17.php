@@ -106,7 +106,7 @@
 				$fp=fopen($nome_file,"w") or die ("non posso aprire $nome_file");
 				if (flock($fp,LOCK_EX))
 				{
-					fputs($fp,"APRO IL FILE IN SCRITTURA!!!\N");
+					fputs($fp,"APRO IL FILE IN SCRITTURA!!!\n");
 					// release lock
 					flock($fp,LOCK_UN);
 				}
