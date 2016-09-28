@@ -138,6 +138,7 @@
 					}
 
 					$tmp=array(date("ymd"),"Francesco",23,"francesco.greco@gmail.com");
+					print serialize($tmp);
 					dbase_replace_record($dbh,$tmp,3);
 
 					$record_numbers = dbase_numrecords($dbh);
