@@ -49,58 +49,75 @@
 		printH("h2","$cap.$num_paragrafo. $str");
 	}
 
-	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
-	println();
 
-	function leggiDirTree($nome_dir)
+	function dbase_checkKey($dbh,$key_search)
 	{
-		$dh=opendir($nome_dir);
-		if($dh)
+		$ret=FALSE;
+		if($dbh)
 		{
-			while(gettype($file=readdir($dh))!="boolean")
+			$header = dbase_get_header_info($dbh);
+			foreach ($header as $key => $value) 
 			{
-				if(is_dir("$nome_dir/$file"))
+				if($value["name"]==$key_search)
 				{
-					println("<font color=\"blue\">$nome_dir/$file/</font> ");
-					if( ($file!=".") AND ($file!="..") )
-					{
-						leggiDirTree("$nome_dir/$file");
-					}
+					$ret=TRUE;
+					break;
 				}
-				else
+			}
+		}
+		if(!$ret)
+		{
+			println("Indice '$key_search' non presente!!!");
+		}
+		return $ret;
+	}
+
+	function dbase_getRecord($dbh,$key,$val)
+	{
+		$ret=array();
+		if(($dbh) && (dbase_checkKey($dbh,$key)) )
+		{
+			$record_numbers = dbase_numrecords($dbh);
+			for ($i = 1; $i <= $record_numbers; $i++) 
+			{
+				$row = dbase_get_record_with_names($dbh, $i);
+				if(trim($row[$key])==$val)
 				{
-					println("$nome_dir/$file");
+					return $row;
 				}
 			}
 		}
 		else
 		{
-			println("Impossibile aprire la directory $nome_dir.");
+			return FALSE;
 		}
 	}
 
+	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
+	println();
 ?>
 
 <hmtl>
 	<head>
-	<title>sorgente: esempio_19.html</title>
-	<!-- Sezione per i CSS -->
-	<!-- load default.css -->
-	<?php
-		include ("css/default.css");
-	?>
-
+		<title>sorgente: esempio_19.html</title>
+		<!-- Sezione per i CSS -->
+		<!-- load default.css -->
+		<?php
+			include ("css/default.css");
+		?>
 	</head>
 	<body>
 		<?php
+
 			$nome_db="temp/dbm_test.dbf";
 
 			// database "definition"
 			$def = array(
-			  array("date",     "D"),
-			  array("name",     "C",  50),
-			  array("age",      "N",   3, 0),
-			  array("email",    "C", 128)
+			  array("date",     "N",10,0),
+			  array("name",     "C",50),
+			  array("age",      "N",3,0),
+			  array("email",    "C",128),
+			  array("numeri",   "C",128)
 			);
 
 			// creation
@@ -118,11 +135,12 @@
 				$num_capitolo=capitolo("Database DBM");
 
 				print("<div id=\"m30\">");
-					array_push($record,array(date("ymd"),"Raffaele",40,"raffaele.ficcadenti@gmail.com"));
-					array_push($record,array(date("ymd"),"Valeria",40,"valeria5.greco@gmail.com"));
-					array_push($record,array(date("ymd"),"Francesco",22,"francesco.greco@gmail.com"));
-					array_push($record,array(date("ymd"),"Luca",39,"luca.ficcadenti@gmail.com"));
-					array_push($record,array(date("ymd"),"Roberto",46,"roberto.greco@gmail.com"));
+				println(time());
+					array_push($record,array(time(),"Raffaele",40,"raffaele.ficcadenti@gmail.com",serialize(array(1,2,3))));
+					array_push($record,array(time(),"Valeria",40,"valeria5.greco@gmail.com",serialize(array(2,3,3))));
+					array_push($record,array(time(),"Francesco",22,"francesco.greco@gmail.com",serialize(array(31,2,3))));
+					array_push($record,array(time(),"Luca",39,"luca.ficcadenti@gmail.com",serialize(array(1,2,33))));
+					array_push($record,array(time(),"Roberto",46,"roberto.greco@gmail.com",serialize(array(51,52,3))));
 
 					foreach ($record as $key => $value) 
 					{
@@ -137,9 +155,20 @@
 						}
 					}
 
-					$tmp=array(date("ymd"),"Francesco",23,"francesco.greco@gmail.com");
-					print serialize($tmp);
+					$tmp=array(time(),"Francesco",23,"francesco.greco@gmail.com",serialize(array(1,62,3)));
+					println(serialize($tmp));
 					dbase_replace_record($dbh,$tmp,3);
+
+					$tmp=dbase_getRecord($dbh,"name","Raffaele");
+					if($tmp)
+					{
+						println(serialize($tmp));
+					}
+					else
+					{
+						println("non trovato");
+					}
+
 
 					$record_numbers = dbase_numrecords($dbh);
 					for ($i = 1; $i <= $record_numbers; $i++) 
@@ -150,6 +179,42 @@
 						}
 					}
 					dbase_pack($dbh);
+
+					println();
+					$record_numbers = dbase_numrecords($dbh);
+					print("<table>");
+						print("<thead>");
+							print("<tr>");
+								foreach ($def as $value) 
+								{
+									print("<td><strong>$value[0]</strong></td>");
+								}
+							print("</tr>");
+						print("<thead>");
+
+						print("<tbody>");
+							for ($i = 1; $i <= $record_numbers; $i++) 
+							{
+								$str="";
+								print("<tr id=\"riga\" bgcolor=\"#ffffe6\">");
+								$row = dbase_get_record_with_names($dbh, $i);
+								print("<td width=\"160\"> ".date("d-m-Y",$row["date"])." </td>");
+								print("<td width=\"100\"> $row[name] </td>");
+								print("<td width=\"60\"> $row[age] </td>");
+								print("<td width=\"150\"> $row[email] </td>");
+								$numeri=unserialize($row["numeri"]);
+								foreach ($numeri as $value) 
+								{
+									$str=$str.$value.",";
+								}
+								print("<td width=\"150\"> ".$str." </td>");
+								print("</tr>");
+							}
+						print("</tbody>");
+
+					print("</table>");
+					
+
 					
 				print("</div>");
 				dbase_close($dbh);
@@ -161,6 +226,7 @@
 			<a href="http://php.net/manual/en/ref.dbase.php" target="_blank">dBase Functions</a><br>
 			<a href="https://pecl.php.net/package/dbase/5.1.0/windows" target="_blank">dBase download</a><br>
 			<a href="http://dbfconv.com/" target="_blank">DBF Converter</a><br>
+			<a href="http://php.net/manual/en/function.date.php" target="_blank">date()</a><br>
 		</div>	
 	</body>
 </hmtl>

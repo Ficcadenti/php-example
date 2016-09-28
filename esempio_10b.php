@@ -198,23 +198,25 @@
 			{
 				printH("h1",$this->nome_tabella);
 				print("<table>");
-					print("<tr>");
-					foreach ($this->headers as $value) 
-					{
-						print("<td><strong>$value</strong></td>");
-					}
-					print("</tr>");
-
-					foreach ($this->righe as $riga) 
-					{
-						print("<tr id=\"riga\" bgcolor=\"$this->bgcolor\" >");
-						foreach ($riga as $value) 
+					print("<thead>");
+						print("<tr>");
+						foreach ($this->headers as $value) 
 						{
-							print("<td>$value</td>");
+							print("<td><strong>$value</strong></td>");
 						}
 						print("</tr>");
-					}
-
+					print("</thead>");	
+					print("<tbody>");
+						foreach ($this->righe as $riga) 
+						{
+							print("<tr id=\"riga\" bgcolor=\"$this->bgcolor\" >");
+							foreach ($riga as $value) 
+							{
+								print("<td>$value</td>");
+							}
+							print("</tr>");
+						}
+					print("</tbody>");	
 				print("</table>");
 			}
 		}
