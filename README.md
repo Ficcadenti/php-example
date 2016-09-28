@@ -57,4 +57,6 @@
 	<li><b>esempio_18.php</b>: Directory, gestione.</li>
 	<br>
 	<li><b>esempio_19.php</b>: Database, DBM.</li>
+	<br>
+	<li><b>esempio_20.php</b>: Database, DBM un esempio</li>
 </ul>
