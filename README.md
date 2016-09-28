@@ -60,5 +60,5 @@
 	<br>
 	<li><b>esempio_20.php</b>: Database, DBM un esempio.</li>
 	<br>
-	<li><b>esempio_21.php</b>: Database, MySQL.</li>
+	<li><b>esempio_21.php</b>: Database, MySQLi.</li>
 </ul>

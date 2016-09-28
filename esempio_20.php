@@ -121,7 +121,7 @@
 				for ($i = 1; $i <= $record_numbers; $i++) 
 				{
 					$str="";
-					print("<tr id=\"riga\" bgcolor=\"#ffffe6\">");
+					print("<tr id=\"riga\" bgcolor=\"#ffffd6\">");
 						print("<td width=\"100\"><input type='checkbox' name=\"delete[]\" value=\"$i\"></td>");
 						$row = dbase_get_record_with_names($dbh, $i);
 						print("<td width=\"160\"> ".date("d-m-Y",$row["date"])." </td>");

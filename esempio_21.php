@@ -68,7 +68,45 @@
 			$num_capitolo=capitolo("Database: MySQL");
 			paragrafo("Aprire connessione",$num_capitolo);
 			print("<div id=\"m70\">");
+				
+				$conn = new mysqli("localhost","root","root","php-example");
+				// Check connection
+				if ($conn->connect_error) 
+				{
+					die( $conn->connect_error);
+				}
+				else
+				{
+					println("Connessione MySQLi OK!!!!");
+					println();
+					print_r($conn);
+
+					$conn->close();
+				}
+
+				// collegamento al database
+				$col = 'mysql:host=localhost;dbname=php-example';
+
+				// blocco try per il lancio dell'istruzione
+				try 
+				{
+				  	// connessione tramite creazione di un oggetto PDO
+				  	$db = new PDO($col , 'root', 'root');
+				  	println("Connessione PDO OK!!!!");
+					var_dump($db);
+					println();
+					$db = null;
+				}
+				// blocco catch per la gestione delle eccezioni
+				catch(PDOException $e) 
+				{
+					// notifica in caso di errorre
+					echo 'Attenzione: '.$e->getMessage();
+				}
+
 			print("</div>");
+			$num_capitolo=capitolo("Info");
 		?>
+		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a>
 	</body>
 </hmtl>
