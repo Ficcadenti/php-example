@@ -88,6 +88,40 @@
 		return $ret;
 	}
 
+	function stampaDbTable($tab_col,$result)
+	{
+		if(!$result)
+		{
+			return;
+		}
+
+		$record_numbers = $result->num_rows;
+		print("<table>");
+			print("<thead>");
+				print("<tr>");
+					print("<td><strong>ID</strong></td>");
+					foreach ($tab_col as $key => $value) 
+					{
+						print("<td><strong>$key</strong></td>");
+					}
+				print("</tr>");
+			print("<thead>");
+
+			print("<tbody>");
+				while($row = $result->fetch_assoc())
+				{
+					print("<tr id=\"riga\" bgcolor=\"#ffffd6\">");
+					foreach ($row as $key => $value) 
+					{	
+						print("<td>$value</td>");
+					}
+					print("</tr>");
+				}
+			print("</tbody>");
+
+		print("</table>");
+	}
+
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
@@ -123,6 +157,12 @@
 			$record=array();
 			$name_db="php-example";
 			$name_tab="tab_01";
+			$tab_col=array(
+					"Nome" => "",
+					"Cognome" => "",
+					"e-mail" => "",
+					"Telefono" => "",
+				);
 
 			mysqli_report(MYSQLI_REPORT_STRICT);
 
@@ -152,29 +192,25 @@
 					{
 						println("Ok sei connesso al database '$name_db' !!!");
 
-						$record=array(
-								"Nome" => "",
-								"Cognome" => "",
-								"e-mail" => "",
-								"Telefono" => "",
-							);
-
 						if (isset($PARAMS["nome"])) 
 						{
-							$record["Nome"]=addslashes($PARAMS["nome"]);
-							$record["Cognome"]=addslashes($PARAMS["cognome"]);
-							$record["e-mail"]=addslashes($PARAMS["email"]);
-							$record["Telefono"]=addslashes($PARAMS["telefono"]);
-
-							$result=add_to_db($record);
-
-							if($result)
+							if((!empty($PARAMS["nome"]))&&(!empty($PARAMS["cognome"]))&&(!empty($PARAMS["email"]))&&(!empty($PARAMS["telefono"])))
 							{
-								println("Record inserito,");
-							}
-							else
-							{
-								stampaErr();
+								$tab_col["Nome"]=addslashes($PARAMS["nome"]);
+								$tab_col["Cognome"]=addslashes($PARAMS["cognome"]);
+								$tab_col["e-mail"]=addslashes($PARAMS["email"]);
+								$tab_col["Telefono"]=addslashes($PARAMS["telefono"]);
+
+								$result=add_to_db($tab_col);
+
+								if($result)
+								{
+									println("Record inserito con id=$db_connection->insert_id");
+								}
+								else
+								{
+									stampaErr();
+								}
 							}
 						}
 					}
@@ -182,8 +218,6 @@
 					{
 						println("Il database '$name_db' non esiste.");
 					}
-					
-					$db_connection->close();
 				}
 
 			print("</div>");
@@ -203,6 +237,17 @@
 			<input type="text" name="telefono"><br>
 			<input type="submit" value="INSERT"><br>
 		</form>
+
+		<?php
+			paragrafo("Elenco",$num_capitolo);
+			$result = $db_connection->query("SELECT * FROM $name_tab");
+			println("Numero righe: $result->num_rows");
+
+			if($result)
+			{
+				stampaDbTable($tab_col,$result);
+			}
+		?>
 
 		<?php
 			$num_capitolo=capitolo("Info");
