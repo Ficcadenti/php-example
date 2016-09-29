@@ -65,48 +65,88 @@
 	</head>
 	<body>
 		<?php
+			$CONNECTED=false;
+			global $db_connection;
+			$name_db="php-example";
+			$name_tab="tab_01";
+			$record=array();
+
+			mysqli_report(MYSQLI_REPORT_STRICT);
+
 			$num_capitolo=capitolo("Database: MySQL");
 			paragrafo("Aprire connessione",$num_capitolo);
 			print("<div id=\"m70\">");
 				
-				$conn = new mysqli("localhost","root","root","php-example");
-				// Check connection
-				if ($conn->connect_error) 
+				try
 				{
-					die( $conn->connect_error);
-				}
-				else
-				{
+					$CONNECTED = true;
+					$db_connection = new mysqli("localhost","root","raffo","php-example");
+
 					println("Connessione MySQLi OK!!!!");
 					println();
-					print_r($conn);
 
-					$conn->close();
+				}
+				catch (Exception $e ) 
+				{
+					$CONNECTED = false;
+				    echo "Error  : " . $e->getCode() . "<br>";
+				    echo "Message: " . $e->getMessage() . "<br>";
 				}
 
-				// collegamento al database
-				$col = 'mysql:host=localhost;dbname=php-example';
+				if($CONNECTED)
+				{
+					if($db_connection->select_db($name_db))
+					{
+						println("Ok sei connesso al database '$name_db' !!!");
+						//SELECT id,Nome,Cognome,'e-mail',Telefono FROM tab_01;
+						$record=array(
+								"Nome" => "Luca",
+								"Cognome" => "Ficcadenti",
+								"e-mail" => "luca.ficcadenti@gmail.com",
+								"Telefono" => "12345678",
+							);
 
-				// blocco try per il lancio dell'istruzione
-				try 
-				{
-				  	// connessione tramite creazione di un oggetto PDO
-				  	$db = new PDO($col , 'root', 'root');
-				  	println("Connessione PDO OK!!!!");
-					var_dump($db);
-					println();
-					$db = null;
-				}
-				// blocco catch per la gestione delle eccezioni
-				catch(PDOException $e) 
-				{
-					// notifica in caso di errorre
-					echo 'Attenzione: '.$e->getMessage();
+						$query="INSERT INTO $name_tab(";
+
+						foreach ($record as $key => $value) 
+						{
+							$query=$query."`".$key."`,";
+						}
+						$query=substr($query,0,strlen($query)-1);
+						$query=$query.") values (";
+						foreach ($record as $key => $value) 
+						{
+							$query=$query."'".$value."',";
+						}
+						$query=substr($query,0,strlen($query)-1);
+						$query=$query.")";
+
+						println ("QUERY=$query");
+
+						$result=$db_connection->query($query);
+						if($result)
+						{
+							println("Record inserito,");
+						}
+						else
+						{
+							println("Errore QUERY");
+						}
+
+						
+					}
+					else
+					{
+						println("Il database '$name_db' non esiste.");
+					}
+					
+					$db_connection->close();
 				}
 
 			print("</div>");
 			$num_capitolo=capitolo("Info");
 		?>
-		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a>
+		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a><br>
+		<a href="http://php.net/manual/en/class.mysqli.php" target="_blank">mysqli()</a><br>
 	</body>
 </hmtl>
