@@ -16,6 +16,10 @@
 	#
 -->
 <?php
+	$db_connection=FALSE;
+	$name_db="";
+	$name_tab="";
+
 	date_default_timezone_set('UTC');
 	print("<br>");
 
@@ -49,9 +53,59 @@
 		printH("h2","$cap.$num_paragrafo. $str");
 	}
 
+	function stampaErr()
+	{
+		global $db_connection;	
+		echo "<font color=\"red\">Error  : " . $db_connection->errno . "</font><br>";
+		echo "<font color=\"red\">Message: " . $db_connection->error . "</font><br>";
+	}
+
+	function add_to_db($record)
+	{
+		global $name_tab;
+		global $db_connection;
+		$ret=FALSE;
+
+		$query="INSERT INTO $name_tab(";
+
+		foreach ($record as $key => $value) 
+		{
+			$query=$query."`".$key."`,";
+		}
+		$query=substr($query,0,strlen($query)-1);
+		$query=$query.") values (";
+		foreach ($record as $key => $value) 
+		{
+			$query=$query."'".$value."',";
+		}
+		$query=substr($query,0,strlen($query)-1);
+		$query=$query.")";
+
+		println ("QUERY=$query");
+
+		$ret=$db_connection->query($query);
+
+		return $ret;
+	}
 
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
+
+	$PARAMS=array();
+	println($_SERVER["PHP_SELF"]);
+	println("Chiamnata da un ".$_SERVER["REQUEST_METHOD"]."");
+
+	if($_SERVER["REQUEST_METHOD"]=="GET")
+	{
+		$PARAMS=$_GET;
+		printH("h1","\$_GET");
+	}
+	else if($_SERVER["REQUEST_METHOD"]=="POST")
+	{
+		$PARAMS=$_POST;
+		printH("h1","\$_POST");
+	}
+
 ?>
 
 <hmtl>
@@ -66,10 +120,9 @@
 	<body>
 		<?php
 			$CONNECTED=false;
-			global $db_connection;
+			$record=array();
 			$name_db="php-example";
 			$name_tab="tab_01";
-			$record=array();
 
 			mysqli_report(MYSQLI_REPORT_STRICT);
 
@@ -81,16 +134,16 @@
 				{
 					$CONNECTED = true;
 					$db_connection = new mysqli("localhost","root","raffo","php-example");
-
+					
 					println("Connessione MySQLi OK!!!!");
 					println();
-
+					
 				}
 				catch (Exception $e ) 
 				{
 					$CONNECTED = false;
-				    echo "Error  : " . $e->getCode() . "<br>";
-				    echo "Message: " . $e->getMessage() . "<br>";
+				    echo "<font color=\"red\">Error  : " . $e->getCode() . "</font><br>";
+				    echo "<font color=\"red\">Message: " . $e->getMessage() . "</font><br>";
 				}
 
 				if($CONNECTED)
@@ -98,42 +151,32 @@
 					if($db_connection->select_db($name_db))
 					{
 						println("Ok sei connesso al database '$name_db' !!!");
-						//SELECT id,Nome,Cognome,'e-mail',Telefono FROM tab_01;
+
 						$record=array(
-								"Nome" => "Luca",
-								"Cognome" => "Ficcadenti",
-								"e-mail" => "luca.ficcadenti@gmail.com",
-								"Telefono" => "12345678",
+								"Nome" => "",
+								"Cognome" => "",
+								"e-mail" => "",
+								"Telefono" => "",
 							);
 
-						$query="INSERT INTO $name_tab(";
-
-						foreach ($record as $key => $value) 
+						if (isset($PARAMS["nome"])) 
 						{
-							$query=$query."`".$key."`,";
-						}
-						$query=substr($query,0,strlen($query)-1);
-						$query=$query.") values (";
-						foreach ($record as $key => $value) 
-						{
-							$query=$query."'".$value."',";
-						}
-						$query=substr($query,0,strlen($query)-1);
-						$query=$query.")";
+							$record["Nome"]=addslashes($PARAMS["nome"]);
+							$record["Cognome"]=addslashes($PARAMS["cognome"]);
+							$record["e-mail"]=addslashes($PARAMS["email"]);
+							$record["Telefono"]=addslashes($PARAMS["telefono"]);
 
-						println ("QUERY=$query");
+							$result=add_to_db($record);
 
-						$result=$db_connection->query($query);
-						if($result)
-						{
-							println("Record inserito,");
+							if($result)
+							{
+								println("Record inserito,");
+							}
+							else
+							{
+								stampaErr();
+							}
 						}
-						else
-						{
-							println("Errore QUERY");
-						}
-
-						
 					}
 					else
 					{
@@ -144,6 +187,24 @@
 				}
 
 			print("</div>");
+		?>
+
+		<?php
+			paragrafo("Inserimento",$num_capitolo);
+		?>
+		<form id="m70" action="" method="POST">
+			Nome<br>
+			<input type="text" name="nome"><br>
+			Cognome<br>
+			<input type="text" name="cognome"><br>
+			e-Mail<br>
+			<input type="text" name="email"><br>
+			Telefono<br>
+			<input type="text" name="telefono"><br>
+			<input type="submit" value="INSERT"><br>
+		</form>
+
+		<?php
 			$num_capitolo=capitolo("Info");
 		?>
 		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a><br>
