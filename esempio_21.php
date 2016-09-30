@@ -241,11 +241,13 @@
 		<?php
 			paragrafo("Elenco",$num_capitolo);
 			$result = $db_connection->query("SELECT * FROM $name_tab");
-			println("Numero righe: $result->num_rows");
-
+			
 			if($result)
 			{
+				print("<div id=\"m70\">");
+				println("Numero righe: $result->num_rows");
 				stampaDbTable($tab_col,$result);
+				print("</div>");
 			}
 		?>
 
@@ -254,5 +256,13 @@
 		?>
 		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a><br>
 		<a href="http://php.net/manual/en/class.mysqli.php" target="_blank">mysqli()</a><br>
+		<p>
+		<b>Prima di partire</b><br>
+		Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
+		ovviamente deve essere presente un'installazione di MySQL, e dovete conoscere la password di root.<br>
+		Lanciare da riga di comando:<br>
+			mysql -u <strong>root</strong> -p{<strong>password</strong>} -h{<strong>nomehost</strong>} < <strong>php-example.sql</strong><br>
+		Lo script <strong>php-example.sql</strong> lo trovate versionato sotto la directory dumpdb.
+		</p>
 	</body>
 </hmtl>
