@@ -3,11 +3,11 @@
 <br>
 (c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br><br>
 <p>
-	<b>Prima di partire</b><br>
+	<b>Prima di partire</b><br><br>
 	Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
-	ovviamente deve essere presente un'installazione di MySQL, e dovete conoscere la password di root.<br>
-	Lanciare da riga di comando:<br>
-		mysql -u <strong>root</strong> -p{<strong>password</strong>} -h{<strong>nomehost</strong>} < <strong>php-example.sql</strong><br>
+	ovviamente deve essere presente un'installazione di MySQL, e dovete conoscere la password di root.<br><br>
+	Lanciare da riga di comando:<br><br>
+		mysql -u <strong>root</strong> -p{<strong>password</strong>} -h{<strong>nomehost</strong>} < <strong>php-example.sql</strong><br><br>
 	Lo script <strong>php-example.sql</strong> lo trovate versionato sotto la directory dumpdb.
 </p>
 
