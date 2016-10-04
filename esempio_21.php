@@ -111,9 +111,23 @@
 				while($row = $result->fetch_assoc())
 				{
 					print("<tr id=\"riga\" bgcolor=\"#ffffd6\">");
+					
 					foreach ($row as $key => $value) 
 					{	
-						print("<td>$value</td>");
+						if($key=="Nome")
+						{
+							print("<td width=\"100\"> <input type=\"text\" size=\"20\" name=\"name_mod[]\" value=\"".trim($value)."\"> </td>");
+						}else if($key=="Cognome")
+						{
+							print("<td width=\"100\"> <input type=\"text\" size=\"20\" name=\"cognome_mod[]\" value=\"".trim($value)."\"> </td>");
+						}else if($key=="id")
+						{
+							print("<td width=\"5\"> <input type=\"hidden\" size=\"3\" name=\"id_record[]=\" value=\"".trim($value)."\" >$value</td>");
+						}
+						else
+						{
+							print("<td>$value</td>");
+						}
 					}
 					print("</tr>");
 				}
@@ -140,6 +154,7 @@
 		printH("h1","\$_POST");
 	}
 
+
 ?>
 
 <hmtl>
@@ -155,7 +170,7 @@
 		<?php
 			$CONNECTED=false;
 			$record=array();
-			$name_db="php-example";
+			$name_db="phpexample";
 			$name_tab="tab_01";
 			$tab_col=array(
 					"Nome" => "",
@@ -173,7 +188,7 @@
 				try
 				{
 					$CONNECTED = true;
-					$db_connection = new mysqli("localhost","root","raffo","php-example");
+					$db_connection = new mysqli("localhost","root","raffo",$name_db);
 					
 					println("Connessione MySQLi OK!!!!");
 					println();
@@ -186,37 +201,61 @@
 				    echo "<font color=\"red\">Message: " . $e->getMessage() . "</font><br>";
 				}
 
+				
 				if($CONNECTED)
 				{
-					if($db_connection->select_db($name_db))
+					if(isset($_POST["insert"]))
 					{
-						println("Ok sei connesso al database '$name_db' !!!");
-
-						if (isset($PARAMS["nome"])) 
+						if($db_connection->select_db($name_db))
 						{
-							if((!empty($PARAMS["nome"]))&&(!empty($PARAMS["cognome"]))&&(!empty($PARAMS["email"]))&&(!empty($PARAMS["telefono"])))
+							println("Ok sei connesso al database '$name_db' !!!");
+
+							if (isset($PARAMS["nome"])) 
 							{
-								$tab_col["Nome"]=addslashes($PARAMS["nome"]);
-								$tab_col["Cognome"]=addslashes($PARAMS["cognome"]);
-								$tab_col["e-mail"]=addslashes($PARAMS["email"]);
-								$tab_col["Telefono"]=addslashes($PARAMS["telefono"]);
-
-								$result=add_to_db($tab_col);
-
-								if($result)
+								if((!empty($PARAMS["nome"]))&&(!empty($PARAMS["cognome"]))&&(!empty($PARAMS["email"]))&&(!empty($PARAMS["telefono"])))
 								{
-									println("Record inserito con id=$db_connection->insert_id");
+									$tab_col["Nome"]=addslashes($PARAMS["nome"]);
+									$tab_col["Cognome"]=addslashes($PARAMS["cognome"]);
+									$tab_col["e-mail"]=addslashes($PARAMS["email"]);
+									$tab_col["Telefono"]=addslashes($PARAMS["telefono"]);
+
+									$result=add_to_db($tab_col);
+
+									if($result)
+									{
+										println("Record inserito con id=$db_connection->insert_id");
+									}
+									else
+									{
+										stampaErr();
+									}
 								}
-								else
+							}
+						}
+						else
+						{
+							println("Il database '$name_db' non esiste.");
+						}
+					}else 
+					{
+						println("Bottone modifica");
+						if (isset($PARAMS["name_mod"])) 
+						{
+							$id=$PARAMS["id_record"];
+							$name=$PARAMS["name_mod"];
+							$cognome=$PARAMS["cognome_mod"];
+							$num_record=count($name);
+
+							for ($i=0;$i<$num_record;$i++)
+							{
+								$query="UPDATE $name_tab set Nome='$name[$i]', Cognome='$cognome[$i]' WHERE id=$id[$i]";
+								$result=$db_connection->query($query);
+								if(!$result)
 								{
 									stampaErr();
 								}
 							}
 						}
-					}
-					else
-					{
-						println("Il database '$name_db' non esiste.");
 					}
 				}
 
@@ -226,7 +265,7 @@
 		<?php
 			paragrafo("Inserimento",$num_capitolo);
 		?>
-		<form id="m70" action="" method="POST">
+		<form name="insert" id="m70" action="" method="POST">
 			Nome<br>
 			<input type="text" name="nome"><br>
 			Cognome<br>
@@ -235,9 +274,8 @@
 			<input type="text" name="email"><br>
 			Telefono<br>
 			<input type="text" name="telefono"><br>
-			<input type="submit" value="INSERT"><br>
+			<input name="insert" type="submit" value="INSERT"><br>
 		</form>
-
 		<?php
 			paragrafo("Elenco",$num_capitolo);
 			$result = $db_connection->query("SELECT * FROM $name_tab");
@@ -246,23 +284,20 @@
 			{
 				print("<div id=\"m70\">");
 				println("Numero righe: $result->num_rows");
-				stampaDbTable($tab_col,$result);
+				println("Numero righe: ". mysqli_affected_rows($db_connection));
+				println("Numero righe: ". $db_connection->affected_rows);
+				print("<form name=\"modifica\" action=\"\" method=\"POST\">");
+					stampaDbTable($tab_col,$result);
+					print("<br><input name=\"modifica\" type=\"submit\" value=\"MODIFICA\"><br>");
+				print("</form>");			
 				print("</div>");
 			}
 		?>
-
+			
 		<?php
 			$num_capitolo=capitolo("Info");
 		?>
 		<a href="http://www.html.it/pag/16420/introduzione29/" target="_blank">MySQL, MySQLi, PDO</a><br>
 		<a href="http://php.net/manual/en/class.mysqli.php" target="_blank">mysqli()</a><br>
-		<p>
-		<b>Prima di partire</b><br>
-		Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
-		ovviamente deve essere presente un'installazione di MySQL, e dovete conoscere la password di root.<br>
-		Lanciare da riga di comando:<br>
-			mysql -u <strong>root</strong> -p{<strong>password</strong>} -h{<strong>nomehost</strong>} < <strong>php-example.sql</strong><br>
-		Lo script <strong>php-example.sql</strong> lo trovate versionato sotto la directory dumpdb.
-		</p>
 	</body>
 </hmtl>

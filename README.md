@@ -70,4 +70,6 @@
 	<li><b>esempio_20.php</b>: Database, DBM un esempio.</li>
 	<br>
 	<li><b>esempio_21.php</b>: Database, MySQLi.</li>
+	<br>
+	<li><b>esempio_22.php</b>: Database, ottenere informazioni su un database</li>
 </ul>

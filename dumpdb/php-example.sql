@@ -1,9 +1,9 @@
-CREATE DATABASE  IF NOT EXISTS `php-example` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `php-example`;
+CREATE DATABASE  IF NOT EXISTS `phpexample` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `phpexample`;
 
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: php-example
+-- Host: 127.0.0.1    Database: phpexample
 -- ------------------------------------------------------
 -- Server version	5.7.10-log
 
@@ -46,11 +46,11 @@ INSERT INTO `tab_01` VALUES (1,'Raffaele','Ficcadenti','raffaele.ficcadenti@gmai
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'php-example'
+-- Dumping events for database 'phpexample'
 --
 
 --
--- Dumping routines for database 'php-example'
+-- Dumping routines for database 'phpexample'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
