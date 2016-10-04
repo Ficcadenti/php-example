@@ -72,4 +72,6 @@
 	<li><b>esempio_21.php</b>: Database, MySQLi.</li>
 	<br>
 	<li><b>esempio_22.php</b>: Database, ottenere informazioni su un database</li>
+	<br>
+	<li><b>esempio_23.php</b>: Apertura al mondo esterno</li>
 </ul>

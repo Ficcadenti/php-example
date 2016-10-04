@@ -31,7 +31,7 @@
 		    12=>'datetime',
 		    13=>'year',
 		    16=>'bit',
-		    //252 is currently mapped to all text and blob types (MySQL 5.0.51a)
+		    252=>'longtext',
 		    253=>'varchar',
 		    254=>'char',
 		    246=>'decimal'

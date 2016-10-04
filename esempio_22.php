@@ -122,12 +122,10 @@
 				$result = $db_connection->query("SHOW DATABASES");
 				$name_db=array();
 				$name_table=array();
-				/*while($row = $result->fetch_assoc())
+				while($row = $result->fetch_assoc())
 				{
 					$name_db[]=$row['Database'];
-				}*/
-
-				$name_db[]="phpexample";
+				}
 
 				foreach($name_db as $value) 
 				{
@@ -145,6 +143,42 @@
 						}
 					}
 				}
+				foreach($name_db as $value) 
+				{
+					println("$value");		
+					$result = $db_connection->query("SHOW TABLES FROM $value");
+					if($result)
+					{
+						while($row = $result->fetch_assoc())
+						{
+								foreach ($row as $key => $value) 
+								{
+									$name_table[]=$value;
+									println("-> Tabella: $value");
+								}
+						}
+					}
+				}
+
+				$name_db=array();
+				$name_table=array();
+				$name_db[]="phpexample";
+				foreach($name_db as $value) 
+				{
+					println("-> Database: $value");		
+					$result = $db_connection->query("SHOW TABLES FROM $value");
+					if($result)
+					{
+						while($row = $result->fetch_assoc())
+						{
+								foreach ($row as $key => $value) 
+								{
+									$name_table[]=$value;
+									println("--> Tabella: $value");
+								}
+						}
+					}
+				}
 
 				if($db_connection->select_db($name_db[0]))
 				{
@@ -153,7 +187,7 @@
 						$result = $db_connection->query("SELECT * FROM $value LIMIT 1");
 						if($result)
 						{
-							println("numero campi: $result->field_count");
+							println("--> Numero campi: $result->field_count<br>");
 							for($i=0;$i<$result->field_count;$i++)
 							{
 								$finfo = $result->fetch_field_direct($i);
@@ -162,10 +196,10 @@
 									if($key=="type")
 									{
 										
-										println("----> $key: $value->".$mysql_data_type_hash[$value]);
+										println("---> $key: $value->".$mysql_data_type_hash[$value]);
 									}else
 									{
-										println("----> $key: $value");
+										println("---> $key: $value");
 									}
 								}
 								println();
@@ -179,6 +213,10 @@
 							stampaErr();
 						}
 					}
+				}else
+				{
+					println("ORRORE");
+					stampaErr();
 				}
 			}
 		?>
