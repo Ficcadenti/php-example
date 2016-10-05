@@ -99,45 +99,10 @@
 	</head>
 	<body>
 		<?php
-			showEnvironment();
-
-			//metti come secondo parametro l'indirizzo del server SMTP
-			ini_set("SMTP","cannonau.asdc.asi.it");
-			//metti come secondo parametro il la porta del server SMTP
-			ini_set("smtp_port","25");
-			//metti come secondo parametro l'indirizzo e-mail del mittente
-			ini_set("sendmail_from","raffaele.ficcadenti@asdc.asi.it");
-
-			// definisco mittente e destinatario della mail
-			$nome_mittente = "Raffaele Ficcadenti";
-			$mail_mittente = "raffaele.ficcadenti@asdc.asi.it";
-			$mail_destinatario = "rficcad@e-tech.net";
-
-			// definisco il subject ed il body della mail
-			$mail_oggetto = "Messaggio di prova4";
-			$mail_corpo = "Questo e' un messaggio di prova inviato mediante PHP(".phpversion().")per testare la mia applicazione";
-
-			// aggiusto un po' le intestazioni della mail
-			// E' in questa sezione che deve essere definito il mittente (From)
-			// ed altri eventuali valori come Cc, Bcc, ReplyTo e X-Mailer
-			$mail_headers = "From: " .  $nome_mittente . " <" .  $mail_mittente . ">\r\n";
-			$mail_headers .= "Reply-To: " .  $mail_mittente . "\r\n";
-			$mail_headers .= "X-Mailer: PHP/" . phpversion();
-
-			if (mail($mail_destinatario, $mail_oggetto, $mail_corpo, $mail_headers))
-			{
-				println("Messaggio inviato con successo a  $mail_destinatario");
-			}
-			else
-			{
-				println("Errore. Nessun messaggio inviato.");
-			}
-
-
+			$num_capitolo=capitolo("Test Image GD");
 		?>
-		<br>
-		<a href="http://php.net/manual/en/reserved.variables.server.php" target="_blank">$_SERVER</a><br>
-		<a href="http://php.net/manual/en/book.mail.php" target="_blank">mail()</a><br>
+
+		<img src="my_image_png.php" alt="Image created by a PHP script" width="200" height="80">
 
 	</body>
 </hmtl>

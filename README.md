@@ -82,4 +82,6 @@
 	<li><b>esempio_26.php</b>: Apertura al mondo esterno, stabilire una connessione NNTP.</li>
 	<br>
 	<li><b>esempio_27.php</b>: Apertura al mondo esterno, inviare e-mail.</li>
+	<br>
+	<li><b>esempio_28.php</b>: Immagini dinamiche, GD Library.</li>
 </ul>
