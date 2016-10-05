@@ -77,15 +77,26 @@
 					println("\$_SERVER[$value] not set !!!");
 				}
 			}
+			if(isset($_SERVER["REMOTE_HOST"]))
+			{
+				println("\$_SERVER[REMOTE_HOST]=$_SERVER[REMOTE_HOST]");
+			}
+			else if(isset($_SERVER["REMOTE_ADDR"]))
+			{
+				println("\$_SERVER[REMOTE_HOST]=".gethostbyaddr($_SERVER["REMOTE_ADDR"]));	
+			}else
+			{
+				println("\$_SERVER[REMOTE_HOST]=unknown");
+			}
 			
-			/*$webpage="http://localhost/php-example/hello.html";
+			$webpage="http://localhost/php-example/hello.html";
 			$fp=fopen($webpage,"r") or die ("non posso aprire $webpage");
 			while (!feof($fp))
 			{
 				$line=fgets($fp,1024);
 				println("$line");
 			}
-			fclose($fp);*/
+			fclose($fp);
 
 			# chiamata alla funzione per la raccolta dei request headers 
 			$headers = getallheaders();

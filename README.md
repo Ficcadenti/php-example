@@ -71,7 +71,15 @@
 	<br>
 	<li><b>esempio_21.php</b>: Database, MySQLi.</li>
 	<br>
-	<li><b>esempio_22.php</b>: Database, ottenere informazioni su un database</li>
+	<li><b>esempio_22.php</b>: Database, ottenere informazioni su un database.</li>
 	<br>
-	<li><b>esempio_23.php</b>: Apertura al mondo esterno</li>
+	<li><b>esempio_23.php</b>: Apertura al mondo esterno.</li>
+	<br>
+	<li><b>esempio_24.php</b>: Apertura al mondo esterno, stabilire una connessione HTTP.</li>
+	<br>
+	<li><b>esempio_25.php</b>: Apertura al mondo esterno, codici di stato di una connessione HTTP.</li>
+	<br>
+	<li><b>esempio_26.php</b>: Apertura al mondo esterno, stabilire una connessione NNTP.</li>
+	<br>
+	<li><b>esempio_27.php</b>: Apertura al mondo esterno, inviare e-mail.</li>
 </ul>
