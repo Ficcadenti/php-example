@@ -1,7 +1,10 @@
 # php-example
 <strong> Repository per Lezioni/esempi PHP </strong>
-<br>
-(c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br><br>
+(c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
+Ho cercato di raccogliere in questo repository, le basi della programmazione PHP.
+Per ogni correzione o suggerimento, non esitate a scrivermi.
+Buon 'coding'.
+Raffaele.
 <p>
 	<b>Prima di partire</b><br><br>
 	Per gli esempi che utilizzano chiamate a MySQL dovrete installare il database di esempio con le relative tabelle,<br>
