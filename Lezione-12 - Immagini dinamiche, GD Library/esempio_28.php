@@ -102,7 +102,7 @@
 			$num_capitolo=capitolo("Test Image GD");
 		?>
 
-		<img src="my_image_png.php" alt="Image created by a PHP script" width="200" height="80"><br>
+		<img src="my_image_png.php" alt="Image created by a PHP script" width="200" height="200"><br>
 		<img src="esempio_grafico_1.php" alt="Image created by a PHP script" width="500" height="300"><br>
 		<img src="esempio_grafico_5.php" alt="Image created by a PHP script" width="500" height="300"><br>
 		<img src="esempio_grafico_7.php" alt="Image created by a PHP script" width="1000" height="300"><br>
