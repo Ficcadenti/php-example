@@ -65,7 +65,7 @@
 	</head>
 	<body>
 		<?php
-			$nome_file="php-example.sql";
+			$nome_file="../dumpdb/php-example.sql";
 			$time_file=array(
 				"atime"=>array("Ultimo accesso","0"),
 				"mtime"=>array("Modificato","0"),
