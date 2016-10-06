@@ -138,6 +138,5 @@
 		<br>
 		<a href="http://php.net/manual/en/reserved.variables.server.php" target="_blank">$_SERVER</a><br>
 		<a href="http://php.net/manual/en/book.mail.php" target="_blank">mail()</a><br>
-
 	</body>
 </hmtl>
