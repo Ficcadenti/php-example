@@ -119,7 +119,7 @@
 
 			
 			paragrafo("Lettura",$num_capitolo);
-			$nome_dir="temp";
+			$nome_dir="../assets/temp";
 			$dh=opendir($nome_dir);
 			print("<div id=\"m70\">");
 				leggiDirTree($nome_dir);
