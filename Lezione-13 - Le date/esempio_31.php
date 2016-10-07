@@ -60,6 +60,35 @@
 		return $str;
 	}
 
+	$PARAMS=array();
+	
+	if($_SERVER["REQUEST_METHOD"]=="GET")
+	{
+		$PARAMS=$_GET;
+	}
+	else if($_SERVER["REQUEST_METHOD"]=="POST")
+	{
+		$PARAMS=$_POST;
+	}
+
+	if(!isset($PARAMS["mese"]))
+	{
+
+		$nowArray=getDate();
+		$mese=$nowArray["mon"];
+		$anno=$nowArray["year"];
+		println("mese=$mese,anno=$anno");
+	}
+	else
+	{
+		$mese=$PARAMS["mese"];
+		$anno=$PARAMS["anno"];
+	}
+
+
+	$start=mktime(0,0,0,$mese,1,$anno);
+	$firstDateArray=getdate($start);
+
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
@@ -67,7 +96,11 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_31.html</title>
+		<title>
+			<?php 
+				print("Calendario: $firstDateArray[month]-$firstDateArray[year]");
+			?>
+		</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -80,11 +113,54 @@
 
 			showEnvironment();
 			println();
+			$num_capitolo=capitolo("Calendario");
 		?>
 		
+		<form action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
+			<select name="mese">
+			<?php
+				$mesi=array("January","February","March","April","May","June","July","August","September","October","November","December");
+				for($i=0;$i<count($mesi);$i++)
+				{
+					print("<option value=\"".($i+1)."\"");
+					if( $i==($mese-1) )
+					{
+						print(" selected>$mesi[$i]");
+					}
+					else
+					{
+						print(">$mesi[$i]");
+					}
+					print("</option>");
+				}
+			?>
+			</select>
+
+			<select name="anno">
+			<?php
+				for($i=1990;$i<=2020;$i++)
+				{
+					print("<option values=\"$i\"");
+					if( $i==$anno )
+					{
+						print(" selected>$i");
+					}
+					else
+					{
+						print(">$i");
+					}
+					print("</option>");
+				}
+			?>
+			</select>
+
+			<input type="submit" value="Go!">
+		</form>
+
 		<?php
 			$num_capitolo=capitolo("More info");
 		?>
+
 		<a href="http://php.net/manual/en/function.date.php" target="_blank">PHP date()</a><br>
 
 	</body>

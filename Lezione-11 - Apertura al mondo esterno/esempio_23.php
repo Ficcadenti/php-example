@@ -89,7 +89,7 @@
 				println("\$_SERVER[REMOTE_HOST]=unknown");
 			}
 			
-			$webpage="http://localhost/php-example/hello.html";
+			$webpage="./hello.html";
 			$fp=fopen($webpage,"r") or die ("non posso aprire $webpage");
 			while (!feof($fp))
 			{
@@ -113,7 +113,7 @@
 			# messaggio per il reindirizzamento della pagina
 			println("la pagina verrà rendirizzata tra $intervallo secondi");
 			# url di destinazione
-			$destinazione = "http://localhost/php-example/esempio_22.php";
+			$destinazione = "./esempio_22.php";
 			# reindirizzamento
 			header('Refresh:' . $intervallo . ';' . $destinazione);
 			# interruzione del buffer e liberazione del contenuto

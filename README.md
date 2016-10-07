@@ -159,7 +159,7 @@ Raffaele.
 			<br>
 			<li><b>esempio_30.php</b>: Esempio.</li>
 			<br>
-			<li><b>esempio_31.php</b>: Verifica data.</li>
+			<li><b>esempio_31.php</b>: Creiamo un calendario.</li>
 			<br>
 		</ul>
 	</li>
