@@ -121,7 +121,7 @@
 				println();
 				if($_FILES["namefile"]["error"]==0)
 				{
-					$uploaddir = "temp\\";
+					$uploaddir = "..\\assets\\temp\\";
 					$uploadfile = $uploaddir . basename($_FILES["namefile"]["name"]);
 
 					println("Nome file: ".$uploadfile);
@@ -130,7 +130,7 @@
 					    echo "File valido, l'upload è avvenuto con successo.\n";
 					    if($_FILES["namefile"]["type"]=="image/jpeg")
 					    {
-					    	echo "<img src=\"temp/".$_FILES["namefile"]["name"]."\">";
+					    	echo "<img src=\"../assets/temp/".$_FILES["namefile"]["name"]."\">";
 					    }
 					} 
 					else 
