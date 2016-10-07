@@ -86,9 +86,6 @@
 
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
-
-	putenv('GDFONTPATH=../assets/fonts/');
-	println(getenv('GDFONTPATH'));
 ?>
 
 <hmtl>
@@ -102,16 +99,16 @@
 	</head>
 	<body>
 		<?php
-			$num_capitolo=capitolo("Test Image GD");
+			$num_capitolo=capitolo("Test Image GD - PHPGraphLib(PHP Graphing Library v2.31)");
 		?>
 
-		<img src="my_image_png.php" alt="Image created by a PHP script" width="200" height="200"><br><br>
-		<img src="my_text_png.php" alt="Image created by a PHP script" width="800" height="200"><br><br>
-		<img src="my_spiral_png.php" alt="Image created by a PHP script" width="500" height="500"><br>
+		<img src="esempio_grafico_1.php" alt="Image created by a PHP script" width="500" height="300"><br>
+		<img src="esempio_grafico_5.php" alt="Image created by a PHP script" width="500" height="300"><br>
+		<img src="esempio_grafico_7.php" alt="Image created by a PHP script" width="1000" height="300"><br>
 
 		<?php
 			$num_capitolo=capitolo("More info");
 		?>
-		<a href="http://php.net/manual/en/function.imagegif.php" target="_blank">GD Library</a><br>
+		<a href="http://www.ebrueggeman.com/phpgraphlib/examples" target="_blank">PHPGraphLib Examples</a><br>
 	</body>
 </hmtl>

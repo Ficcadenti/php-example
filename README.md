@@ -149,6 +149,8 @@ Raffaele.
 		<ul>
 			<br>
 			<li><b>esempio_28.php</b>: GD Library.</li>
+			<br>
+			<li><b>esempio_29.php</b>: PHPGraphLib (PHP Graphing Library v2.31).</li>
 		</ul>
 	</li>
 </ul>
