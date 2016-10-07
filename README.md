@@ -153,4 +153,10 @@ Raffaele.
 			<li><b>esempio_29.php</b>: PHPGraphLib (PHP Graphing Library v2.31).</li>
 		</ul>
 	</li>
+	<li><strong>LEZIONE N. 13</strong> - Le Date.
+		<ul>
+			<br>
+			<li><b>esempio_30.php</b>: Esempio.</li>
+		</ul>
+	</li>
 </ul>

@@ -87,8 +87,6 @@
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
-	putenv('GDFONTPATH=../assets/fonts/');
-	println(getenv('GDFONTPATH'));
 ?>
 
 <hmtl>
@@ -106,7 +104,8 @@
 		?>
 
 		<img src="my_image_png.php" alt="Image created by a PHP script" width="200" height="200"><br><br>
-		<img src="my_text_png.php" alt="Image created by a PHP script" width="800" height="200"><br><br>
+		<img src="my_text_png.php?<?php print('text=(c) Ficcadenti Raffaele') ?>" alt="Image created by a PHP script" width="800" height="400"><br><br>
+		<img src="my_graph_png.php" alt="Image created by a PHP script" width="800" height="500"><br><br>
 		<img src="my_spiral_png.php" alt="Image created by a PHP script" width="500" height="500"><br>
 
 		<?php
