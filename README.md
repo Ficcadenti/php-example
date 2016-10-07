@@ -151,12 +151,16 @@ Raffaele.
 			<li><b>esempio_28.php</b>: GD Library.</li>
 			<br>
 			<li><b>esempio_29.php</b>: PHPGraphLib (PHP Graphing Library v2.31).</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 13</strong> - Le Date.
 		<ul>
 			<br>
 			<li><b>esempio_30.php</b>: Esempio.</li>
+			<br>
+			<li><b>esempio_31.php</b>: Verifica data.</li>
+			<br>
 		</ul>
 	</li>
 </ul>

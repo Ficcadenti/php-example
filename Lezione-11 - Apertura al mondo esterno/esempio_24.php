@@ -49,40 +49,10 @@
 		printH("h2","$cap.$num_paragrafo. $str");
 	}
 
-	function showEnvironment()
-	{
-		$env=array("HTTP_REFERER","HTTP_USER_AGENT","HTTP_HOST","QUERY_STRING","PATH_INFO","PHP_SELF","GATEWAY_INTERFACE","SERVER_SOFTWARE","REMOTE_ADDR");
-		foreach ($env as $value) 
-		{
-			if(isset($_SERVER[$value]))
-			{
-				println("\$_SERVER[$value]=$_SERVER[$value]");
-			}
-			else
-			{
-				println("\$_SERVER[$value] not set !!!");
-			}
-		}
-		if(isset($_SERVER["REMOTE_HOST"]))
-		{
-			println("\$_SERVER[REMOTE_HOST]=$_SERVER[REMOTE_HOST]");
-		}
-		else if(isset($_SERVER["REMOTE_ADDR"]))
-		{
-			println("\$_SERVER[REMOTE_HOST]=".gethostbyaddr($_SERVER["REMOTE_ADDR"]));	
-		}else
-		{
-			println("\$_SERVER[REMOTE_HOST]=unknown");
-		}
-
-		return true;
-	}
-
 	function stampaErrorre($type,$str)
 	{
 		echo "<font color=\"red\">$type : $str </font><br>";
 	}
-
 
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();

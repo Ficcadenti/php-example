@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_30.html
+	# esempio_31.html
 	# 
 	# 
 	# AUTHORS:
@@ -67,7 +67,7 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_30.html</title>
+		<title>sorgente: esempio_31.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -80,49 +80,6 @@
 
 			showEnvironment();
 			println();
-			
-			$secondi=2*60*60;
-			$t=time();
-
-			println("GMT time stamp=".($t-$secondi));
-			println("Local time stamp=".($t));
-			println();
-
-			$date_info=getdate($t);
-
-			foreach ($date_info as $key => $value) 
-			{
-				println("$key=>$value");
-			}
-
-			print("<hr>");
-			println("Data di oggi: $date_info[mday]/$date_info[mon]/$date_info[year]");
-			println();
-			println(date("j \o\\f F Y, \a\\t g.i a",$t));
-			print("<hr>");
-
-			$t=mktime(11,0,0,8,18,2014);
-			println("mktime stamp=".($t));
-			println();
-
-			$date_info=getdate($t);
-
-			foreach ($date_info as $key => $value) 
-			{
-				println("$key=>$value");
-			}
-
-			print("<hr>");
-			println("Data: $date_info[mday]/$date_info[mon]/$date_info[year]");
-			println();
-			println(date("j \o\\f F Y, \a\\t g.i a",$t));
-
-			print("<hr>");
-
-			$giorno=7;
-			$mese=10;
-			$anno=2016;
-			println("checkdate($mese,$giorno,$anno) = ".str_bool(checkdate($mese,$giorno,$anno)));
 		?>
 		
 		<?php
