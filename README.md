@@ -163,4 +163,11 @@ Raffaele.
 			<br>
 		</ul>
 	</li>
+	<li><strong>LEZIONE N. 12</strong> - Tipi di dati, nel dettaglio.
+		<ul>
+			<br>
+			<li><b>esempio_32.php</b>: Il casting.</li>
+			<br>
+		</ul>
+	</li>
 </ul>
