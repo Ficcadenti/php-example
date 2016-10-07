@@ -76,6 +76,61 @@
 	</head>
 	<body>
 		<?php
+			$val1=456;
+			println(gettype($val1));
+
+			$val2=4.56;
+			println(gettype($val2));
+
+			println((integer)$val2);
+			println($val2);
+
+			settype($val2,"integer");
+			println($val2);
+
+			$val3="Ciao Raffaele e Valeria";
+			$arr_val3=(array)$val3;
+			println($arr_val3[0]);
+
+			$obj_val3=(object)$val3;
+			var_dump($obj_val3);
+			println();
+			println($obj_val3->scalar);
+
+			$arr=array(
+					"via"=>"via castellamonte",
+					"citta"=>"roma"
+				);
+			$obj_arr=(object)$arr;
+
+			var_dump($obj_arr);
+			println();
+			println($obj_arr->via);
+			println($obj_arr->citta);
+
+			class point
+			{
+				var $x;
+				var $y;
+				var $z;
+
+				function point($x,$y,$z=0)
+				{
+					$this->x=$x;
+					$this->y=$y;
+					$this->z=$z;
+				}
+			}
+
+			$p=new point(5,7);
+			$arr_p=(array)$p;
+			var_dump($arr_p);
+			println();
+			foreach ($arr_p as $key => $value) 
+			{
+				println("arr_p[$key]=$value");
+			}
+
 		?>
 	</body>
 </hmtl>
