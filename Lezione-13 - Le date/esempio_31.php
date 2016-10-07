@@ -16,6 +16,11 @@
 	#
 -->
 <?php
+	define("ADAY",60*60*24);
+	define("DOMENICA",6);
+	define("SABATO",0);
+	$festivi=array(array("25","12"),array("1","11"),array("8","12"),array("6","1"));
+
 	date_default_timezone_set('UTC');
 	print("<br>");
 
@@ -53,10 +58,51 @@
 	{
 		echo "<font color=\"red\">$type : $str </font><br>";
 	}
+
 	function str_bool($val)
 	{
 		$str="false";
 		if($val>0) $str="true";
+		return $str;
+	}
+
+	function isFestivo($start)
+	{
+		global $festivi;
+		$result=false;
+		$dayArray=getdate($start);
+
+		if( ($dayArray["wday"]==DOMENICA) or ($dayArray["wday"]==SABATO) )
+		{
+			$result=true;
+		}
+		else
+		{
+			foreach ($festivi as $value) 
+			{
+				$giorno=$value[0];
+				$mese=$value[1];
+
+				if( ($dayArray["mday"]==$giorno) and ($dayArray["mon"]==$mese) )
+				{
+					$result=true;
+					break;
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	function stampaFestivo($str)
+	{
+		$str="<strong><font color=\"red\">$str</font></strong>";
+		return $str;
+	}
+
+	function stampaOggi($str)
+	{
+		$str="<strong><font color=\"blue\">$str</font></strong>";
 		return $str;
 	}
 
@@ -158,6 +204,55 @@
 		</form>
 
 		<?php
+			$days=array("Domenica","Lunedi","Martedi","Mercoledi","Giovedi","Venerdi","Sabato");
+			println("Calendario: ".date("F\-Y",$start));
+			println();
+			print("<table>");
+			print("<thead>");
+				print("<tr>");
+					foreach ($days as $key => $value) 
+					{
+						if(($key==SABATO)or($key==DOMENICA))
+						{
+							print("<td><strong>".stampaFestivo($value)."</strong></td>");
+						}
+						else
+						{
+							print("<td><strong>$value</strong></td>");
+						}
+					}
+				print("</tr>");
+				for($count=0;$count<50;$count++)
+				{
+					$dayArray=getdate($start);
+					
+					if(($count%7)==0)
+					{
+						if($dayArray["mon"]!=$mese)
+						{
+							break;
+						}
+						print("</tr><tr>");
+					}
+					if($count<$firstDateArray["wday"] || $dayArray["mon"]!=$mese)
+					{
+						print("<td></td>");
+					}
+					else
+					{
+						if(isFestivo($start))
+						{
+							print("<td>".stampaFestivo($dayArray["mday"])."</td>");
+						}
+						else
+						{
+							print("<td>".$dayArray["mday"]."</td>");
+						}
+						$start+=ADAY;
+					}
+				}
+			print("<thead>");
+			print("</table>");
 			$num_capitolo=capitolo("More info");
 		?>
 
