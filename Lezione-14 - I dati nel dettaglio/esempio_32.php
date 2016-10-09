@@ -60,6 +60,18 @@
 		return $str;
 	}
 
+	function printArray($arr)
+	{
+		if(!is_array($arr))
+		{
+			$arr=(array)$arr;
+		}
+		foreach ($arr as $key => $value) 
+		{
+			println("key=>$value");
+		}
+	}
+
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
@@ -129,6 +141,53 @@
 			foreach ($arr_p as $key => $value) 
 			{
 				println("arr_p[$key]=$value");
+			}
+
+			$str="1ciao";
+			$str++;
+			$val4=(int)$str;
+			println($str);
+			println($val4);
+
+			$str1="ciao";
+			$str1+=1;
+			$val5=(int)$str1;
+			println($str1);
+			println($val5);
+
+			$var5="10.4ciao";
+
+			println("doubleval($var5)=".doubleval($var5));
+			println("intval($var5)=".intval($var5));
+			println("strval($var5)=".strval($var5));
+
+			printArray(array(1,2,3,4));
+			println();
+			printArray(1);
+			println();
+			printArray($p);
+			println();
+			printArray($obj_arr);
+			println();
+
+			$var6=0;
+
+			if(isset($var6))
+			{
+				println("\$var6 e' settata.");
+			}
+			else
+			{
+				println("\$var6 NON e' settata.");
+			}
+
+			if(empty($var6))
+			{
+				println("\$var6 e' vuota.");
+			}
+			else
+			{
+				println("\$var6 NON e' vuota.");
 			}
 
 		?>
