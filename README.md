@@ -167,7 +167,8 @@ Raffaele.
 		<ul>
 			<br>
 			<li><b>esempio_32.php</b>: Il casting.</li>
-			<br>he tipo sei ?</li>
+			<br>
+			<li><b>esempio_33.php</b>: Che tipo sei ?.</li>
 			<br>
 		</ul>
 	</li>
