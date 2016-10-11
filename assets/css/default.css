@@ -37,6 +37,8 @@
 	    text-align: center;
 	    border-bottom: 1px solid #ddd;
 	}
+	
+	.dotcom {color:#4CAF50}
 
 	tr#riga:hover{background-color:#f5f5f5}
 </style>

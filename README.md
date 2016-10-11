@@ -168,7 +168,16 @@ Raffaele.
 			<br>
 			<li><b>esempio_32.php</b>: Il casting.</li>
 			<br>
-			<li><b>esempio_33.php</b>: Che tipo sei ?.</li>
+			<li><b>esempio_33.php</b>: Che tipo sei ?</li>
+			<br>
+			<li><b>esempio_34.php</b>: Ancora su array.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 15</strong> - Stringhe.
+		<ul>
+			<br>
+			<li><b>esempio_35.php</b>: Formattazione.</li>
 			<br>
 		</ul>
 	</li>

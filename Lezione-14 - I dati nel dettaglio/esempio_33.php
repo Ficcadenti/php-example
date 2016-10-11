@@ -60,6 +60,46 @@
 		return $str;
 	}
 
+	function add_val(&$item,$key,$val)
+	{
+		$item=$item+$val;
+	}
+
+	function calcola_radq(&$item,$key)
+	{
+		$item=sqrt($item);
+	}
+
+	function comparaPrezzo($a,$b)
+	{
+		$ret=1;
+		if($a["prezzo"]==$b["prezzo"])
+		{
+			$ret=0;
+		}
+		else if($a["prezzo"]<$b["prezzo"])
+		{
+			$ret=-1;
+		}
+
+		return $ret;
+	}
+
+	function comparaLenKey($a,$b)
+	{
+		$ret=1;
+		if(strlen($a)==strlen($b))
+		{
+			$ret=0;
+		}
+		else if(strlen($a)<strlen($b))
+		{
+			$ret=-1;
+		}
+
+		return $ret;
+	}
+
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
@@ -83,52 +123,60 @@
 			$obj_arr=(object)$arr;
 			$var=$arr;
 
-			println(is_bool($var));
-
+			$num_capitolo=capitolo("che tipo sei?");
+			paragrafo("is_(bool,array,integer,double,string,object) !!!!",$num_capitolo);
+			print("<div id=\"m70\">");
 			switch(true)
 			{
 				case is_bool($var):
 					{
-						print("\$var=$var un bool.");
+						print("\$var=$var è un bool.");
 					}
 					break;
 
 				case is_array($var):
 					{
-						print("\$var un array.");
+						print("\$var è un array.");
 					}
 					break;
 
 				case is_integer($var):
 					{
-						print("\$var un integer.");
+						print("\$var è un integer.");
 					}
 					break;
 
 				case is_double($var):
 					{
-						print("\$var un double.");
+						print("\$var è un double.");
 					}
 					break;
 
 				case is_string($var):
 					{
-						print("\$var una string.");
+						print("\$var è una string.");
 					}
 					break;
 
 				case is_object($var):
 					{
-						print("\$var un object.");
+						print("\$var è un object.");
 					}
 					break;
 
 				default:
 					{
-						print("ne SI e ne NO !!!!<br>");
+						print("non sò riconoscere \$var !!!!<br>");
 					}
 					break;
 			}
+			print("</div>");
+			println();
+
+			$num_capitolo=capitolo("info");
 		?>
+
+		<a href="http://php.net/manual/en/function.in-array.php" target="_blank">in_array()</a><br>
+		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>
