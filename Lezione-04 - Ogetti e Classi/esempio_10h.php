@@ -2,7 +2,7 @@
 /*
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_10h.php
+	# esempio_10g.php
 	# 
 	# 
 	# AUTHORS:
@@ -12,7 +12,7 @@
 	# 
 	# HISTORY:
 	# -[Date]-      -[Who]-               -[What]-
-	# 11-10-2016    Ficcadenti Raffaele         
+	# 19-09-2016    Ficcadenti Raffaele         
 	# -
 	#
 -->
@@ -86,9 +86,38 @@
 			printH("h2","$cap.$num_paragrafo. $str");
 		}
 	?>
-
 	<?php
-		$num_capitolo=capitolo("Interfacce");
+		$num_capitolo=capitolo("Liste concatenate");
+		print("<div id=\"m70\">");
+
+		class nodo
+		{
+			var $valore;
+			var $next;
+
+			function nodo($valore,&$next=null)
+			{
+				$this->valore=$valore;
+				$this->next=$next;
+			}
+		}
+
+		$n=new nodo(rand(0,100));
+		$n1=new nodo(rand(0,100),$n);
+		$n2=new nodo(rand(0,100),$n1);
+
+		while($n2!=null)
+		{
+			println($n2->valore);		
+			$n2=&$n2->next;
+		}
+
+		print("</div>");
+
+
+		$num_capitolo=capitolo("info");
 	?>
+
+	<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 </body>
 </hmtl>

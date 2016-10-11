@@ -74,6 +74,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_10g.php</b>: Interfacce.</li>
 			<br>
+			<li><b>esempio_10h.php</b>: Liste concatenate.</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 5</strong> - File esterni.
