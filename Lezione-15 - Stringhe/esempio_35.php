@@ -103,23 +103,23 @@
 			$num_capitolo=capitolo("Stringhe");
 			$num=463;
 
-			print("<div id=\"m70\">");
-			printf("Il capitolo attuale è: %b<br>",$num_capitolo);
-			printf("Decimale: %d<br>",$num);
-			printf("Binario: %b<br>",$num);
-			printf("Double: %f<br>",$num);
-			printf("Ottale: %o<br>",$num);
-			printf("Stringa: %s<br>",$num);
-			printf("Esadecimale (minuscolo): %x<br>",$num);
-			printf("Esadecimale (maiuscolo): %X<br>",$num);
-			
-			print("</div>");
+			print("<div id=\"m70\"><pre>");
+			printf("Il capitolo attuale è: %20b<br>",$num_capitolo);
+			printf("Decimale: %20d<br>",$num);
+			printf("Binario: %20b<br>",$num);
+			printf("Double: %20.4f<br>",$num);
+			printf("Ottale: %20o<br>",$num);
+			printf("Stringa: %20s<br>",$num);
+			printf("Esadecimale (minuscolo): %'08x<br>",$num);
+			printf("Esadecimale (maiuscolo): %'08X<br>",$num);
+			print("</pre></div>");
 			$num_capitolo=capitolo("Colori");
 		?>
+
 		<form id="m70" action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
-			<input type="range" name="rosso" min="0" max="255" step="1" <?php print("value=\"$red\"") ?>>Rosso<br>
-			<input type="range" name="verde" min="0" max="255" step="1" <?php print("value=\"$green\"") ?>>Verde<br>
-			<input type="range" name="blu" min="0" max="255" step="1" <?php print("value=\"$blue\"") ?>>Blu<br>
+			<input type="range" name="rosso" min="0" max="255" step="1" <?php print("value=\"$red\"") ?>><font color=<?php printf("\"#%02X0000\"",$red)?>>Rosso</font><br>
+			<input type="range" name="verde" min="0" max="255" step="1" <?php print("value=\"$green\"") ?>><font color=<?php printf("\"#00%02X00\"",$green)?>>Verde</font><br>
+			<input type="range" name="blu" min="0" max="255" step="1" <?php print("value=\"$blue\"") ?>><font color=<?php printf("\"#0000%02X\"",$blue)?>>Blu</font><br>
 			<input type="submit" value="Go!">
 		</form>
 		
@@ -129,6 +129,7 @@
 			print("</div>");
 			$num_capitolo=capitolo("info");
 		?>
+
 		<a href="http://php.net/manual/it/function.printf.php" target="_blank">PHP printf()</a><br>
 		<a href="http://php.net/manual/it/function.sprintf.php" target="_blank">PHP sprintf()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
