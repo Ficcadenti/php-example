@@ -102,7 +102,7 @@
 
 			$val3="Ciao Raffaele e Valeria";
 			$arr_val3=(array)$val3;
-			println($arr_val3[0]);
+			println("--> $arr_val3[0]");
 
 			$obj_val3=(object)$val3;
 			var_dump($obj_val3);

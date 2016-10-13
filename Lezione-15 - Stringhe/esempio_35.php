@@ -127,6 +127,128 @@
 			print("<div id=\"m70\">");
 			printf("RGB(%d,%d,%d): <font color=\"#%02x%02x%02x\">#%02X%02X%02X</font><br>",$red,$green,$blue,$red,$green,$blue,$red,$green,$blue);
 			print("</div>");
+
+			$num_capitolo=capitolo("Allineamento");
+			
+			$prodotti=array(
+					"Latte"=>"1.84",
+					"Pane"=>"2,1",
+					"Marmellata"=>"5,12");
+
+			print("<div id=\"m70\">");
+				print("<pre>");
+				printf("%-20s%23s\n","Prodotto","Prezzo");
+				printf("%'-43s\n","");
+				foreach ($prodotti as $key => $value) 
+				{
+					$str=sprintf("%-20s%23.2f\n",$key,$value);
+					print($str);
+				}
+				print("</pre>");
+			print("</div>");
+
+			$num_capitolo=capitolo("Analisi di stringhe");
+			$str="raffaele.ficcadenti@gmail.com";
+			$str1="raff";
+			$len=strlen($str);
+
+			print("<div id=\"m70\">");
+				for($i=0;$i<$len;$i++)
+				{
+					printf("%d => %s<br>",$i,$str[$i]);
+				}
+
+				println();
+				$res=strstr($str,$str1,true);
+
+				if($res===false)
+				{
+					printf("La stringa %s NON è presente in %s<br>",$str1,$str);
+				}
+				else
+				{
+					printf("La stringa '%s' è presente in '%s' prima di lei c'è: '%s'<br>",$str1,$str,$res);
+				}
+
+				$res=stristr($str,$str1);
+				if($res)
+				{
+					printf("La stringa '%s' è presente in '%s' dopo di lei(inclusa) c'è: '%s'<br>",$str1,$str,$res);
+				}
+				else
+				{
+					printf("La stringa %s NON è presente in %s<br>",$str1,$str);
+				}
+
+				$pos=strpos($str,$str1);
+
+				if(($pos)||($pos===0))
+				{
+					printf("La stringa '%s' è presente in '%s' alla posizione %d<br>",$str1,$str,$pos);
+				}
+				else
+				{
+					printf("La stringa %s NON è presente in %s<br>",$str1,$str);
+				}
+
+				$pos_start=20;
+				$n_char=5;
+				$str2=substr($str,$pos_start);
+				printf("Substring di %s a partire dalla posizione %d: '%s'<br>",$str,$pos_start,$str2);
+
+				$str2=substr($str,$pos_start,$n_char);
+				printf("Substring di %s a partire dalla posizione %d e di %d caratteri: '%s'<br>",$str,$pos_start,$n_char,$str2);
+
+				$str4="Raffaele-,Valeria-,Sofia-,Maria-,Gabriele-,Francesco";
+				$str_delimitatore="-,";
+
+				$parola=strtok($str4, $str_delimitatore);
+
+				while (is_string($parola))
+				{
+					printf("%s<br>",$parola);
+					$parola=strtok($str_delimitatore);
+				}
+
+				$str5="                Io Sono Piena di Spazi      ";
+
+				print("<pre>");
+				printf("[%s]\n",$str5);
+				$str5=ltrim($str5);
+				printf("ltrim->[%s]\n",$str5);
+				$str5=rtrim($str5);
+				printf("rtrim->[%s]\n",$str5);
+				print("</pre>");
+
+				$str6="valeria5.greco@e-tech.net";
+				$pos=15;
+				$n_char=10;
+
+				$str_temp=substr_replace($str6, "gmail.com", $pos,$n_char);
+				printf("La vecchia stringa '%s' è diventata '%s'<br>",$str6,$str_temp);
+
+				$str_temp=str_replace("a","A",$str6);
+				$str_temp=str_replace("e","E",$str_temp);
+				printf("La vecchia stringa '%s' è diventata '%s'<br>",$str6,$str_temp);
+
+				$str7="HTTP://WWW.RAFFAELEFICCADENTI.IT";
+				$str_temp=strtolower($str7);
+				printf("La vecchia stringa '%s' è diventata <a href=\"%s\" target=\"_blank\">%s</a><br>",$str7,$str_temp,$str_temp);
+				$str7=strtoupper($str_temp);
+				printf("La nuova stringa '%s' è tornata <a href=\"%s\" target=\"_blank\">%s</a><br>",$str_temp,strtolower($str7),$str7);
+				println();
+				
+				$str4="Raffaele Valeria Sofia Maria Gabriele Francesco";
+				$str_delimitatore=" ";
+				$str_array=explode($str_delimitatore,$str4);
+
+				foreach ($str_array as $key => $value) 
+				{
+					printf("%d => %s<br>",$key,$value);
+				}
+
+			print("</div>");
+
 			$num_capitolo=capitolo("info");
 		?>
 

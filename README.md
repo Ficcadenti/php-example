@@ -3,7 +3,8 @@
 <br>
 (c) 09/2016 - Raffaele Ficcadenti (raffaele.ficcadenti@gmail.com) <br>
 Ho cercato di raccogliere in questo repository, le basi della programmazione PHP.
-Per ogni correzione o suggerimento, non esitate a scrivermi.
+Per ogni correzione o suggerimento, non esitate a scrivermi.<br>
+Se volete provare ogni singolo esempio andate sul mio sito <a href="http://www.raffaeleficcadenti.it/">www.raffaeleficcadenti.it</a> nella sezione: <a href="http://www.raffaeleficcadenti.it/components/corso_php.php?lang=it">i miei sviluppi/Corso PHP</a>.<br>
 Buon 'coding'.
 Raffaele.
 <p>
@@ -180,6 +181,13 @@ Raffaele.
 		<ul>
 			<br>
 			<li><b>esempio_35.php</b>: Formattazione.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 16</strong> - Espressioni regolari.
+		<ul>
+			<br>
+			<li><b>esempio_36.php</b>: Esempio.</li>
 			<br>
 		</ul>
 	</li>
