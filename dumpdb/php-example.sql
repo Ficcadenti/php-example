@@ -32,7 +32,7 @@ CREATE TABLE `tab_01` (
   `e-mail` varchar(45) DEFAULT NULL,
   `Telefono` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,33 @@ LOCK TABLES `tab_01` WRITE;
 /*!40000 ALTER TABLE `tab_01` DISABLE KEYS */;
 INSERT INTO `tab_01` VALUES (1,'Raffaele','Ficcadenti','raffaele.ficcadenti@gmail.com','3404020010');
 /*!40000 ALTER TABLE `tab_01` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tab_contvisite`
+--
+
+DROP TABLE IF EXISTS `tab_contvisite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tab_contvisite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_visit` int(11) DEFAULT NULL,
+  `last_visit` int(11) DEFAULT NULL,
+  `num_visit` int(11) DEFAULT NULL,
+  `total_duration` int(11) DEFAULT NULL,
+  `total_clicks` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabella di esempio per contare le visite di un sito';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tab_contvisite`
+--
+
+LOCK TABLES `tab_contvisite` WRITE;
+/*!40000 ALTER TABLE `tab_contvisite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tab_contvisite` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -62,4 +89,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-20 10:04:16
+-- Dump completed on 2016-10-18 13:38:52

@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_36.html
+	# esempio_39.html
 	# 
 	# 
 	# AUTHORS:
@@ -11,12 +11,14 @@
 	# 
 	# HISTORY:
 	# -[Date]-      -[Who]-               -[What]-
-	# 13-10-2016    Ficcadenti Raffaele         
+	# 18-10-2016    Ficcadenti Raffaele         
 	# -
 	#
 -->
 <?php
 	date_default_timezone_set('UTC');
+	setcookie("nome_cookie","Raffaele",time()-60,"/","localhost",0);
+
 	print("<br>");
 
 	if( (include("../assets/lib/my_lib.php")) == 'success' ) 
@@ -71,6 +73,7 @@
 		$PARAMS=$_POST;
 	}
 
+
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
@@ -102,7 +105,7 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_36.html</title>
+		<title>sorgente: esempio_39.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -112,70 +115,24 @@
 	<body>
 		<?php
 			
-			$num_capitolo=capitolo("Espressioni regolari PCRE");
+			$num_capitolo=capitolo("Cookie");
 			print("<div id=\"m70\">");
-			$str="Raffaele aFiccadenti Ficcadenti Ficcadenti";
 			
-			$arr=array();
-
-			$str_serach="/a.e/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/c.d/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/R.*i/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/R.*?i/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/f.+i/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/R\w+e/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/F\w+i/";
-			preg_match($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="/\bF\w+i\b/";
-			preg_match_all($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str="Raffaele 14-08-1976, Valeria 21-05-1976, Sofia 26-10-2007";
-			$str_serach="/\d+-\d+-\d+/";
-			preg_match_all($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
+				if(isset($_COOKIE['nome_cookie']))
+				{
+					$nome=$_COOKIE['nome_cookie'];
+					println("nome_cookie=$nome");
+				}
+				else
+				{
+					println("Cokie non settato");
+				}
 			
-			$str_serach="/(\d+)-(\d+)-(\d+)/";
-			preg_match_all($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str_serach="|(\d+)-(\d+-\d+)|";
-			preg_match_all($str_serach,$str,$arr);
-			stampaArray($str_serach,$str,$arr);
-
-			$str="Raffaele aFiccadenti Ficcadenti Ficcadenti";
-			$str_serach="/\bF\w+i\b/";
-			$t=preg_replace($str_serach,"FICCADENI",$str);
-			printf("Replace '%s' in '%s'<br>",$str,$t);
 			print("</div>");
 			
 			$num_capitolo=capitolo("info");
 		?>
 
-		<a href="http://localhost/php-example/Lezione-16%20-%20Le%20espressioni%20regolari/PCRE1.php" target="_blank">PCRE tabella n1</a><br>
-		<a href="http://localhost/php-example/Lezione-16%20-%20Le%20espressioni%20regolari/PCRE2.php" target="_blank">PCRE tabella n2</a><br>
-		<a href="http://php.net/manual/en/function.preg-match.php" target="_blank">preg_match()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>

@@ -187,7 +187,18 @@ Raffaele.
 	<li><strong>LEZIONE N. 16</strong> - Espressioni regolari.
 		<ul>
 			<br>
-			<li><b>esempio_36.php</b>: Esempio.</li>
+			<li><b>esempio_36.php</b>: Espressioni regolari PCRE.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 17</strong> - Salvataggio dello stato, cookie e stringhe di query.
+		<ul>
+			<br>
+			<li><b>esempio_37.php</b>: Settare un cookie.</li>
+			<br>
+			<li><b>esempio_38.php</b>: Eliminare un cookie.</li>
+			<br>
+			<li><b>esempio_39.php</b>: Contatore visite sito.</li>
 			<br>
 		</ul>
 	</li>
