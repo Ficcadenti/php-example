@@ -16,6 +16,12 @@
 	#
 -->
 <?php
+	$db_connection=FALSE;
+	$name_db="";
+	$name_tab="";
+	$slengh=300; //5min in secondi;
+
+
 	date_default_timezone_set('UTC');
 	setcookie("nome_cookie","Raffaele",time()-60,"/","localhost",0);
 
@@ -55,6 +61,14 @@
 	{
 		echo "<font color=\"red\">$type : $str </font><br>";
 	}
+
+	function stampaErrorreDB()
+	{
+		global $db_connection;	
+		echo "<font color=\"red\">Error  : " . $db_connection->errno . "</font><br>";
+		echo "<font color=\"red\">Message: " . $db_connection->error . "</font><br>";
+	}
+
 	function str_bool($val)
 	{
 		$str="false";
@@ -101,6 +115,65 @@
 		println();
 	}
 
+	function preparaInsert($name_tab,$record)
+	{
+		$query="INSERT INTO $name_tab(";
+
+		foreach ($record as $key => $value) 
+		{
+			$query=$query."`".$key."`,";
+		}
+		$query=substr($query,0,strlen($query)-1);
+		$query=$query.") values (";
+		foreach ($record as $key => $value) 
+		{
+			$query=$query."'".$value."',";
+		}
+		$query=substr($query,0,strlen($query)-1);
+		$query=$query.")";
+
+		println ("QUERY=$query");
+		return $query;
+	}
+
+	function nuovoUtente($db_connection,$name_tab)
+	{
+		$id=-1;
+		$query="";
+		$result=true;
+		$tab_col=array(
+					"first_visit" => 0,
+					"last_visit" => 0,
+					"num_visit" => 0,
+					"total_duration" => 0,
+					"total_clicks" => 0
+				);
+
+		/* Setto il nuovo utente*/
+		$tab_col["first_visit"]=time();
+		$tab_col["last_visit"]=time();
+		$tab_col["num_visit"]=1;
+		$tab_col["total_duration"]=0;
+		$tab_col["total_clicks"]=0;
+
+		$query=preparaInsert($name_tab,$tab_col);
+
+		$result=$db_connection->query($query);
+
+		if($result)
+		{
+			$id=$db_connection->insert_id;
+			println("Record inserito con id=$id");
+		}
+		else
+		{
+			stampaErrorreDB();
+		}
+
+		return $id;
+	}
+
+
 ?>
 
 <hmtl>
@@ -114,19 +187,60 @@
 	</head>
 	<body>
 		<?php
-			
-			$num_capitolo=capitolo("Cookie");
+			$visit_id=0;
+			$num_capitolo=capitolo("Contatore visite");
+			$CONNECTED=false;
+			$record=array();
+			$name_db="phpexample";
+			$name_tab="tab_contvisite";
+			$tab_col=array(
+					"id" => 0,
+					"first_visit" => 0,
+					"last_visit" => 0,
+					"num_visit" => 0,
+					"total_duration" => 0,
+					"total_clicks" => 0
+				);
+
+
+			mysqli_report(MYSQLI_REPORT_STRICT);
+
 			print("<div id=\"m70\">");
 			
-				if(isset($_COOKIE['nome_cookie']))
+				try
 				{
-					$nome=$_COOKIE['nome_cookie'];
-					println("nome_cookie=$nome");
+					$CONNECTED = true;
+					$db_connection = new mysqli("localhost","root","raffo",$name_db);
+					
+					println("Connessione MySQLi OK!!!!");
+					println("DB Name : $name_db");
+					println("Tabella : $name_tab");
+					println();
+					
 				}
-				else
+				catch (Exception $e ) 
 				{
-					println("Cokie non settato");
+					$CONNECTED = false;
+				    echo "<font color=\"red\">Error  : " . $e->getCode() . "</font><br>";
+				    echo "<font color=\"red\">Message: " . $e->getMessage() . "</font><br>";
 				}
+
+				if($CONNECTED)
+				{
+					/* Controllo l'esistenza del cookie */
+					if(isset($_COOKIE['visit_id']))
+					{
+						$visit_id=$_COOKIE['visit_id'];
+						println("Benvenuto nuovamente visit_id=$visit_id");
+					}
+					else
+					{
+						println("Benvenuto nuovo utente");
+						$new_id=nuovoUtente($db_connection,$name_tab);
+						setcookie("visit_id",$new_id,time()+(60*60*24*356*10),"/"); //cookie di 10anni
+					}
+				}
+
 			
 			print("</div>");
 			
