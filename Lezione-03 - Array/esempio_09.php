@@ -238,6 +238,11 @@
 				"Gabriele"=>8
 			);
 
+		$new_val=array(
+				"Francesco"=>11
+			);
+		$array4=array_merge($array4, $new_val);
+
 		$functionHolder("ASort",$num_capitolo);
 		asort($array4); /* array_asort */
 		foreach ($array4 as $key => $value) 

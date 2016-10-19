@@ -91,26 +91,11 @@
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
-	function stampaArray($str_serach,$str,$arr)
+	function stampaArray($arr)
 	{
-		printf("Stringa di partenza : %s<br>",$str);
-		printf("Espressione regolare: %s<br>",$str_serach);
-		printf("Risultato: <br>");
 		foreach ($arr as $key => $value) 
 		{
-			printf("-------------------------------<br>");
-			if(is_array($value))
-			{
-				foreach ($value as $key1 => $value1) 
-				{
-					printf("Elemento[%d][%d] => %s<br>",$key,$key1,$value1);		
-				}
-			}
-			else
-			{
-				printf("Elemento[%d] => %s<br>",$key,$value);
-			}
-			printf("-------------------------------<br>");
+			println("$key => $value");
 		}
 		println();
 	}
@@ -134,6 +119,62 @@
 
 		println ("QUERY=$query");
 		return $query;
+	}
+
+	function vecchioUtente($db_connection,$name_tab,$id)
+	{
+		global $slengh;
+		$new_id=0;
+		$query="SELECT * FROM $name_tab where id=$id";
+		//println("$query");
+		$result = $db_connection->query($query);
+			
+		if($result)
+		{
+			$nrow=$result->num_rows;
+
+			if(!$nrow) //nuovo utente
+			{
+				return nuovoUtente($db_connection,$name_tab);
+			}
+			else
+			{
+				while($row = $result->fetch_assoc())
+				{
+					//stampaArray($row);
+					
+					$row["total_clicks"]++;
+
+					if($row["last_visit"]+$slengh > time())
+					{
+						//println("Ancora in sessione ".($row["last_visit"]+$slengh)." > ".time());
+						$row["total_duration"]=(time()-$row["last_visit"]);
+					}
+					else
+					{
+						//println("Nuova visita ");
+						$row["num_visit"]++;
+					}	
+
+					//stampaArray($row);
+
+					$query="UPDATE $name_tab SET last_visit='".time()."', num_visit='".$row["num_visit"]."',total_duration='".$row["total_duration"]."', total_clicks='".$row["total_clicks"]."'  WHERE id=$id";
+					//println("$query");
+
+					$result=$db_connection->query($query);
+					if(!$result)
+					{
+						stampaErrorreDB();
+					}
+					return $row;
+				}
+
+				
+			}
+			
+		}
+
+		return $new_id;
 	}
 
 	function nuovoUtente($db_connection,$name_tab)
@@ -164,13 +205,30 @@
 		{
 			$id=$db_connection->insert_id;
 			println("Record inserito con id=$id");
+
 		}
 		else
 		{
 			stampaErrorreDB();
 		}
 
-		return $id;
+		setcookie("visit_id",$new_id,time()+(60*60*24*356*10),"/"); //cookie di 10anni
+
+		return $tab_col;
+	}
+
+	function outputStats()
+	{
+		global $user_stats;
+		$click=sprintf("%.2f",($user_stats["total_clicks"]/$user_stats["num_visit"]));
+		$durata=sprintf("%.2f",($user_stats["total_duration"]/$user_stats["num_visit"]));
+		print("<div id=\"m70\">");
+		
+		println("Ciao il tuo id è: $user_stats[id]");
+		println("Hai visitato il sito $user_stats[num_visit] volte");
+		println("Media di click per visita: $click");
+		println("Durata media delle visite: $durata");
+		print("</div>");
 	}
 
 
@@ -188,6 +246,7 @@
 	<body>
 		<?php
 			$visit_id=0;
+			$user_stats=array();
 			$num_capitolo=capitolo("Contatore visite");
 			$CONNECTED=false;
 			$record=array();
@@ -232,18 +291,20 @@
 					{
 						$visit_id=$_COOKIE['visit_id'];
 						println("Benvenuto nuovamente visit_id=$visit_id");
+						$user_stats=vecchioUtente($db_connection,$name_tab,$visit_id);
 					}
 					else
 					{
 						println("Benvenuto nuovo utente");
-						$new_id=nuovoUtente($db_connection,$name_tab);
-						setcookie("visit_id",$new_id,time()+(60*60*24*356*10),"/"); //cookie di 10anni
+						$user_stats=nuovoUtente($db_connection,$name_tab);
 					}
 				}
 
 			
 			print("</div>");
-			
+			$num_capitolo=capitolo("Statistiche");
+			outputStats();
+
 			$num_capitolo=capitolo("info");
 		?>
 

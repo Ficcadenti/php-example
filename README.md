@@ -200,6 +200,15 @@ Raffaele.
 			<br>
 			<li><b>esempio_39.php</b>: Contatore visite sito.</li>
 			<br>
+			<li><b>esempio_40.php</b>: Le stringhe di interrogazione.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 18</strong> - Salvataggio dello stato, sessioni.
+		<ul>
+			<br>
+			<li><b>esempio_41.php</b>: Esempio.</li>
+			<br>
 		</ul>
 	</li>
 </ul>
