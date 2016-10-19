@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_41.html
+	# esempio_42.html
 	# 
 	# 
 	# AUTHORS:
@@ -18,7 +18,6 @@
 <?php
 	$path_parts=pathinfo($_SERVER['SCRIPT_FILENAME']);
 	session_save_path(realpath($path_parts["dirname"]));
-
 	session_start();
 	date_default_timezone_set('UTC');
 	
@@ -80,9 +79,9 @@
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
-	function stampaArray($arr)
+	function stampaArray($str_serach,$str,$arr)
 	{
-		foreach ($arr as $key => $value) 
+		foreach ($value as $key => $value) 
 		{
 			println("$key => $value");		
 		}
@@ -92,7 +91,7 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_41.html</title>
+		<title>sorgente: esempio_42.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -101,26 +100,22 @@
 	</head>
 	<body>
 		<?php
-			$var1=10;
-			$var2=20;
-			$num_capitolo=capitolo("Sessioni");
-			print("<div id=\"m70\">");
-			$_SESSION['var1'] = $var1;
-			$_SESSION['var2'] = $var2;
-			$_SESSION['var2'] = 50;
-			println("Benvenuto, il tuo session_id è: ".session_id());
-			println("Session encode: ".session_encode());
-			println("Session path: ".session_save_path());
 
-			
+			$num_capitolo=capitolo("Read sessioni");
+			$spath=realpath(dirname($_SERVER['DOCUMENT_ROOT']));
+			print("<div id=\"m70\">");
+				
+			$var1=$_SESSION['var1'];
+			$var2=$_SESSION['var2'];
+			println("Benvenuto il tuo session_id è: ".session_id());
+			println("var1=$var1; var2=$var2");
+			println("Session path: ".$spath);
+
 			print("</div>");
 			
 			$num_capitolo=capitolo("info");
 		?>
 
-
-		<a href="http://www.html.it/articoli/sessioni-php-cosa-sono-come-si-usano-1/" target="_blank">Sessioni HTML.it<span class="dotcom">.com</span></a><br>
-		<a href="http://php.net/manual/en/ref.session.php" target="_blank">PHP Sessioni<span class="dotcom">.com</span></a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>

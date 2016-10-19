@@ -207,7 +207,9 @@ Raffaele.
 	<li><strong>LEZIONE N. 18</strong> - Salvataggio dello stato, sessioni.
 		<ul>
 			<br>
-			<li><b>esempio_41.php</b>: Esempio.</li>
+			<li><b>esempio_41.php</b>: Aprire una sessione.</li>
+			<br>
+			<li><b>esempio_42.php</b>: Leggere parametri di una sessione.</li>
 			<br>
 		</ul>
 	</li>
