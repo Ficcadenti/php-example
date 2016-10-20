@@ -79,9 +79,9 @@
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
 	println();
 
-	function stampaArray($str_serach,$str,$arr)
+	function stampaArray($arr)
 	{
-		foreach ($value as $key => $value) 
+		foreach ($arr as $key => $value) 
 		{
 			println("$key => $value");		
 		}
@@ -107,12 +107,16 @@
 				
 			$var1=$_SESSION['var1'];
 			$var2=$_SESSION['var2'];
+			$prodotti=$_SESSION['prodotti'];
 			println("Benvenuto il tuo session_id è: ".session_id());
 			println("var1=$var1; var2=$var2");
 			println("Session path: ".$spath);
-
+			println("Nel tuo carrello ci sono:");
+			stampaArray($prodotti);
 			print("</div>");
 			
+			
+
 			$num_capitolo=capitolo("info");
 		?>
 

@@ -103,11 +103,22 @@
 		<?php
 			$var1=10;
 			$var2=20;
+			
+			if (isset($PARAMS["prodotti"])) 
+			{
+				$prodotti=$PARAMS["prodotti"];
+			}
+			else
+			{
+				$prodotti=array();
+			}
+	
 			$num_capitolo=capitolo("Sessioni");
 			print("<div id=\"m70\">");
 			$_SESSION['var1'] = $var1;
 			$_SESSION['var2'] = $var2;
 			$_SESSION['var2'] = 50;
+			$_SESSION['prodotti'] = $prodotti;
 			println("Benvenuto, il tuo session_id è: ".session_id());
 			println("Session encode: ".session_encode());
 			println("Session path: ".session_save_path());
@@ -118,6 +129,15 @@
 			$num_capitolo=capitolo("info");
 		?>
 
+		<form action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
+			<select name="prodotti[]" multiple size=3>
+				<option>HD 3GB</option>
+				<option>microSD 128GB</option>
+				<option>Libro PHP</option>
+			</select>
+			<br>
+			<input type="submit" value="Ordina!">
+		</form>
 
 		<a href="http://www.html.it/articoli/sessioni-php-cosa-sono-come-si-usano-1/" target="_blank">Sessioni HTML.it<span class="dotcom">.com</span></a><br>
 		<a href="http://php.net/manual/en/ref.session.php" target="_blank">PHP Sessioni<span class="dotcom">.com</span></a><br>
