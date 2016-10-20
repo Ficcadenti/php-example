@@ -113,10 +113,33 @@
 			println("Session path: ".$spath);
 			println("Nel tuo carrello ci sono:");
 			stampaArray($prodotti);
+			var_dump($_SESSION);
+			$data_orig=session_encode();
+			println();
+
+			unset($_SESSION['prodotti']);
+
+			$data=session_encode();
+			println("sessione=$data");
+
+			session_decode($data);
+			println();
+			var_dump($_SESSION);
+
+			if (isset($_SESSION["prodotti"])) 
+			{
+				$prodotti1=$_SESSION["prodotti"];
+			}
+			else
+			{
+				$prodotti1=array();
+			}
+			stampaArray($prodotti1);
+			session_decode($data_orig);
 			print("</div>");
 			
 			
-
+			session_destroy();
 			$num_capitolo=capitolo("info");
 		?>
 
