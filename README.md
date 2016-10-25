@@ -224,6 +224,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_46.php</b>: Un esempio interattivo.</li>
 			<br>
+			<li><b>esempio_47.php</b>: Richiamare uno script Perl.</li>
+			<br>
 		</ul>
 	</li>
 </ul>
