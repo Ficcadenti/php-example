@@ -213,4 +213,11 @@ Raffaele.
 			<br>
 		</ul>
 	</li>
+	<li><strong>LEZIONE N. 19</strong> - Ambiente server.
+		<ul>
+			<br>
+			<li><b>esempio_43.php</b>: Esempio.</li>
+			<br>
+		</ul>
+	</li>
 </ul>
