@@ -101,16 +101,21 @@
 		<?php
 
 			$num_capitolo=capitolo("Ambiente server.");
-			$command="dir";
+			paragrafo("Lettura.",$num_capitolo);
+			$command="";
+			$prodotti=array(
+				array("S7",100,"bianco"),
+				array("i7",300,"nero")
+				);
 
 			if($sys == "LINUX")
-		    {
-		        $command="ls";
-		    }
-		    else if(substr($sys,0,3) == "WIN")
-		    {
-		        $command="dir";
-		    }
+			{
+			    $command="who";
+			}
+			else if(substr($sys,0,3) == "WIN")
+			{
+			    $command="dir";
+			}
 
 			$handle = popen($command, "r");
 			print("<div id=\"m70\">");
@@ -125,9 +130,37 @@
 
 			pclose($handle);
 			print("</pre></div>");
+			
+			paragrafo("Scrittura.",$num_capitolo);
+			print("<div id=\"m70\">");
+			
+			if($sys == "LINUX")
+			{
+				$command="column -tc 3 -s / > tab.txt";
+				println("Comando da eseguire: '$command'");
+				$handle = popen($command, "w");
+				foreach($prodotti as $key) 
+				{
+				      var_dump($key);
+				      fputs($handle,join("/",$key)."\n");
+				}
+				pclose($handle);
+			}
+			else 
+			{
+				$command="dir > tab.txt";
+				println("Comando da eseguire: '$command'");
+				$handle = popen($command, "w");
+				pclose($handle);
+			}
+			  
+			print("</div>");
+			
+			
 			$num_capitolo=capitolo("info");
 		?>
 
+		<a href="http://php.net/manual/en/function.implode.php" target="_blank">PHP join()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>
