@@ -74,7 +74,9 @@
 
 
 	println("<strong>Codice sorgente: </strong>".$_SERVER["PHP_SELF"]);
-	println();
+	$sys = strtoupper(PHP_OS);
+	println("OS: $sys");
+	
 
 	function stampaArray($arr)
 	{
@@ -99,8 +101,21 @@
 		<?php
 
 			$num_capitolo=capitolo("Ambiente server.");
-			$handle = popen("dir", "r");
-			print("<div id=\"m70\"><pre>");
+			$command="dir";
+
+			if($sys == "LINUX")
+		    {
+		        $command="ls";
+		    }
+		    else if(substr($sys,0,3) == "WIN")
+		    {
+		        $command="dir";
+		    }
+
+			$handle = popen($command, "r");
+			print("<div id=\"m70\">");
+			println("Comando da eseguire: '$command'");
+			print("<pre>");
 				
 			while (!feof($handle))
 			{
