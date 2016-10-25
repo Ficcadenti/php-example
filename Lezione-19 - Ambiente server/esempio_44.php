@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_43.html
+	# esempio_44.html
 	# 
 	# 
 	# AUTHORS:
@@ -11,7 +11,7 @@
 	# 
 	# HISTORY:
 	# -[Date]-      -[Who]-               -[What]-
-	# 24-10-2016    Ficcadenti Raffaele         
+	# 25-10-2016    Ficcadenti Raffaele         
 	# -
 	#
 -->
@@ -90,7 +90,7 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_43.html</title>
+		<title>sorgente: esempio_44.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -101,7 +101,7 @@
 		<?php
 
 			$num_capitolo=capitolo("Ambiente server.");
-			paragrafo("Lettura.",$num_capitolo);
+			paragrafo("exec().",$num_capitolo);
 			$command="";
 			$prodotti=array(
 				array("S7",100,"bianco"),
@@ -110,57 +110,32 @@
 
 			if($sys == "LINUX")
 			{
-			    $command="who";
+			    $command="ls -al";
 			}
 			else if(substr($sys,0,3) == "WIN")
 			{
-			    $command="dir";
+			    $command="dir /Q";
 			}
 
-			$handle = popen($command, "r");
-			print("<div id=\"m70\">");
+			
+			print("<div id=\"m70\"><pre>");
 			println("Comando da eseguire: '$command'");
-			print("<pre>");
-				
-			while (!feof($handle))
+			exec(escapeshellcmd($command),$output,$return);
+			println("Return: '$return'");
+			foreach ($output as $key => $value) 
 			{
-				$line=fgets($handle,1024);
-				print(htmlspecialchars($line));
+				println(htmlspecialchars($value));
 			}
-
-			pclose($handle);
-			print("</pre></div>");
 			
-			paragrafo("Scrittura.",$num_capitolo);
-			print("<div id=\"m70\">");
-			
-			if($sys == "LINUX")
-			{
-				$command="column -tc 3 -s / > tab.txt";
-				println("Comando da eseguire: '$command'");
-				$handle = popen($command, "w");
-				foreach($prodotti as $key) 
-				{
-				      var_dump($key);
-				      fputs($handle,join("/",$key)."\n");
-				}
-				pclose($handle);
-			}
-			else 
-			{
-				$command="dir .. > tab.txt";
-				println("Comando da eseguire: '$command'");
-				$handle = popen($command, "w");
-				pclose($handle);
-			}
-			  
 			print("</div>");
+			
 			
 			
 			$num_capitolo=capitolo("info");
 		?>
 
-		<a href="http://php.net/manual/en/function.implode.php" target="_blank">PHP join()</a><br>
+		<a href="http://php.net/manual/en/book.exec.php" target="_blank">PHP exec()</a><br>
+		<a href="http://php.net/manual/en/function.escapeshellcmd.php" target="_blank">PHP escapeshellcmd()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>

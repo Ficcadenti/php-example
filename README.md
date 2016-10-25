@@ -216,7 +216,11 @@ Raffaele.
 	<li><strong>LEZIONE N. 19</strong> - Ambiente server.
 		<ul>
 			<br>
-			<li><b>esempio_43.php</b>: Esempio.</li>
+			<li><b>esempio_43.php</b>: Utilizzo di popen().</li>
+			<br>
+			<li><b>esempio_44.php</b>: Utilizzo di exec().</li>
+			<br>
+			<li><b>esempio_45.php</b>: Utilizzo di system().</li>
 			<br>
 		</ul>
 	</li>
