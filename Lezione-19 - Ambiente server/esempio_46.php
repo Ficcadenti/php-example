@@ -103,41 +103,53 @@
 			$num_capitolo=capitolo("Ambiente server.");
 			paragrafo("exec().",$num_capitolo);
 
-			if (isset($PARAMS["comando"])) 
+			print("<div id=\"m70\">");
+			if (!isset($PARAMS["comando"])) 
 			{
-				$command=$PARAMS["comando"];
+				println("Benvenuto su quest'esempio !!!!");
 			}
 			else
 			{
-				$command="";
-			}
+				$command=$PARAMS["comando"];	
 			
-			if($command!="")
-			{
-				print("<div id=\"m70\"><pre>");
-				println("Comando da eseguire: '$command'");
-				exec(escapeshellcmd($command),$output,$return);
-				if($return==1)
+				if($command!="")
 				{
-					stampaErrorre("ERRORE","Comando non supportato");
+					
+					println("Comando da eseguire: '$command'");
+					exec(escapeshellcmd($command),$output,$return);
+					print("<pre>");
+					if($return==1)
+					{
+						if( count($output)==0 )
+						{
+							stampaErrorre("ERRORE","Comando non supportato");
+						}
+						else
+						{
+
+							foreach ($output as $key => $value) 
+							{
+								println(htmlspecialchars($value));
+							}
+						}
+					}
+					else
+					{
+						foreach ($output as $key => $value) 
+						{
+							println(htmlspecialchars($value));
+						}
+					}
 				}
 				else
 				{
-					foreach ($output as $key => $value) 
-					{
-						println(htmlspecialchars($value));
-					}
+					stampaErrorre("INFO","Inserisci un comando da eseguire!!!");
 				}
-				print("</div>");
 			}
-			else
-			{
-				stampaErrorre("INFO","Inserisci un comando da eseguire!!!");
-			}
-			
+			print("</div>");
 		?>
 
-		<form action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
+		<form id="m70" action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
 			<input type="text" name="comando">
 			<input type="submit" value="Esegui">
 		</form>
