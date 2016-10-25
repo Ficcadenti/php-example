@@ -222,6 +222,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_45.php</b>: Utilizzo di system().</li>
 			<br>
+			<li><b>esempio_46.php</b>: Un esempio interattivo.</li>
+			<br>
 		</ul>
 	</li>
 </ul>

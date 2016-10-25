@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_45.html
+	# esempio_46.html
 	# 
 	# 
 	# AUTHORS:
@@ -90,7 +90,7 @@
 
 <hmtl>
 	<head>
-		<title>sorgente: esempio_45.html</title>
+		<title>sorgente: esempio_46.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
@@ -102,29 +102,49 @@
 
 			$num_capitolo=capitolo("Ambiente server.");
 			paragrafo("exec().",$num_capitolo);
-			$command="";
-			
-			if($sys == "LINUX")
-			{
-			    $command="ls -al";
-			}
-			else if(substr($sys,0,3) == "WIN")
-			{
-			    $command="dir /Q";
-			}
 
+			if (isset($PARAMS["comando"])) 
+			{
+				$command=$PARAMS["comando"];
+			}
+			else
+			{
+				$command="";
+			}
 			
-			print("<div id=\"m70\"><pre>");
-			println("Comando da eseguire: '$command'");
-			system(escapeshellcmd($command),$return);
-			println("Comando da eseguire: '$return'");
+			if($command!="")
+			{
+				print("<div id=\"m70\"><pre>");
+				println("Comando da eseguire: '$command'");
+				exec(escapeshellcmd($command),$output,$return);
+				if($return==1)
+				{
+					stampaErrorre("ERRORE","Comando non supportato");
+				}
+				else
+				{
+					foreach ($output as $key => $value) 
+					{
+						println(htmlspecialchars($value));
+					}
+				}
+				print("</div>");
+			}
+			else
+			{
+				stampaErrorre("INFO","Inserisci un comando da eseguire!!!");
+			}
 			
-			print("</div>");
-
-			$num_capitolo=capitolo("info");
 		?>
 
-		<a href="http://php.net/manual/en/book.exec.php" target="_blank">PHP system()</a><br>
+		<form action="<?php print($_SERVER["PHP_SELF"]) ?>" method="POST">
+			<input type="text" name="comando">
+			<input type="submit" value="Esegui">
+		</form>
+		<?php
+			$num_capitolo=capitolo("info");
+		?>
+		<a href="http://php.net/manual/en/book.exec.php" target="_blank">PHP exec()</a><br>
 		<a href="http://php.net/manual/en/function.escapeshellcmd.php" target="_blank">PHP escapeshellcmd()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>

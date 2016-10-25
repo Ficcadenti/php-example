@@ -103,10 +103,6 @@
 			$num_capitolo=capitolo("Ambiente server.");
 			paragrafo("exec().",$num_capitolo);
 			$command="";
-			$prodotti=array(
-				array("S7",100,"bianco"),
-				array("i7",300,"nero")
-				);
 
 			if($sys == "LINUX")
 			{

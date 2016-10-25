@@ -159,6 +159,7 @@
 			
 			$num_capitolo=capitolo("info");
 		?>
+		
 
 		<a href="http://php.net/manual/en/function.implode.php" target="_blank">PHP join()</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
