@@ -129,13 +129,15 @@
 			
 			println(qlink($param));
 				
-			print("</div>");
-			
-			$num_capitolo=capitolo("info");
+			print("</div>");	
 		?>
 		<p>
-			<a href="esempio_40.php?<?php print(qlink($param))?>" target="_blank">Go!</span></a><br>
+			<a href="esempio_40.php?<?php print(qlink($param))?>" target="_blank" id="m70">Go!</span></a><br>
 		<p>
+		<?php	
+
+			$num_capitolo=capitolo("info");
+		?>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>
