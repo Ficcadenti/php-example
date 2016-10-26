@@ -235,7 +235,7 @@ Raffaele.
 			<br>
 			<li><b>esempio_49.php</b>: File sorgente.</li>
 			<br>
-			<li><b>esempio_50.php</b>: Errori su log file.</li>
+			<li><b>esempio_50.php</b>: Errori su log file o email.</li>
 			<br>
 		</ul>
 	</li>

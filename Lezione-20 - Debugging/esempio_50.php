@@ -106,7 +106,7 @@
 			fopen("dsiausiasui","r");
 			error_log(date("d/m/Y H i")." ".__FILE__. " line: ".__LINE__." ".$php_errormsg,0); //errore su log file definito in php_ini 
 			error_log(date("d/m/Y H i")." ".__FILE__. " line: ".__LINE__." ".$php_errormsg,3,"my_error_log.txt"); //errore sul file: my_error_log.txt
-			//error_log(date("d/m/Y H i")." ".__FILE__. " line: ".__LINE__." ".$php_errormsg,1,"rficcad@e-tech.net"); //errore inviato per e-mail
+			error_log(date("d/m/Y H i")." ".__FILE__. " line: ".__LINE__." ".$php_errormsg,1,"rficcad@e-tech.net"); //errore inviato per e-mail
 			$val=10;
 			$val1="db1";
 			println("<p>yeb [dbhy] $val</p>");
