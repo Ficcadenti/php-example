@@ -174,6 +174,29 @@
 
 		return true;
 	}
+
+	function debug($line, $msg)
+	{
+		static $calls=1;
+		print("<p><hr>\n");
+		print("DEBUG $calls: Line $line: $msg<br>");
+		$args=func_get_args();
+		if(count($args) % 2)
+		{
+			print("Numero argomenti dispari");
+		}
+		else
+		{
+			for($x=2;$x<count($args);$x+=2)
+			{
+				print("&nbsp&nbsp; \$$args[$x] = ".$args[$x+1]);
+				print(" ... (".gettype($args[$x+1]).")<br>\n");
+
+			}
+		}
+		print("</hr></p>\n");
+		$calls++;
+	}
 		
 
 	$var = 'success';
