@@ -114,25 +114,11 @@
 			println($stringa);
 
 			// definizione dell'oggetto per il parsing
-			$j_obj = '{
-						  "home": "Html.it",
-						  "link": "http://www.html.it",
-						  "argomento": "Standard del web",
-						  "aree": [
-						    {
-						      "area": "CSS",
-						      "url": "http://css.html.it" 
-						    },   
-						    {
-						      "area": "Basic",
-						      "url": "http://basic.html.it"
-						    }
-						  ]
-						}';
+			$j_obj = '[{"home": "localhost"},{"home": "raffaeleficcadenti.it"}]';
 			$oggetto = json_decode($j_obj,true); //converte l'oggetto JSON in un array associativo
-
+			var_dump($oggetto);
 			// lettura dello stream JSON
-			println( $oggetto['link'] ); 
+			println( $oggetto[1]['home'] ); 
 
 			$string = file_get_contents("obj1.json");
 			$oggetto1 = json_decode($string);
@@ -149,6 +135,7 @@
 			$num_capitolo=capitolo("info");
 		?>
 
+		<a href="http://www.json.org/json-it.html" target="_blank">JSON</a><br>
 		<a href="http://php.net/manual/en/book.json.php" target="_blank">PHP json</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
