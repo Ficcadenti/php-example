@@ -239,4 +239,31 @@ Raffaele.
 			<br>
 		</ul>
 	</li>
+	<li><strong>LEZIONE N. 21</strong> - Eccezioni.
+		<ul>
+			<br>
+			<li><b>esempio_51.php</b>: Esempio 1.</li>
+			<br>
+			<li><b>esempio_52.php</b>: Esempio 2.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 22</strong> - PHP e JSON.
+		<ul>
+			<br>
+			<li><b>esempio_53.php</b>: Esempio 1.</li>
+			<br>
+			<li><b>esempio_54.php</b>: Esempio 2.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>APPENDICE</strong> - Alcuni esempi.
+		<ul>
+			<br>
+			<li><b>esempio_55.php</b>: Esempio 1 - Inviare e-mail.</li>
+			<br>
+			<li><b>esempio_56.php</b>: Esempio 2 - Upload file.</li>
+			<br>
+		</ul>
+	</li>
 </ul>

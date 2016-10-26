@@ -39,7 +39,7 @@
 
 	function println($str="") /* stampa riga incluso CR-LF*/
 	{
-		print("$str<br>");
+		print("$str<br>\n");
 	}
 
 	function swap(&$a,&$b) /* swap di 2 variabili */

@@ -5,7 +5,7 @@ USE `phpexample`;
 --
 -- Host: 127.0.0.1    Database: phpexample
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version 5.7.10-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -60,7 +60,7 @@ CREATE TABLE `tab_contvisite` (
   `total_duration` int(11) DEFAULT NULL,
   `total_clicks` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabella di esempio per contare le visite di un sito';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='Tabella di esempio per contare le visite di un sito';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,33 @@ CREATE TABLE `tab_contvisite` (
 
 LOCK TABLES `tab_contvisite` WRITE;
 /*!40000 ALTER TABLE `tab_contvisite` DISABLE KEYS */;
+INSERT INTO `tab_contvisite` VALUES (1,1476794771,1476871620,4,1,46),(2,1476794953,1476794953,1,0,0),(3,1476796088,1476796088,1,0,0),(4,1476796091,1476796091,1,0,0),(5,1476796092,1476796092,1,0,0),(6,1476796109,1476796109,1,0,0),(7,1476796207,1476871680,3,3,6);
 /*!40000 ALTER TABLE `tab_contvisite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tab_vincitori`
+--
+
+DROP TABLE IF EXISTS `tab_vincitori`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tab_vincitori` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `nazionali` varchar(20) NOT NULL,
+  `vittorie` int(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tab_vincitori`
+--
+
+LOCK TABLES `tab_vincitori` WRITE;
+/*!40000 ALTER TABLE `tab_vincitori` DISABLE KEYS */;
+INSERT INTO `tab_vincitori` VALUES (1,'Brasile',5),(2,'Italia',4),(3,'Germania',3),(4,'Argentina',2),(5,'Uruguay',2),(6,'Spagna',1),(7,'Francia',1),(8,'Inghilterra',1);
+/*!40000 ALTER TABLE `tab_vincitori` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-18 13:38:52
+-- Dump completed on 2016-10-26 15:14:19

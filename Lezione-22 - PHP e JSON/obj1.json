@@ -1,0 +1,15 @@
+{
+  "home": "Html.it",
+  "link": "http://www.html.it",
+  "argomento": "Standard del web",
+  "aree": [
+    {
+      "area": "CSS",
+      "url": "http://css.html.it" 
+    },   
+    {
+      "area": "Basic",
+      "url": "http://basic.html.it"
+    }
+  ]
+}
