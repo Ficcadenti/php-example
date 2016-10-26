@@ -228,4 +228,13 @@ Raffaele.
 			<br>
 		</ul>
 	</li>
+	<li><strong>LEZIONE N. 20</strong> - Debugging.
+		<ul>
+			<br>
+			<li><b>esempio_48.php</b>: Usare phpinfo().</li>
+			<br>
+			<li><b>esempio_49.php</b>: File sorgente.</li>
+			<br>
+		</ul>
+	</li>
 </ul>
