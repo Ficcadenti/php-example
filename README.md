@@ -251,13 +251,13 @@ Raffaele.
 	<li><strong>LEZIONE N. 22</strong> - PHP e JSON.
 		<ul>
 			<br>
-			<li><b>esempio_53.php</b>: Esempio 1.</li>
+			<li><b>esempio_53.php</b>: Encode & Decode.</li>
 			<br>
-			<li><b>esempio_54.php</b>: Esempio 2.</li>
+			<li><b>esempio_54.php</b>: Gestione degli errori.</li>
 			<br>
 		</ul>
 	</li>
-	<li><strong>APPENDICE</strong> - Alcuni esempi.
+	<li><strong>APPENDICE</strong> - Alcuni esempi pratici.
 		<ul>
 			<br>
 			<li><b>esempio_55.php</b>: Esempio 1 - Inviare e-mail.</li>
