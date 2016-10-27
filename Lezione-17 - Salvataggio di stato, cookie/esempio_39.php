@@ -203,7 +203,7 @@
 
 		if($result)
 		{
-			$id=$db_connection->insert_id;
+			$new_id=$db_connection->insert_id;
 			println("Record inserito con id=$id");
 
 		}

@@ -77,6 +77,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_10h.php</b>: Liste concatenate.</li>
 			<br>
+			<li><b>esempio_10i.php</b>: Serializzare oggetti.</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 5</strong> - File esterni.
@@ -242,9 +244,9 @@ Raffaele.
 	<li><strong>LEZIONE N. 21</strong> - Eccezioni.
 		<ul>
 			<br>
-			<li><b>esempio_51.php</b>: Esempio 1.</li>
+			<li><b>esempio_51.php</b>: Esempio.</li>
 			<br>
-			<li><b>esempio_52.php</b>: Esempio 2.</li>
+			<li><b>esempio_52.php</b>: Estendiamo la classe exception.</li>
 			<br>
 		</ul>
 	</li>
