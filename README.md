@@ -79,6 +79,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_10i.php</b>: Serializzare oggetti.</li>
 			<br>
+			<li><b>esempio_10l.php</b>: Metodi magici.</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 5</strong> - File esterni.
