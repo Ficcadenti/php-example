@@ -107,7 +107,7 @@
 		<?php
 			$num_capitolo=capitolo("info");
 		?>
-
+		
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>
