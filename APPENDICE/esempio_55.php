@@ -154,8 +154,8 @@
   			$headers  = "MIME-Version: 1.0". EOL;
   			$headers .= "From: " . $mittente . EOL;
   			$headers .= "Replay-to: " . $replay_to . EOL;
-  			$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-$mime_boundary\"". EOL. EOL;
-
+  			$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-$mime_boundary\"". EOL;
+  			$headers .= "Content-Transfer-Encoding: 8bit". EOL. EOL;
   			
 
 			// Metto il separatore
@@ -172,10 +172,10 @@
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
 				$msg .= $messaggio_plain . "". EOL. EOL;
 			// Metto il separatore
-			$msg .= "--PHP-alt-$mime_boundary". EOL;
+			/*$msg .= "--PHP-alt-$mime_boundary". EOL;
 				$msg .= "Content-Type: ".getMIME("HTML")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
-				$msg .= $messaggio_html . "". EOL. EOL;
+				$msg .= $messaggio_html . "". EOL. EOL;*/
 			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary--". EOL . EOL;
 

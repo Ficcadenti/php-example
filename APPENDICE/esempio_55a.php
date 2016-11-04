@@ -122,7 +122,6 @@
 			$mail->replyTo("Risposta <ficcadenti@asdc.asi.it>");
 
 			$mail->blocco(getMIME("TEXT"), "blocco1!!");
-			$mail->blocco(getMIME("TEXT"), "blocco2!!");
 			$mail->invia();
 			print("</div>\n");
 		?>

@@ -141,7 +141,7 @@
 		private function header()
 		{
 			$header = "MIME-Version: " . $this->mime . EOL;
-			$header .= "Content-Type: " . $this->content_type . "; boundary=\"--PHP-mixed-" . $this->boundary . "\"" . EOL;
+			$header .= "Content-Type: " . $this->content_type . "; boundary=\"PHP-mixed-" . $this->boundary . "\"" . EOL;
 			$header .= "Content-Transfer-Encoding: 8bit" . EOL;
 
 			if ($this->from != NULL) { $header .= "From: " . $this->from . EOL; }
@@ -172,6 +172,7 @@
 			}
 			$to = implode(", ", $this->to_mail);
 
+			$message .= "--PHP-alt-" . $this->boundary . "--" . EOL;
 			$message .= "--PHP-mixed-" . $this->boundary . "--" . EOL;
 			$this->printmail($this->header());
 			$this->printmail($message);
