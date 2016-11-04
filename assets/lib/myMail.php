@@ -29,7 +29,7 @@
 		public    $content;
 		protected $boundary;
 
-		public function MailBlock($content_type, $boundary, $content,$charset = "iso-8859-1", $c_t_encoding = "7bit")
+		public function MailBlock($content_type, $boundary, $content,$charset = "iso-8859-1", $c_t_encoding = "8bit")
 		{
 			$this->content_type = $content_type;
 			$this->charset = $charset;
@@ -42,8 +42,8 @@
 		{
 			$content = "--PHP-alt-" . $this->boundary . EOL;
 			$content .= "Content-Type: " . $this->content_type . "; charset=" . $this->charset . EOL;
-			$content .= "Content-Transfer-Encoding: " . $this->content_transfer_encoding . EOL;
-			$content .= $this->content . EOL;
+			$content .= "Content-Transfer-Encoding: " . $this->content_transfer_encoding . EOL . EOL;
+			$content .= $this->content . EOL. EOL;
 			//$content .= "--PHP-alt-" . $this->boundary . EOL;
 			return $content;
 		}
@@ -79,7 +79,7 @@
 			$content .= "Content-Transfer-Encoding: " . $this->content_transfer_encoding . EOL;
 			$content .= "Content-Description: " . $this->description . EOL;
 			$content .= "Content-Disposition: attachment; filename=\"" . $this->name . "\"" . EOL . EOL;
-			$content .= $this->content;
+			$content .= $this->content. EOL;
 			return $content;
 		}
 	}
@@ -105,10 +105,10 @@
 			$this->to_mail = array();
 			$this->object = $object;
 			$this->message = array();
-			$this->boundary = md5(time());
+			$this->boundary = md5(date('r', time()));
 			$this->content_type = $content_type;
 		}
-		public function blocco($content_type, $content, $charset = "iso-8859-1", $c_t_encoding = "7bit")
+		public function blocco($content_type, $content, $charset = "iso-8859-1", $c_t_encoding = "8bit")
 		{
 			$succ = count($this->message);
 			$this->message[$succ] = new MailBlock($content_type, $this->boundary, $content, $charset, $c_t_encoding);
@@ -162,6 +162,42 @@
 				println($str);
 		}
 
+		public function stampa()
+		{
+			$blocchi = count($this->message);
+
+			$message = "--PHP-mixed-" . $this->boundary . EOL;
+			$message .= "Content-Type: " . getMIME("ALT") . "; boundary=\"PHP-alt-" . $this->boundary . "\"" . EOL . EOL;
+
+			
+			for ($i = 0; $i < $blocchi; $i++)
+			{
+
+				if(($this->message[$i] instanceof Allegato)==FALSE)
+				{
+					$message .= $this->message[$i]; // Richiama il metodo __toString() di "MailBlock"
+				}
+			}
+			// Metto il separatore
+			$message .= "--PHP-alt-$this->boundary--". EOL . EOL;
+
+			for ($i = 0; $i < $blocchi; $i++)
+			{
+
+				if($this->message[$i] instanceof Allegato)
+				{
+					$message .= $this->message[$i]; // Richiama il metodo __toString() di "Allegato"
+				}
+			}
+			// Metto il separatore
+			$message .= "--PHP-mixed-$this->boundary--". EOL . EOL;
+
+			$to = implode(", ", $this->to_mail);
+
+			$this->printmail($this->header());
+			$this->printmail($message);
+		}
+
 		public function invia()
 		{
 			$message = "--PHP-mixed-" . $this->boundary . EOL;
@@ -170,14 +206,28 @@
 			$blocchi = count($this->message);
 			for ($i = 0; $i < $blocchi; $i++)
 			{
-				$message .= $this->message[$i]; // Richiama il metodo __toString() di "Allegato" o "MailBlock"
+
+				if(($this->message[$i] instanceof Allegato)==FALSE)
+				{
+					$message .= $this->message[$i]; // Richiama il metodo __toString() di "MailBlock"
+				}
 			}
+			// Metto il separatore
+			$message .= "--PHP-alt-$this->boundary--". EOL . EOL;
+
+			for ($i = 0; $i < $blocchi; $i++)
+			{
+
+				if($this->message[$i] instanceof Allegato)
+				{
+					$message .= $this->message[$i]; // Richiama il metodo __toString() di "Allegato"
+				}
+			}
+			// Metto il separatore
+			$message .= "--PHP-mixed-$this->boundary--". EOL . EOL;
+
 			$to = implode(", ", $this->to_mail);
 
-			$message .= "--PHP-alt-" . $this->boundary . "--" . EOL;
-			$message .= "--PHP-mixed-" . $this->boundary . "--" . EOL;
-			//$this->printmail($this->header());
-			//$this->printmail($message);
 			return mail($to, $this->object, $message, $this->header());
 		}
 
