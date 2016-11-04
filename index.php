@@ -229,6 +229,7 @@ Raffaele.
 		<ul>
 			<br>
 			<li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_55.php" target="_blank">esempio_55.php</a></b>: Inviare e-mail.</li>
+			<li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_55a.php" target="_blank">esempio_55a.php</a></b>: Classe per inviare  e-mail.</li>
 			<li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_56.php" target="_blank">esempio_56.php</a></b>: Upload file.</li>
 			<li><b><a href="<?php echo $path_sviluppo?>APPENDICE/esempio_57.php" target="_blank">esempio_57.php</a></b>: Buffering.</li>
 			<br>

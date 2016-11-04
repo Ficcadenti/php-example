@@ -88,6 +88,10 @@
 
 ?>
 
+<?php
+	require_once("../assets/lib/mime_type.php");
+?>
+
 <hmtl>
 	<head>
 		<title>sorgente: esempio_55.html</title>
@@ -142,8 +146,8 @@
 			$msg = "";
 
 			// Aggiungo le intestazioni necessarie per l'allegato
-  			//$headers  = "MIME-Version: 1.0". EOL;
-  			$headers = "From: " . $mittente . EOL;
+  			$headers  = "MIME-Version: 1.0". EOL;
+  			$headers .= "From: " . $mittente . EOL;
   			$headers .= "Replay-to: " . $replay_to . EOL;
   			$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-$mime_boundary\"". EOL. EOL;
 
@@ -159,12 +163,12 @@
 
 			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary". EOL;
-				$msg .= "Content-Type: text/plain; charset=\"iso-8859-1\"". EOL;
+				$msg .= "Content-Type: ".getMIME("TEXT")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
 				$msg .= $messaggio_plain . "". EOL. EOL;
 			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary". EOL;
-				$msg .= "Content-Type: text/html; charset=\"iso-8859-1\"". EOL;
+				$msg .= "Content-Type: ".getMIME("HTML")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
 				$msg .= $messaggio_html . "". EOL. EOL;
 			// Metto il separatore
@@ -173,7 +177,7 @@
 			// Metto il separatore
 			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
 				// Aggiungo l'allegato al messaggio
-				$msg .= "Content-Type: image/jpeg; name=\"$attachment_name\"" . EOL;
+				$msg .= "Content-Type: ".getMIME("JPG")."; name=\"$attachment_name\"" . EOL;
 				$msg .= "Content-Transfer-Encoding: base64" . EOL;
 				$msg .= "Content-Description: Immagine" . EOL;
 				$msg .= "Content-Disposition: attachment" . EOL. EOL;

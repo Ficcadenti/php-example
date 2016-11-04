@@ -268,7 +268,7 @@ Raffaele.
 			<br>
 			<li><b>esempio_56.php</b>: Esempio 2 - Upload file.</li>
 			<br>
-			<li><b>esempio_57.php</b>: Esempio 2 - Buffering.</li>
+			<li><b>esempio_57.php</b>: Esempio 3 - Buffering.</li>
 			<br>
 		</ul>
 	</li>
