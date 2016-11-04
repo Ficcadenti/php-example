@@ -109,16 +109,26 @@
 			$mail = new Email("Utilizzo della classe myMail", getMIME("MULTI"));
 			/* Codice per aggiungere i destinatari */
 			$mail->destinatario("Raffaele Ficcadenti <rficcad@e-tech.net>");
+			$mail->destinatario("Raffo <raffaele.ficcadenti@gmail.com>");
 			$mail->from("Mittente <ficcadenti@asdc.asi.it>");
 			$mail->replyTo("Risposta <ficcadenti@asdc.asi.it>");
-
 			$mail->blocco(getMIME("TEXT"), "email formato testo!!");
 			$mail->blocco(getMIME("HTML"), "<h3>email formato HTML<h3>");
 			$mail->allegato("pic1.jpg","pic1.jpg",getMIME("JPG"),"Immagine1");
 			$mail->allegato("pic.jpg","pic.jpg",getMIME("JPG"),"Immagine2");
+			$mail->allegato("mod69.pdf","mod69.pdf",getMIME("PDF"),"PDF");
 
 			$mail->stampa();
-			//$mail->invia();
+			$inviata = $mail->invia();
+			if ($inviata) 
+			{
+				println("Email con allegato inviata con successo!");
+			}
+			else
+			{
+				println("Errore durante l'invio dell'email con allegato");
+			}
+
 
 			print("</div>\n");
 		?>

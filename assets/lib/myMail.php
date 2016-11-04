@@ -20,6 +20,14 @@
 	require_once("../assets/lib/mime_type.php");
 
 	define("EOL", "\r\n");
+	define("HIGH", "High");
+	define("NORMAL", "Normal");
+	define("LOW", "Low");
+	define("XP1", "1");
+	define("XP2", "2");
+	define("XP3", "3");
+	define("XP4", "4");
+	define("XP5", "5");
 	
 	class MailBlock
 	{
@@ -92,13 +100,16 @@
 		private $message;
 		public  $mime = "1.0";
 		public  $content_type;
-		private $boundary = NULL;
-		public  $cc       = NULL;
-		public  $bcc      = NULL;
-		public  $date     = NULL;
-		public  $from     = NULL;
-		public  $replyto  = NULL;
-		public  $xmailer  = NULL;
+		private $boundary        = NULL;
+		public  $cc              = NULL;
+		public  $bcc             = NULL;
+		public  $date            = NULL;
+		public  $from            = NULL;
+		public  $replyto         = NULL;
+		public  $xmailer         = NULL;
+		public  $xpriority       = NULL;
+		public  $xmsmailpriority = NULL;
+		public  $importance      = NULL;
 
 		public function Email($object, $content_type = "TEXT")
 		{
@@ -150,6 +161,9 @@
 			if ($this->bcc != NULL) { $header .= "Bcc: " . $this->bcc .	EOL; }
 			if ($this->date != NULL) { $header .= "Date: " . $this->date . EOL; }
 			if ($this->xmailer != NULL) { $header .= "X-Mailer: " .	$this->xmailer. EOL; }
+			if ($this->xpriority != NULL) { $header .= "X-Priority: " .	$this->xpriority. EOL; }
+			if ($this->xmsmailpriority != NULL) { $header .= "X-MSMail-Priority: " .	$this->xmsmailpriority. EOL; }
+			if ($this->importance != NULL) { $header .= "Importance: " .	$this->importance. EOL; }
 
 			return $header;
 		}
@@ -196,6 +210,7 @@
 
 			$this->printmail($this->header());
 			$this->printmail($message);
+			$this->printmail($to);
 		}
 
 		public function invia()
