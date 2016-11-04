@@ -171,16 +171,16 @@
 				$msg .= "Content-Type: ".getMIME("TEXT")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
 				$msg .= $messaggio_plain . "". EOL. EOL;
-			/*// Metto il separatore
+			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary". EOL;
 				$msg .= "Content-Type: ".getMIME("HTML")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
-				$msg .= $messaggio_html . "". EOL. EOL;*/
+				$msg .= $messaggio_html . "". EOL. EOL;
 			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary--". EOL . EOL;
 
 			// Metto il separatore
-			/*$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
 				// Aggiungo l'allegato al messaggio
 				$msg .= "Content-Type: ".getMIME("JPG")."; charset=\"utf-8\"; name=\"$attachment_name\"" . EOL;
 				$msg .= "Content-Transfer-Encoding: base64" . EOL;
@@ -199,7 +199,7 @@
 
 
 			// Metto il separatore
-			$msg .= "--PHP-mixed-$mime_boundary--" . EOL;*/
+			$msg .= "--PHP-mixed-$mime_boundary--" . EOL;
 			/*$allegato = new Allegato("pic.jpg","pic.jpg",getMIME("JPG"),$mime_boundary,"Immagine");
 			$msg .= $allegato;
 
