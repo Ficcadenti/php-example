@@ -99,26 +99,101 @@
 	</head>
 	<body>
 		<?php
+			$num_capitolo=capitolo("Inviare un e-Mail.");
+			print("<div id=\"m70\">\n");
 			define("EOL", "\r\n");
-			$header = "MIME-Version: 1.0" . EOL;
+
+			/*$header = "MIME-Version: 1.0" . EOL;
 			$header .= "Content-Type: text/html" . EOL;
 			$header .= "From: raffaele.ficcadenti@asdc.asi.it";
-			$object = "Prova e-mail con PHP";
+			$object = "Prova e-mail senza allegato in PHP";
 			$message = "Linea 1: Questa è una prova di email<br />Linea 2: Questa è una prova di email<br />Linea 3: Questa è una prova di email";
 			$destinatari = "Raffaele Ficcadenti <rficcad@e-tech.net>, Raffo <raffaele.ficcadenti@gmail.com>";
 
-
-			$num_capitolo=capitolo("Inviare un e-Mail.");
-			print("<div id=\"m70\">\n");
+			
 			$inviata=mail($destinatari, $object, $message, $header);
 			if ($inviata) 
 			{
-				println("Email inviata con successo!");
+				println("Email senza allegati inviata con successo!");
 			}
 			else
 			{
-				println("Errore durante l'invio dell'email");
+				println("Errore durante l'invio dell'email senza allegati");
+			}*/
+
+			$semi_rand = md5(date('r', time()));
+			$mime_boundary = "$semi_rand";
+
+			$mittente ="ficcadenti@asdc.asi.it";
+			$messaggio_html ="<h1>La mia prima e-mail con PHP<h1>";
+			$messaggio_plain = "Corpo del messaggio";
+			$destinatari = "Raffaele Ficcadenti <rficcad@e-tech.net>, Raffo <raffaele.ficcadenti@gmail.com>";
+			$replay_to = "rficcad@e-tech.net";
+			$object = "Prova e-mail con allegato in PHP";
+			
+			$attachment_name="pic.jpg";
+			/*$file = fopen($allegato_name, "r");
+			$data = fread($file, filesize($allegato_name));
+			$data = chunk_split(base64_encode($data));*/
+
+			$attachment = chunk_split(base64_encode(file_get_contents($attachment_name)));
+			// Creo altre due variabili ad uno interno
+			
+			$msg = "";
+
+			// Aggiungo le intestazioni necessarie per l'allegato
+  			//$headers  = "MIME-Version: 1.0". EOL;
+  			$headers = "From: " . $mittente . EOL;
+  			$headers .= "Replay-to: " . $replay_to . EOL;
+  			$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-$mime_boundary\"". EOL. EOL;
+
+  			
+
+			// Metto il separatore
+			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+
+
+
+			// Questa è la parte "testuale" del messaggio
+			$msg .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-$mime_boundary\"". EOL. EOL;
+
+			// Metto il separatore
+			$msg .= "--PHP-alt-$mime_boundary". EOL;
+				$msg .= "Content-Type: text/plain; charset=\"iso-8859-1\"". EOL;
+				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
+				$msg .= $messaggio_plain . "". EOL. EOL;
+			// Metto il separatore
+			$msg .= "--PHP-alt-$mime_boundary". EOL;
+				$msg .= "Content-Type: text/html; charset=\"iso-8859-1\"". EOL;
+				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
+				$msg .= $messaggio_html . "". EOL. EOL;
+			// Metto il separatore
+			$msg .= "--PHP-alt-$mime_boundary--". EOL . EOL;
+
+			// Metto il separatore
+			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+				// Aggiungo l'allegato al messaggio
+				$msg .= "Content-Type: image/jpeg; name=\"$attachment_name\"" . EOL;
+				$msg .= "Content-Transfer-Encoding: base64" . EOL;
+				$msg .= "Content-Description: Immagine" . EOL;
+				$msg .= "Content-Disposition: attachment" . EOL. EOL;
+				$msg .= $attachment;
+			// Metto il separatore
+			$msg .= "--PHP-mixed-$mime_boundary--" . EOL;
+
+
+			
+
+			$inviata=mail($destinatari, $object, $msg, $headers);
+			if ($inviata) 
+			{
+				println("Email con allegato inviata con successo!");
 			}
+			else
+			{
+				println("Errore durante l'invio dell'email con allegato");
+			}
+
 
 			print("</div>\n");
 		?>
@@ -128,6 +203,7 @@
 		?>
 
 		
+		<a href="http://php.net/manual/en/function.base64-encode.php" target="_blank">PHP base64_encode</a><br>
 		<a href="http://php.net/manual/en/function.mail.php" target="_blank">PHP mail</a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
