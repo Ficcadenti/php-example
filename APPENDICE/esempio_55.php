@@ -89,7 +89,7 @@
 ?>
 
 <?php
-	require_once("../assets/lib/mime_type.php");
+	require_once("../assets/lib/myMail.php");
 ?>
 
 <hmtl>
@@ -105,7 +105,7 @@
 		<?php
 			$num_capitolo=capitolo("Inviare un e-Mail.");
 			print("<div id=\"m70\">\n");
-			define("EOL", "\r\n");
+			//define("EOL", "\r\n");
 
 			/*$header = "MIME-Version: 1.0" . EOL;
 			$header .= "Content-Type: text/html" . EOL;
@@ -136,11 +136,16 @@
 			$object = "Prova e-mail con allegato in PHP";
 			
 			$attachment_name="pic.jpg";
-			/*$file = fopen($allegato_name, "r");
-			$data = fread($file, filesize($allegato_name));
-			$data = chunk_split(base64_encode($data));*/
+			$file = @fopen($attachment_name, "r");
+			$attachment = fread($file, filesize($attachment_name));
+			$attachment = chunk_split(base64_encode($attachment));
 
-			$attachment = chunk_split(base64_encode(file_get_contents($attachment_name)));
+			$attachment_name1="pic1.jpg";
+			$file1 = @fopen($attachment_name1, "r");
+			$attachment1 = fread($file1, filesize($attachment_name1));
+			$attachment1 = chunk_split(base64_encode($attachment1));
+
+			//$attachment = chunk_split(base64_encode(file_get_contents($attachment_name)));
 			// Creo altre due variabili ad uno interno
 			
 			$msg = "";
@@ -166,26 +171,45 @@
 				$msg .= "Content-Type: ".getMIME("TEXT")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
 				$msg .= $messaggio_plain . "". EOL. EOL;
-			// Metto il separatore
+			/*// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary". EOL;
 				$msg .= "Content-Type: ".getMIME("HTML")."; charset=\"iso-8859-1\"". EOL;
 				$msg .= "Content-Transfer-Encoding: 7bit". EOL. EOL;
-				$msg .= $messaggio_html . "". EOL. EOL;
+				$msg .= $messaggio_html . "". EOL. EOL;*/
 			// Metto il separatore
 			$msg .= "--PHP-alt-$mime_boundary--". EOL . EOL;
 
 			// Metto il separatore
-			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+			/*$msg .= "--PHP-mixed-$mime_boundary" . EOL;
 				// Aggiungo l'allegato al messaggio
-				$msg .= "Content-Type: ".getMIME("JPG")."; name=\"$attachment_name\"" . EOL;
+				$msg .= "Content-Type: ".getMIME("JPG")."; charset=\"utf-8\"; name=\"$attachment_name\"" . EOL;
 				$msg .= "Content-Transfer-Encoding: base64" . EOL;
 				$msg .= "Content-Description: Immagine" . EOL;
-				$msg .= "Content-Disposition: attachment" . EOL. EOL;
+				$msg .= "Content-Disposition: attachment; filename=\"$attachment_name\"" . EOL. EOL;
 				$msg .= $attachment;
+
 			// Metto il separatore
+			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+				// Aggiungo l'allegato al messaggio
+				$msg .= "Content-Type: ".getMIME("JPG")."; charset=\"utf-8\"; name=\"$attachment_name1\"" . EOL;
+				$msg .= "Content-Transfer-Encoding: base64" . EOL;
+				$msg .= "Content-Description: Immagine" . EOL;
+				$msg .= "Content-Disposition: attachment; filename=\"$attachment_name1\"" . EOL. EOL;
+				$msg .= $attachment1;
+
+
+			// Metto il separatore
+			$msg .= "--PHP-mixed-$mime_boundary--" . EOL;*/
+			/*$allegato = new Allegato("pic.jpg","pic.jpg",getMIME("JPG"),$mime_boundary,"Immagine");
+			$msg .= $allegato;
+
+			$allegato= new Allegato("pic1.jpg","pic1.jpg",getMIME("JPG"),$mime_boundary,"Immagine");
+			$msg .= $allegato;
+
+			$allegato= new Allegato("mod69.pdf","mod69.pdf",getMIME("PDF"),$mime_boundary,"PDF");
+			$msg .= $allegato;*/
+
 			$msg .= "--PHP-mixed-$mime_boundary--" . EOL;
-
-
 			
 
 			$inviata=mail($destinatari, $object, $msg, $headers);

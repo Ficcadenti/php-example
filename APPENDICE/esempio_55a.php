@@ -89,8 +89,7 @@
 ?>
 
 <?php
-	require_once("../assets/lib/mime_type.php");
-	require_once("../assets/lib/MailBlock.php");
+	require_once("../assets/lib/myMail.php");
 ?>
 
 <hmtl>
@@ -111,8 +110,20 @@
 			$mime_boundary = "$semi_rand";
 			$contenuto = "<ul><li>Linea uno</li><li>Linea due</li></ul>";
 			$blocco = new MailBlock(getMIME("HTML"), $mime_boundary, $contenuto);
-			println($blocco); 
+
+			$allegato = new Allegato("pic1.jpg","pic1.jpg",getMIME("JPG"),$mime_boundary,"Immagine");
 			
+			
+			
+			$mail = new Email("Mail con allegati", getMIME("MULTI"));
+			/* Codice per aggiungere i destinatari */
+			$mail->destinatario("Raffaele Ficcadenti <rficcad@e-tech.net>");
+			$mail->from("Mittente <ficcadenti@asdc.asi.it>");
+			$mail->replyTo("Risposta <ficcadenti@asdc.asi.it>");
+
+			$mail->blocco(getMIME("TEXT"), "blocco1!!");
+			$mail->blocco(getMIME("TEXT"), "blocco2!!");
+			$mail->invia();
 			print("</div>\n");
 		?>
 		
