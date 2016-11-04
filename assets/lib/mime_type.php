@@ -18,6 +18,7 @@
 -->
 <?php
 	$mime_types = array(
+		'alt' => 'multipart/alternative',
 		'3dm' => 'x-world/x-3dmf',
 		'3dmf' => 'x-world/x-3dmf',
 		'a' => 'application/octet-stream',

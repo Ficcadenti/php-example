@@ -180,7 +180,7 @@
 			$msg .= "--PHP-alt-$mime_boundary--". EOL . EOL;
 
 			// Metto il separatore
-			$msg .= "--PHP-mixed-$mime_boundary" . EOL;
+			/*$msg .= "--PHP-mixed-$mime_boundary" . EOL;
 				// Aggiungo l'allegato al messaggio
 				$msg .= "Content-Type: ".getMIME("JPG")."; charset=\"utf-8\"; name=\"$attachment_name\"" . EOL;
 				$msg .= "Content-Transfer-Encoding: base64" . EOL;
@@ -195,7 +195,7 @@
 				$msg .= "Content-Transfer-Encoding: base64" . EOL;
 				$msg .= "Content-Description: Immagine" . EOL;
 				$msg .= "Content-Disposition: attachment; filename=\"$attachment_name1\"" . EOL. EOL;
-				$msg .= $attachment1;
+				$msg .= $attachment1;*/
 
 
 			// Metto il separatore

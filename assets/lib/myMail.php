@@ -29,7 +29,7 @@
 		public    $content;
 		protected $boundary;
 
-		public function MailBlock($content_type, $boundary, $content,$charset = "iso-8859-1", $c_t_encoding = "8bit")
+		public function MailBlock($content_type, $boundary, $content,$charset = "iso-8859-1", $c_t_encoding = "7bit")
 		{
 			$this->content_type = $content_type;
 			$this->charset = $charset;
@@ -108,7 +108,7 @@
 			$this->boundary = md5(time());
 			$this->content_type = $content_type;
 		}
-		public function blocco($content_type, $content, $charset = "iso-8859-1", $c_t_encoding = "8bit")
+		public function blocco($content_type, $content, $charset = "iso-8859-1", $c_t_encoding = "7bit")
 		{
 			$succ = count($this->message);
 			$this->message[$succ] = new MailBlock($content_type, $this->boundary, $content, $charset, $c_t_encoding);
@@ -149,7 +149,7 @@
 			if ($this->cc != NULL) { $header .= "Cc: " . $this->cc . EOL; }
 			if ($this->bcc != NULL) { $header .= "Bcc: " . $this->bcc .	EOL; }
 			if ($this->date != NULL) { $header .= "Date: " . $this->date . EOL; }
-			if ($this->xmailer != NULL) { $header .= "X-Mailer: " .	$this->xmailer; }
+			if ($this->xmailer != NULL) { $header .= "X-Mailer: " .	$this->xmailer. EOL; }
 
 			return $header;
 		}
@@ -164,7 +164,9 @@
 
 		public function invia()
 		{
-			$message = "";
+			$message = "--PHP-mixed-" . $this->boundary . EOL;
+			$message .= "Content-Type: " . getMIME("ALT") . "; boundary=\"PHP-alt-" . $this->boundary . "\"" . EOL . EOL;
+
 			$blocchi = count($this->message);
 			for ($i = 0; $i < $blocchi; $i++)
 			{
@@ -174,8 +176,8 @@
 
 			$message .= "--PHP-alt-" . $this->boundary . "--" . EOL;
 			$message .= "--PHP-mixed-" . $this->boundary . "--" . EOL;
-			$this->printmail($this->header());
-			$this->printmail($message);
+			//$this->printmail($this->header());
+			//$this->printmail($message);
 			return mail($to, $this->object, $message, $this->header());
 		}
 
