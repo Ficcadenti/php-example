@@ -270,6 +270,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_56.php</b>: Esempio 3 - Upload file.</li>
 			<br>
+			<li><b>esempio_56a.php</b>: Esempio 3 - Classe per upload file.</li>
+			<br>
 			<li><b>esempio_57.php</b>: Esempio 4 - Buffering.</li>
 			<br>
 		</ul>
