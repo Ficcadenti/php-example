@@ -266,9 +266,11 @@ Raffaele.
 			<br>
 			<li><b>esempio_55.php</b>: Esempio 1 - Inviare e-mail.</li>
 			<br>
-			<li><b>esempio_56.php</b>: Esempio 2 - Upload file.</li>
+			<li><b>esempio_55a.php</b>: Esempio 2 - Classe per inviare e-mail.</li>
 			<br>
-			<li><b>esempio_57.php</b>: Esempio 3 - Buffering.</li>
+			<li><b>esempio_56.php</b>: Esempio 3 - Upload file.</li>
+			<br>
+			<li><b>esempio_57.php</b>: Esempio 4 - Buffering.</li>
 			<br>
 		</ul>
 	</li>

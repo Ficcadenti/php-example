@@ -262,6 +262,7 @@
 				{
 					$message .= $this->message[$i]; // Richiama il metodo __toString() di "MailBlock"
 				}
+<<<<<<< HEAD
 			}
 			// Metto il separatore
 			$message .= "--PHP-alt-$this->boundary--". EOL . EOL;
@@ -275,6 +276,21 @@
 				}
 			}
 			// Metto il separatore
+=======
+			}
+			// Metto il separatore
+			$message .= "--PHP-alt-$this->boundary--". EOL . EOL;
+
+			for ($i = 0; $i < $blocchi; $i++)
+			{
+
+				if($this->message[$i] instanceof Allegato)
+				{
+					$message .= $this->message[$i]; // Richiama il metodo __toString() di "Allegato"
+				}
+			}
+			// Metto il separatore
+>>>>>>> a0dd2d616f9605cb78bef5066f31824b73a86cd3
 			$message .= "--PHP-mixed-$this->boundary--". EOL . EOL;
 
 			$to = implode(", ", $this->to_mail);

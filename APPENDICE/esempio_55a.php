@@ -106,23 +106,30 @@
 			$num_capitolo=capitolo("Classe per inviare un e-Mail.");
 			print("<div id=\"m70\">\n");
 			
-			$semi_rand = md5(date('r', time()));
-			$mime_boundary = "$semi_rand";
-			$contenuto = "<ul><li>Linea uno</li><li>Linea due</li></ul>";
-			$blocco = new MailBlock(getMIME("HTML"), $mime_boundary, $contenuto);
-
-			$allegato = new Allegato("pic1.jpg","pic1.jpg",getMIME("JPG"),$mime_boundary,"Immagine");
-			
-			
-			
-			$mail = new Email("Mail con allegati", getMIME("MULTI"));
+			$mail = new Email("Utilizzo della classe myMail", getMIME("MULTI"));
 			/* Codice per aggiungere i destinatari */
 			$mail->destinatario("Raffaele Ficcadenti <rficcad@e-tech.net>");
+			$mail->destinatario("Raffo <raffaele.ficcadenti@gmail.com>");
 			$mail->from("Mittente <ficcadenti@asdc.asi.it>");
 			$mail->replyTo("Risposta <ficcadenti@asdc.asi.it>");
+			$mail->blocco(getMIME("TEXT"), "email formato testo!!");
+			$mail->blocco(getMIME("HTML"), "<h3>email formato HTML<h3>");
+			$mail->allegato("pic1.jpg","pic1.jpg",getMIME("JPG"),"Immagine1");
+			$mail->allegato("pic.jpg","pic.jpg",getMIME("JPG"),"Immagine2");
+			$mail->allegato("mod69.pdf","mod69.pdf",getMIME("PDF"),"PDF");
 
-			$mail->blocco(getMIME("TEXT"), "blocco1!!");
-			$mail->invia();
+			$mail->stampa();
+			$inviata = $mail->invia();
+			if ($inviata) 
+			{
+				println("Email con allegato inviata con successo!");
+			}
+			else
+			{
+				println("Errore durante l'invio dell'email con allegato");
+			}
+
+
 			print("</div>\n");
 		?>
 		
@@ -133,6 +140,8 @@
 		
 		<a href="http://php.net/manual/en/function.base64-encode.php" target="_blank">PHP base64_encode</a><br>
 		<a href="http://php.net/manual/en/function.mail.php" target="_blank">PHP mail</a><br>
+		<a href="http://php.net/manual/en/internals2.opcodes.instanceof.php" target="_blank">PHP instanceof</a><br>
+		<a href="http://www.html.it/articoli/e-mail-in-formato-html-con-php-2/" target="_blank">HTML.it: E-mail in formato HTML con PHP </a><br>
 		<a href="http://www.w3schools.com/php/" target="_blank">w3schools<span class="dotcom">.com</span></a><br>
 	</body>
 </hmtl>
