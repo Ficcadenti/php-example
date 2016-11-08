@@ -25,6 +25,7 @@ Raffaele.
 	<li><strong>LEZIONE N. 0</strong> - Per iniziare.
 		<ul>
 			<br>
+			<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/ascii_tab.html" target="_blank">ascii_tab.html</a></b>: ASCII/ISO 8859-1 (Latin-1).</li>
 			<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/phpinfo.php" target="_blank">phpinfo.php</a></b>: Un semplice script per info sul php installato.</li>
 			<li><b><a href="<?php echo $path_sviluppo?>Lazione-00 - Per iniziare/esempio_01.php" target="_blank">esempio_01.php</a></b>: Un semplice script introduttivo.</li>
 			<br>

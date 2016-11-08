@@ -163,7 +163,7 @@
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
-			include ("../assets/css/default.css");
+			include ("../assets/css/default.min.css");
 		?>
 	</head>
 	<body>

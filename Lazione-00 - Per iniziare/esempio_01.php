@@ -30,7 +30,7 @@
 	<b>
 	<!-- Codice PHP -->
 	<?php
-		print("Ciao mondo web!!!");
+		print("Ciao mondo è web!!!");
 	?>
 	</b>
 </body>
