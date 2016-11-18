@@ -273,7 +273,6 @@
 			println("array4[$key]=$value");
 		}
 		println();
-
 	?>
 </body>
 </hmtl>

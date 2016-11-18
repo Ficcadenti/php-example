@@ -141,6 +141,15 @@
 			}
 
 			print("</div>\n");
+
+$re = '/raffael[aA]/';
+$str = 'raffaela raffaeleA';
+
+preg_match_all($re, $str, $matches);
+
+// Print the entire match result
+print_r($matches);
+
 		?>
 		
 		<?php
