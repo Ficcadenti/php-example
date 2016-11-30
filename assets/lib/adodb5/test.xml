@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE adodb_schema SYSTEM "xmlschema03.dtd">
+<adodb_schema>
+  <schema version="0.3">
+  <table name="boum_enfants" descrx="asdf">
+    <field name="id" type="I" size="10">
+      <KEY/>
+      <AUTOINCREMENT/>
+      <UNSIGNED/>
+    </field>
+    <field name="nom_prenom" type="C" size="100"/>
+    <field name="degre_id" type="I" size="10">
+      <UNSIGNED/>
+    </field>
+    <field name="parent_id" type="I" size="10">
+      <NOTNULL/>
+      <UNSIGNED/>
+    </field>
+    <field name="num" type="I" size="1">
+      <NOTNULL/>
+      <UNSIGNED/>
+    </field>
+    <index name="num">
+      <UNIQUE/>
+      <col>parent_id</col>
+      <col>num</col>
+    </index>
+    <index name="parent_id">
+      <col>parent_id</col>
+    </index>
+    <index name="nom_prenom">
+      <col>nom_prenom</col>
+    </index>
+    <index name="degre_id">
+      <col>degre_id</col>
+    </index>
+  </table>
+</schema>
+</adodb_schema>

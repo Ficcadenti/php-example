@@ -140,6 +140,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_21.php" target="_blank">esempio_21.php</a></b>: Utilizzo di MySQLi.</li>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_22.php" target="_blank">esempio_22.php</a></b>: Ottenere informazioni su un database.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-10 - Database MySQL/esempio_22a.php" target="_blank">esempio_22a.php</a></b>: Utilizzo di ADODB.</li>
 					<br>
 				</ul>
 			</li>

@@ -1,0 +1,60 @@
+From 9fbb2c7751c0fdb89062a87910730ea9ccb5d04c Mon Sep 17 00:00:00 2001
+From: peterdd <ddpm@liscovius.de>
+Date: Thu, 4 Aug 2016 04:10:12 +0200
+Subject: [PATCH] XML: add support for 'DESCR' tags for tables/fields
+
+Fixes #265
+
+Signed-off-by: Damien Regad <dregad@mantisbt.org>
+
+Original commits squashed; commit message reworded; updated changelog.
+---
+ adodb-xmlschema03.inc.php | 12 ++++++++++++
+ docs/changelog.md         |  1 +
+ 2 files changed, 13 insertions(+)
+
+diff --git a/adodb-xmlschema03.inc.php b/adodb-xmlschema03.inc.php
+index c1ecb88..794f5e2 100644
+--- a/adodb-xmlschema03.inc.php
++++ b/adodb-xmlschema03.inc.php
+@@ -347,6 +347,14 @@ class dbTable extends dbObject {
+ 	*/
+ 	function _tag_cdata( &$parser, $cdata ) {
+ 		switch( $this->currentElement ) {
++			// Table or field comment
++			case 'DESCR':
++				if( isset( $this->current_field ) ) {
++					$this->addFieldOpt( $this->current_field, $this->currentElement, $cdata );
++				} else {
++					$this->addTableComment( $cdata );
++				}
++				break;
+ 			// Table/field constraint
+ 			case 'CONSTRAINT':
+ 				if( isset( $this->current_field ) ) {
+@@ -511,6 +519,10 @@ class dbTable extends dbObject {
+ 		return $this->opts;
+ 	}
+ 
++	function addTableComment( $opt ) {
++		$this->opts['comment'] = $opt;
++		return $this->opts;
++	}
+ 
+ 	/**
+ 	* Generates the SQL that will create the table in the database
+diff --git a/docs/changelog.md b/docs/changelog.md
+index 742f4e4..1fe10f4 100644
+--- a/docs/changelog.md
++++ b/docs/changelog.md
+@@ -44,6 +44,7 @@ Older changelogs:
+ - sqlite: Fix Metataypes mapping. #177
+ - sqlite: driver did not support metaForeignKeys. #179
+ - session: add 'httponly' flag to cookie. #190
++- xml: add support for 'DESCR' tags for tables/fields. #265
+ 
+ ## 5.20.6 - 31-Aug-2016
+ 
+-- 
+2.7.4
+
