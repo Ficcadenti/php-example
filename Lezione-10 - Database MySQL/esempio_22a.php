@@ -95,7 +95,7 @@
 	</head>
 	<body>
 		<?php
-			$db = NewADOConnection('mysql');
+			$db = NewADOConnection('mysqli');
 			$name_db="phpexample";
 			$name_tab="tab_01";
 
