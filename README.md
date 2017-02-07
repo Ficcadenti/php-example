@@ -268,7 +268,7 @@ Raffaele.
 	<li><strong>LEZIONE N. 23</strong> - Google API.
 		<ul>
 			<br>
-			<li><b>esempio_60.php</b>: Iniziamo ad usare le Goggle API Maps.</li>
+			<li><b>esempio_60.php</b>: Iniziamo ad usare le Google API Maps.</li>
 			<br>
 		</ul>
 	</li>

@@ -107,7 +107,7 @@
 		<?php
 
 			$num_capitolo=capitolo("Google API.");
-			paragrafo("Esempio 1 - Goggle API Maps.",$num_capitolo);
+			paragrafo("Esempio 1 - Google API Maps.",$num_capitolo);
 			print("<div id=\"m70\">\n");
 
 			$map->renderHTML();
