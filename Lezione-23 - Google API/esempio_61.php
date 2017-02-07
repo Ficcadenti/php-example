@@ -1,7 +1,7 @@
 <!--
 	# 
 	# MODULE DESCRIPTION:
-	# esempio_60.html
+	# esempio_61.html
 	# 
 	# 
 	# AUTHORS:
@@ -16,8 +16,8 @@
 	#
 -->
 <?php
-    include("../assets/lib/phpGoogleMap.php");
-    $map = new PhpGoogleMap("AIzaSyD24SggKH9CuUEPjS2N1La0STvWZkxzqFc");
+    include("../assets/lib/phpGoogleMap_v3.php");
+    $map = new PhpGoogleMap_v3("AIzaSyD24SggKH9CuUEPjS2N1La0STvWZkxzqFc");
 ?>
 
 <?php
@@ -96,18 +96,18 @@
 <hmtl>
 	<head>
 		<?php $map->renderJS(); ?>
-		<title>sorgente: esempio_60.html</title>
+		<title>sorgente: esempio_61.html</title>
 		<!-- Sezione per i CSS -->
 		<!-- load default.css -->
 		<?php
 			include ("../assets/css/default.css");
 		?>
 	</head>
-	<body onload="initialize()" onunload="Gunload()">
+	<body">
 		<?php
 
 			$num_capitolo=capitolo("Google API.");
-			paragrafo("Esempio 1 - Google API Maps v2.",$num_capitolo);
+			paragrafo("Esempio 1 - Google API Maps v3.",$num_capitolo);
 			print("<div id=\"m70\">\n");
 
 			$map->renderHTML();
