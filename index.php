@@ -248,6 +248,13 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 				</ul>
 			</li>
+			<li><strong>LEZIONE N. 23</strong> - Google API.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-23 - Google API/esempio_60.php" target="_blank">esempio_60.php</a></b>: Iniziamo ad usare le Goggle API Maps.</li>
+					<br>
+				</ul>
+			</li>
 			<li><strong>APPENDICE</strong> - Alcuni esempi pratici.
 				<ul>
 					<br>
