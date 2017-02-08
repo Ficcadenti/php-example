@@ -2,7 +2,7 @@
 /*
 	# 
 	# MODULE DESCRIPTION:
-	# PhpGoogleMap.php
+	# PhpGoogleMap_v3.php
 	# 
 	# 
 	# AUTHORS:
