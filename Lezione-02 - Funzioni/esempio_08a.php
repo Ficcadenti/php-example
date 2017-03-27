@@ -70,15 +70,19 @@
 		$sum = function ($a, $b) {
 		    return $a + $b;
 		};
-		 
-		
-		
 
-		capitolo("Funzioni anonime (Clouser)");
+		$ciao = function($nome)
+		{
+			println("Siao $nome");
+		};
+
+		capitolo("Funzioni anonime (Closure)");
 		println($sum(2, 3)); // 5
 		println(call_user_func($sum, 2, 3)); // 5
 		println(call_user_func_array($sum, array(2, 3))); // 5
-		println("FINE");
+		$ciao("Valeria");
+		$ciao("Gabry");
+		$ciao("Raffaele");
 	?> 
 	</b>
 </body>

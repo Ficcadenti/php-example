@@ -68,7 +68,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-02 - Funzioni/esempio_08.php" target="_blank">esempio_08.php</a></b>: Esempi.</li>
-					<li><b><a href="<?php echo $path_sviluppo?>Lezione-02 - Funzioni/esempio_08a.php" target="_blank">esempio_08a.php</a></b>: Funzioni anonime (clouser).</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-02 - Funzioni/esempio_08a.php" target="_blank">esempio_08a.php</a></b>: Funzioni anonime (Closure).</li>
 					<br>
 				</ul>
 			</li>

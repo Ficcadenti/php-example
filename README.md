@@ -279,7 +279,7 @@ Raffaele.
 	<li><strong>LEZIONE N. 24</strong> - Laravel.
 		<ul>
 			<br>
-			<li><b>esempio_60.php</b>: Iniziamo ad usare Laravel.</li>
+			<li><b>esempio_01.php</b>: Iniziamo ad usare Laravel.</li>
 			<br>
 		</ul>
 	</li>
