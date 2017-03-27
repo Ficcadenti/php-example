@@ -49,6 +49,8 @@ Raffaele.
 			<br>
 			<li><b>esempio_08.php</b>: Esempi.</li>
 			<br>
+			<li><b>esempio_08a.php</b>: Funzioni anonime (clouser).</li>
+			<br>
 		</ul>
 	</li>
 	<li><strong>LEZIONE N. 3</strong> - Array.
@@ -271,6 +273,13 @@ Raffaele.
 			<li><b>esempio_60.php</b>: Iniziamo ad usare le Google API Maps v2.</li>
 			<br>
 			<li><b>esempio_61.php</b>: Iniziamo ad usare le Google API Maps v3.</li>
+			<br>
+		</ul>
+	</li>
+	<li><strong>LEZIONE N. 24</strong> - Laravel.
+		<ul>
+			<br>
+			<li><b>esempio_60.php</b>: Iniziamo ad usare Laravel.</li>
 			<br>
 		</ul>
 	</li>

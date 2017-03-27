@@ -68,6 +68,7 @@ http://www.w3.org/TR/html4/frameset.dtd>
 				<ul>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-02 - Funzioni/esempio_08.php" target="_blank">esempio_08.php</a></b>: Esempi.</li>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-02 - Funzioni/esempio_08a.php" target="_blank">esempio_08a.php</a></b>: Funzioni anonime (clouser).</li>
 					<br>
 				</ul>
 			</li>
@@ -253,6 +254,13 @@ http://www.w3.org/TR/html4/frameset.dtd>
 					<br>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-23 - Google API/esempio_60.php" target="_blank">esempio_60.php</a></b>: Iniziamo ad usare le Google API Maps v2.</li>
 					<li><b><a href="<?php echo $path_sviluppo?>Lezione-23 - Google API/esempio_61.php" target="_blank">esempio_61.php</a></b>: Iniziamo ad usare le Google API Maps v3.</li>
+					<br>
+				</ul>
+			</li>
+			<li><strong>LEZIONE N. 24</strong> - Laravel.
+				<ul>
+					<br>
+					<li><b><a href="<?php echo $path_sviluppo?>Lezione-24 - Laravel/esempio_01/index.php" target="_blank">esempio_01</a></b>: Iniziamo ad usare Laravel.</li>
 					<br>
 				</ul>
 			</li>
